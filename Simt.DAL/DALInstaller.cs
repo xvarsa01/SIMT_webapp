@@ -1,11 +1,11 @@
-﻿using CookBook.DAL.Factories;
-using CookBook.DAL.Mappers;
-using CookBook.DAL.Migrator;
-using CookBook.DAL.Options;
+﻿using Simt.DAL.Factories;
+// using Simt.DAL.Mappers;
+using Simt.DAL.Migrator;
+using Simt.DAL.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CookBook.DAL;
+namespace Simt.DAL;
 
 public static class DALInstaller
 {
@@ -27,13 +27,13 @@ public static class DALInstaller
             throw new InvalidOperationException($"{nameof(options.DatabaseName)} is not set");
         }
 
-        services.AddSingleton<IDbContextFactory<CookBookDbContext>>(_ =>
+        services.AddSingleton<IDbContextFactory<SimtDbContext>>(_ =>
             new DbContextSqLiteFactory(options.DatabaseFilePath, options?.SeedDemoData ?? false));
         services.AddSingleton<IDbMigrator, DbMigrator>();
 
-        services.AddSingleton<IngredientEntityMapper>();
-        services.AddSingleton<IngredientAmountEntityMapper>();
-        services.AddSingleton<RecipeEntityMapper>();
+        // services.AddSingleton<IngredientEntityMapper>();
+        // services.AddSingleton<IngredientAmountEntityMapper>();
+        // services.AddSingleton<RecipeEntityMapper>();
 
         return services;
     }

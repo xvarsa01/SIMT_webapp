@@ -1,4 +1,4 @@
-﻿namespace CookBook.DAL.Options;
+﻿namespace Simt.DAL.Options;
 
 public record DALOptions
 {
