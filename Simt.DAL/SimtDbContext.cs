@@ -5,26 +5,26 @@ namespace Simt.DAL;
 
 public class SimtDbContext(DbContextOptions contextOptions, bool seedDemoData = false): DbContext (contextOptions)
 {
-    public DbSet<HracEntita> Hraci => Set<HracEntita>();
-    public DbSet<LinkaEntita> Linky => Set<LinkaEntita>();
-    public DbSet<SpojEntita> Spoje => Set<SpojEntita>();
-    public DbSet<VozidloEntita> Vozidla => Set<VozidloEntita>();
+    public DbSet<PlayerEntita> Players => Set<PlayerEntita>();
+    public DbSet<LineEntity> Lines => Set<LineEntity>();
+    public DbSet<ServiceEntity> Services => Set<ServiceEntity>();
+    public DbSet<VehicleEntity> Vehicles => Set<VehicleEntity>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<HracEntita>()
-            .HasMany<SpojEntita>(i => i.Spoje)
-            .WithOne(s => s.Hrac);
+        modelBuilder.Entity<PlayerEntita>()
+            .HasMany<ServiceEntity>(i => i.Services)
+            .WithOne(s => s.Player);
         
-        modelBuilder.Entity<LinkaEntita>()
-            .HasMany<SpojEntita>(i => i.Spoje)
-            .WithOne(s => s.Linka);
+        modelBuilder.Entity<LineEntity>()
+            .HasMany<ServiceEntity>(i => i.Services)
+            .WithOne(s => s.Line);
         
-        modelBuilder.Entity<VozidloEntita>()
-            .HasMany<SpojEntita>(i => i.Spoje)
-            .WithOne(s => s.Vozidlo);
+        modelBuilder.Entity<VehicleEntity>()
+            .HasMany<ServiceEntity>(i => i.Services)
+            .WithOne(s => s.Vehicle);
 
     }
 }
