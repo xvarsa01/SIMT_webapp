@@ -14,4 +14,6 @@ public record HracEntita:IEntity
     public required float ServisVydaje { get; init; }
     public required int KmCelkove { get; init; }
     public required int KmRocne { get; init; }
+
+    public ICollection<SpojEntita> Spoje { get; init; } = [];
 }
