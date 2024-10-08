@@ -1,9 +1,10 @@
 ﻿namespace Simt.DAL.enums;
 
-public enum Trakcie
+public enum Traction
 {
     Bus,
     Tram,
     Trolejbus,
-    
+    Train,
+    Different
 }

@@ -13,7 +13,7 @@ public record ServiceEntity:IEntity
     public required Guid LineId { get; set; }
     public required Guid VehicleId { get; set; }
     
-    public required PlayerEntita Player { get; init; }
+    public required PlayerEntity Player { get; init; }
     public required LineEntity Line { get; init; }
     public required VehicleEntity Vehicle { get; init; }
 }
