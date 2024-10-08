@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Simt.DAL.entities;
+using Simt.DAL.Seeds;
 
 namespace Simt.DAL;
 
-public class SimtDbContext(DbContextOptions contextOptions, bool seedDemoData = false): DbContext (contextOptions)
+public class SimtDbContext(DbContextOptions contextOptions, bool seedDemoData = true): DbContext (contextOptions)
 {
     public DbSet<PlayerEntity> Players => Set<PlayerEntity>();
     public DbSet<LineEntity> Lines => Set<LineEntity>();
@@ -26,5 +27,13 @@ public class SimtDbContext(DbContextOptions contextOptions, bool seedDemoData = 
             .HasMany<ServiceEntity>(i => i.Services)
             .WithOne(s => s.Vehicle);
 
+        
+        if (true)
+        {
+            PlayerSeeds.Seed(modelBuilder);
+            LineSeeds.Seed(modelBuilder);
+            VehicleSeeds.Seed(modelBuilder);
+            ServiceSeeds.Seed(modelBuilder);
+        }
     }
 }
