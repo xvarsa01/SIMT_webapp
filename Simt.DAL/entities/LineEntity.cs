@@ -6,7 +6,7 @@ public record LineEntity():IEntity
 {
     public required Guid Id { get; set; }
     public required string Line { get; set; }
-    public Trakcie Traction { get; set; }
+    public Traction Traction { get; set; }
 
     public ICollection<ServiceEntity> Services { get; init; } = [];
 }

@@ -1,6 +1,6 @@
 ﻿namespace Simt.DAL.entities;
 
-public record PlayerEntita:IEntity
+public record PlayerEntity:IEntity
 {
     public required Guid Id { get; set; }
     public required string Nick { get; set; }

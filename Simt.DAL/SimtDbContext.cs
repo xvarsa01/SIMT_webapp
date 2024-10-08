@@ -5,7 +5,7 @@ namespace Simt.DAL;
 
 public class SimtDbContext(DbContextOptions contextOptions, bool seedDemoData = false): DbContext (contextOptions)
 {
-    public DbSet<PlayerEntita> Players => Set<PlayerEntita>();
+    public DbSet<PlayerEntity> Players => Set<PlayerEntity>();
     public DbSet<LineEntity> Lines => Set<LineEntity>();
     public DbSet<ServiceEntity> Services => Set<ServiceEntity>();
     public DbSet<VehicleEntity> Vehicles => Set<VehicleEntity>();
@@ -14,7 +14,7 @@ public class SimtDbContext(DbContextOptions contextOptions, bool seedDemoData = 
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<PlayerEntita>()
+        modelBuilder.Entity<PlayerEntity>()
             .HasMany<ServiceEntity>(i => i.Services)
             .WithOne(s => s.Player);
         
