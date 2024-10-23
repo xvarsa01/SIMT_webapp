@@ -1,18 +1,23 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Simt.DAL.entities;
-using Simt.DAL.Mappers;
 
 namespace Simt.DAL.Repositories;
 
-public class RepositoryVehicle<TEntity>(DbContext dbContext, IEntityMapper<TEntity> entityMapper) : IRepository<TEntity> 
+public class RepositoryVehicle<TEntity>(DbContext dbContext, IMapper mapper) : IRepository<TEntity> 
     where TEntity : class, IEntity
 {
     private readonly DbSet<TEntity> _dbSet = dbContext.Set<TEntity>();
-    private readonly IEntityMapper<TEntity> _entityMapper = entityMapper;
+    private readonly IMapper _mapper = mapper;
     
-    public IQueryable<TEntity> Get()
+
+    public virtual IList<TEntity> GetAll() => _dbSet.ToList();
+    public virtual IList<TEntity> GetAll(int pageNumber, int pageSize)
     {
-        return _dbSet;
+        return _dbSet
+            .Skip(pageSize * (pageNumber - 1))
+            .Take(pageSize)
+            .ToList();
     }
 
     public async Task DeleteAsync(Guid entityId)
@@ -33,7 +38,7 @@ public class RepositoryVehicle<TEntity>(DbContext dbContext, IEntityMapper<TEnti
     public async Task<TEntity> UpdateAsync(TEntity entity)
     {
         TEntity existingEntity = await _dbSet.SingleAsync(e => e.Id == entity.Id);
-        _entityMapper.MapToExistingEntity(existingEntity, entity);
+        _mapper.Map(existingEntity, entity);
         return existingEntity;
     }
 }
