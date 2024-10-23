@@ -1,4 +1,6 @@
-﻿namespace Simt.DAL.entities;
+﻿using AutoMapper;
+
+namespace Simt.DAL.entities;
 
 public record PlayerEntity:IEntity
 {
@@ -16,4 +18,12 @@ public record PlayerEntity:IEntity
     public required int KmYear { get; set; }
 
     public ICollection<ServiceEntity> Services { get; init; } = [];
+}
+
+public class PlayerEntityMapperProfile : Profile  
+{
+    public PlayerEntityMapperProfile()
+    {
+        CreateMap<PlayerEntity, PlayerEntity>();
+    }
 }

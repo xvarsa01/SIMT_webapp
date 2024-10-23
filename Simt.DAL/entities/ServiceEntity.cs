@@ -1,4 +1,6 @@
-﻿namespace Simt.DAL.entities;
+﻿using AutoMapper;
+
+namespace Simt.DAL.entities;
 
 public record ServiceEntity:IEntity
 {
@@ -16,4 +18,12 @@ public record ServiceEntity:IEntity
     public required PlayerEntity Player { get; init; }
     public required LineEntity Line { get; init; }
     public required VehicleEntity Vehicle { get; init; }
+}
+
+public class ServiceEntityMapperProfile : Profile  
+{
+    public ServiceEntityMapperProfile()
+    {
+        CreateMap<ServiceEntity, ServiceEntity>();
+    }
 }

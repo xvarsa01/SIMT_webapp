@@ -1,4 +1,5 @@
-﻿using Simt.DAL.enums;
+﻿using AutoMapper;
+using Simt.DAL.enums;
 
 namespace Simt.DAL.entities;
 
@@ -9,4 +10,12 @@ public record LineEntity():IEntity
     public Traction Traction { get; set; }
 
     public ICollection<ServiceEntity> Services { get; init; } = [];
+}
+
+public class LineEntityMapperProfile : Profile  
+{
+    public LineEntityMapperProfile()
+    {
+        CreateMap<LineEntity, LineEntity>();
+    }
 }
