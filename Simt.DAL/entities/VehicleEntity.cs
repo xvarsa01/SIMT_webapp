@@ -16,9 +16,8 @@ public record VehicleEntity:IEntity
     public string? Line { get; set; }
     public string? Author { get; set; }
     public string? GameVersion { get; set; }
-    
+    public string? Icon { get; set; }
     public required bool GoldVersion{ get; set; }
-    
     
     public Status Status { get; set; }
     public Traction Traction { get; set; }

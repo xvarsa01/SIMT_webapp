@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Simt.Common.enums;
 using Simt.DAL.entities;
 
 namespace Simt.DAL.Seeds;
@@ -8,7 +9,13 @@ public static class PlayerSeeds
     public static readonly PlayerEntity PlayerAdam = new()
     {
         Id = Guid.NewGuid(),
+        GoldVersionExpiration = default,
         Nick = "Adam137",
+        Email = "adam137@gmail.com",
+        ProfileName = "Adam",
+        ProfileCity = "Bratislava",
+        BirthYear = 2003,
+        RegistrationDate = DateOnly.Parse("14.4.2018"),
         LastLogin = 0,
         PlayTime = 0,
         PassengersCarried = 0,
@@ -16,15 +23,24 @@ public static class PlayerSeeds
         GameMoney = 0,
         Fuel = 0,
         Cng = 0,
-        ServisSpending = 0,
+        ServiceSpending = 0,
         KmOverall = 0,
-        KmYear = 0
+        KmYear = 0,
+        KmBus = 0,
+        KmTBus = 0,
+        KmTram = 0,
+        Fullscreen = true,
+        AdvancedControl = true,
+        DisplayResolution = DisplayResolution.Res1920X1080,
     };
 
     public static readonly PlayerEntity PlayerTomas = new()
     {
         Id = Guid.NewGuid(),
+        GoldVersionExpiration = DateOnly.MaxValue,
         Nick = "Tomas",
+        Email = "tomas@gmail.com",
+        RegistrationDate = DateOnly.MinValue,
         LastLogin = 0,
         PlayTime = 0,
         PassengersCarried = 0,
@@ -32,9 +48,16 @@ public static class PlayerSeeds
         GameMoney = 0,
         Fuel = 0,
         Cng = 0,
-        ServisSpending = 0,
+        ServiceSpending = 0,
         KmOverall = 0,
-        KmYear = 0
+        KmYear = 0,
+        KmBus = 0,
+        KmTBus = 0,
+        KmTram = 0,
+        BirthYear = 0,
+        Fullscreen = true,
+        AdvancedControl = true,
+        DisplayResolution = DisplayResolution.Res1920X1080,
     };
 
     static PlayerSeeds()
