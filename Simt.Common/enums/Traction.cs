@@ -1,4 +1,4 @@
-﻿namespace Simt.DAL.enums;
+﻿namespace Simt.Common.enums;
 
 public enum Traction
 {

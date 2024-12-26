@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Simt.DAL.enums;
+using Simt.Common.enums;
 
 namespace Simt.DAL.entities;
 

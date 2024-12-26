@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simt.DAL", "Simt.DAL\Simt.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simt.BL", "Simt.BL\Simt.BL.csproj", "{71E231AC-72EC-48F0-83A1-728FDC2098AB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{4DD9C21B-C705-4C53-8E52-7041B9F02F5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simt.Common", "Simt.Common\Simt.Common.csproj", "{9324FD2F-1938-4ACD-A623-DE2088106C3F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,11 +25,18 @@ Global
 		{71E231AC-72EC-48F0-83A1-728FDC2098AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71E231AC-72EC-48F0-83A1-728FDC2098AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71E231AC-72EC-48F0-83A1-728FDC2098AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9324FD2F-1938-4ACD-A623-DE2088106C3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9324FD2F-1938-4ACD-A623-DE2088106C3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9324FD2F-1938-4ACD-A623-DE2088106C3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9324FD2F-1938-4ACD-A623-DE2088106C3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {390F8A5C-95A3-4315-B2FC-C34F2332BD6D}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9324FD2F-1938-4ACD-A623-DE2088106C3F} = {4DD9C21B-C705-4C53-8E52-7041B9F02F5F}
 	EndGlobalSection
 EndGlobal

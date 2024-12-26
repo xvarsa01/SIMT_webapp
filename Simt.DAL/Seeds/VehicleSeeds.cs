@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Simt.Common.enums;
 using Simt.DAL.entities;
-using Simt.DAL.enums;
 
 namespace Simt.DAL.Seeds;
 
