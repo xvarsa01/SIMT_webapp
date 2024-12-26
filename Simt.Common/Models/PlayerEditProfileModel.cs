@@ -16,4 +16,18 @@ public class PlayerEditProfileModel
     public required DisplayResolution DisplayResolution { get; set; }
     
     public VehicleIconModel? FavouriteVehicle { get; set; }
+
+    public static PlayerEditProfileModel Empty => new()
+    {
+        Email = string.Empty,
+        ProfileName = null,
+        ProfileCity = null,
+        ProfileWeb = null,
+        MyStatus = null,
+        BirthYear = 0,
+        Fullscreen = false,
+        AdvancedControl = false,
+        DisplayResolution = DisplayResolution.Res1920X1080,
+        FavouriteVehicle = null
+    };
 }

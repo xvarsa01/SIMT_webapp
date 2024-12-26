@@ -2,7 +2,7 @@ using Simt.Common.Models.InterfaceBase;
 
 namespace Simt.Common.Models;
 
-public record PlayerPublicProfileModel() : ModelBase
+public record PlayerProfileModel() : ModelBase
 {
     public required string Nick { get; set; }       
     public  string? ProfileName { get; set; }
@@ -24,4 +24,24 @@ public record PlayerPublicProfileModel() : ModelBase
     public required int KmBus { get; set; }
     public required int KmTBus { get; set; }
     public required int KmTram { get; set; }
+    
+    public static PlayerProfileModel Empty => new()
+    {
+        Id = Guid.NewGuid(),
+        Nick = string.Empty,
+        RegistrationDate = default,
+        LastLogin = 0,
+        PlayTime = 0,
+        PassengersCarried = 0,
+        PointsGained = 0,
+        GameMoney = 0,
+        Fuel = 0,
+        Cng = 0,
+        ServiceSpending = 0,
+        KmOverall = 0,
+        KmYear = 0,
+        KmBus = 0,
+        KmTBus = 0,
+        KmTram = 0,
+    };
 }

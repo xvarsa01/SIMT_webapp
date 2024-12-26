@@ -20,4 +20,22 @@ public record VehicleDetailModel() : ModelBase
     public Status Status { get; set; }
     public Traction Traction { get; set; }
     public LowFloor LowFloor { get; set; }
+
+    public static VehicleDetailModel Empty => new()
+    {
+        Id = Guid.NewGuid(),
+        Manufacturer = String.Empty,
+        Type = string.Empty,
+        Operator = string.Empty,
+        VehicleNumber = String.Empty,
+        Scin = string.Empty,
+        SizeB = null,
+        Line = null,
+        Author = null,
+        GameVersion = null,
+        GoldVersion = false,
+        Status = Status.InGame,
+        Traction = Traction.Bus,
+        LowFloor = LowFloor.HighFloor
+    };
 }

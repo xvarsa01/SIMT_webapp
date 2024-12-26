@@ -20,4 +20,21 @@ public record ServiceListModel() : ModelBase
     
     public required string VehicleType { get; set; }
     public required string VehicleNumber { get; set; }
+
+    public static ServiceListModel Empty => new ()
+    {
+        Id = Guid.NewGuid(),
+        AvgAhead = 0,
+        AvgDelay = 0,
+        PassengersCarried = 0,
+        GameMoneyGained = 0,
+        DateTime = default,
+        LineId = Guid.Empty,
+        VehicleId = Guid.Empty,
+        LineName = String.Empty,
+        LineDirection = String.Empty,
+        LineTraction = Traction.Bus,
+        VehicleType = String.Empty,
+        VehicleNumber = String.Empty
+    };
 }
