@@ -6,10 +6,11 @@ public interface IRepository<TEntity>
     where TEntity : class, IEntity
 {
 
-    IList<TEntity> GetAll();
-    IList<TEntity> GetAll(int pageNumber, int pageSize);
+    Task<List<TEntity>> GetAllAsync();
+    Task<IList<TEntity>> GetAll(int pageNumber, int pageSize);
+    Task<TEntity?> GetByIdAsync(Guid id);
     Task DeleteAsync(Guid entityId);
+    Task<Guid> InsertAsync(TEntity entity);
+    Task<Guid?> UpdateAsync(TEntity entity);
     ValueTask<bool> ExistsAsync(TEntity entity);
-    Task<TEntity> InsertAsync(TEntity entity);
-    Task<TEntity> UpdateAsync(TEntity entity);
 }
