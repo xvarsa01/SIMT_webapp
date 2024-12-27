@@ -10,6 +10,8 @@ public record ServiceEntity:IEntity
     public required int PassengersCarried { get; set; }
     public required int GameMoneyGained { get; set; }
     public required DateTime DateTime { get; set; }
+    public required bool Finished { get; set; }
+    public required string LineDirection { get; set; }
     
     public required Guid PlayerId { get; set; }
     public required Guid LineId { get; set; }

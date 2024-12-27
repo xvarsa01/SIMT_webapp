@@ -3,10 +3,15 @@ using Simt.Common.Models.InterfaceBase;
 
 namespace Simt.Common.Models;
 
-public record ServiceListModel() : ModelBase
+public record ServiceDetailModel() : ModelBase
 {
+    public required int AvgAhead { get; set; }
+    public required int AvgDelay { get; set; }
+    public required int PassengersCarried { get; set; }
+    public required int GameMoneyGained { get; set; }
     public required DateTime DateTime { get; set; }
-    
+    public required bool Finished { get; set; }
+        
     public required Guid PlayerId { get; set; }
     public required Guid LineId { get; set; }
     public required Guid VehicleId { get; set; }
@@ -18,10 +23,15 @@ public record ServiceListModel() : ModelBase
     public required string VehicleType { get; set; }
     public required string VehicleNumber { get; set; }
 
-    public static ServiceListModel Empty => new ()
+    public static ServiceDetailModel Empty => new ()
     {
         Id = Guid.NewGuid(),
+        AvgAhead = 0,
+        AvgDelay = 0,
+        PassengersCarried = 0,
+        GameMoneyGained = 0,
         DateTime = default,
+        Finished = false,
         PlayerId = Guid.Empty,
         LineId = Guid.Empty,
         VehicleId = Guid.Empty,
@@ -29,6 +39,6 @@ public record ServiceListModel() : ModelBase
         LineDirection = String.Empty,
         LineTraction = Traction.Bus,
         VehicleType = String.Empty,
-        VehicleNumber = String.Empty
+        VehicleNumber = String.Empty,
     };
 }

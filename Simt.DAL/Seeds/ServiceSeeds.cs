@@ -13,6 +13,8 @@ public static class ServiceSeeds
         PassengersCarried = 0,
         GameMoneyGained = 0,
         DateTime = default,
+        LineDirection = "Koprasy",
+        Finished = true,
         PlayerId = PlayerSeeds.PlayerAdam.Id,
         LineId = LineSeeds.Line1.Id,
         VehicleId = VehicleSeeds.TatraT3.Id,
