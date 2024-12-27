@@ -4,10 +4,11 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <RootNamespace>Simt.BL</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Simt.DAL\Simt.DAL.csproj" />
+    <ProjectReference Include="..\Simt.Api.DAL\Simt.Api.DAL.csproj" />
   </ItemGroup>
 
 </Project>

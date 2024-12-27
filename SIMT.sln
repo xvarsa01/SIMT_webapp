@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simt.DAL", "Simt.DAL\Simt.DAL.csproj", "{A9921497-878B-4954-99E4-DB534FEB7160}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simt.Api.DAL", "Simt.Api.DAL\Simt.Api.DAL.csproj", "{A9921497-878B-4954-99E4-DB534FEB7160}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simt.BL", "Simt.BL\Simt.BL.csproj", "{71E231AC-72EC-48F0-83A1-728FDC2098AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simt.Api.BL", "Simt.Api.BL\Simt.Api.BL.csproj", "{71E231AC-72EC-48F0-83A1-728FDC2098AB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{4DD9C21B-C705-4C53-8E52-7041B9F02F5F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simt.Common", "Simt.Common\Simt.Common.csproj", "{9324FD2F-1938-4ACD-A623-DE2088106C3F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{C17B74A8-7B70-4A5F-A504-F410096583BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simt.Api.App", "Simt.Api.App\Simt.Api.App.csproj", "{92F1DB8D-E738-44D1-A86A-5ACCF31D02BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +33,10 @@ Global
 		{9324FD2F-1938-4ACD-A623-DE2088106C3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9324FD2F-1938-4ACD-A623-DE2088106C3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9324FD2F-1938-4ACD-A623-DE2088106C3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92F1DB8D-E738-44D1-A86A-5ACCF31D02BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92F1DB8D-E738-44D1-A86A-5ACCF31D02BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92F1DB8D-E738-44D1-A86A-5ACCF31D02BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92F1DB8D-E738-44D1-A86A-5ACCF31D02BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,5 +46,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9324FD2F-1938-4ACD-A623-DE2088106C3F} = {4DD9C21B-C705-4C53-8E52-7041B9F02F5F}
+		{71E231AC-72EC-48F0-83A1-728FDC2098AB} = {C17B74A8-7B70-4A5F-A504-F410096583BB}
+		{A9921497-878B-4954-99E4-DB534FEB7160} = {C17B74A8-7B70-4A5F-A504-F410096583BB}
+		{92F1DB8D-E738-44D1-A86A-5ACCF31D02BF} = {C17B74A8-7B70-4A5F-A504-F410096583BB}
 	EndGlobalSection
 EndGlobal
