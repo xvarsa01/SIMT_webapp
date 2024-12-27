@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Simt.DAL\Simt.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
