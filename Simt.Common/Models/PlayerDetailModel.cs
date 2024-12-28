@@ -1,11 +1,10 @@
-﻿using AutoMapper;
 using Simt.Common.enums;
+using Simt.Common.Models.InterfaceBase;
 
-namespace Simt.Api.DAL.entities;
+namespace Simt.Common.Models;
 
-public record PlayerEntity:IEntity
+public record PlayerDetailModel() : ModelBase
 {
-    public required Guid Id { get; set; }
     public required DateOnly GoldVersionExpiration { get; set; }
     public required string Nick { get; set; }
     public required string Email { get; set; }
@@ -35,14 +34,41 @@ public record PlayerEntity:IEntity
     public required DisplayResolution DisplayResolution { get; set; }
     public required TrafficLevel TrafficLevel { get; set; }
     public required ViewLength ViewLength { get; set; }
-    public VehicleEntity? FavouriteVehicle { get; set; }
-    public ICollection<ServiceEntity> Services { get; init; } = [];
-}
-
-public class PlayerEntityMapperProfile : Profile  
-{
-    public PlayerEntityMapperProfile()
+    public required Guid FavouriteVehicleId {get;set;}
+    
+    public ICollection<ServiceDetailModel> Services { get; init; } = [];
+    
+    public static PlayerDetailModel Empty => new()
     {
-        CreateMap<PlayerEntity, PlayerEntity>();
-    }
+        Id = Guid.NewGuid(),
+        GoldVersionExpiration = DateOnly.MinValue,
+        Nick = string.Empty,
+        Email = string.Empty,
+        ProfileName = string.Empty,
+        ProfileCity = string.Empty,
+        ProfileWeb = string.Empty,
+        BirthYear = 0,
+        MyStatus = string.Empty,
+        RegistrationDate = default,
+        LastLogin = 0,
+        PlayTime = 0,
+        PassengersCarried = 0,
+        PointsGained = 0,
+        GameMoney = 0,
+        Fuel = 0,
+        Cng = 0,
+        ServiceSpending = 0,
+        KmOverall = 0,
+        KmYear = 0,
+        KmBus = 0,
+        KmTBus = 0,
+        KmTram = 0,
+
+        Fullscreen = true,
+        AdvancedControl = false,
+        DisplayResolution = DisplayResolution.Res1920X1080,
+        TrafficLevel = TrafficLevel.TrafficLevel3,
+        ViewLength = ViewLength.ViewLength250M,
+        FavouriteVehicleId = Guid.Empty,
+    };
 }

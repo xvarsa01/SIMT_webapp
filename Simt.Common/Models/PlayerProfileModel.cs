@@ -15,9 +15,9 @@ public record PlayerProfileModel() : ModelBase
     public required int PassengersCarried { get; set; }
     public required int PointsGained { get; set; }
     public required int GameMoney { get; set; }
-    public required float Fuel { get; set; }
-    public required float Cng { get; set; }
-    public required float ServiceSpending { get; set; }
+    public required double Fuel { get; set; }
+    public required double Cng { get; set; }
+    public required double ServiceSpending { get; set; }
     public required int KmOverall { get; set; }
     public required int KmYear { get; set; }
     

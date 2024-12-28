@@ -5,7 +5,7 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Mappers;
 
-public class PlayerModelMapper : ModelMapperBase<PlayerEntity, PlayerListModel, PlayerProfileModel>
+public class PlayerModelMapper : ModelMapperBase<PlayerEntity, PlayerListModel, PlayerDetailModel>
 {
     public override PlayerListModel MapToListModel(PlayerEntity? entity)
     {
@@ -22,7 +22,7 @@ public class PlayerModelMapper : ModelMapperBase<PlayerEntity, PlayerListModel, 
             ProfileCity = entity.ProfileCity,
         };
     }
-    public override PlayerProfileModel MapToDetailModel(PlayerEntity? entity)
+    public override PlayerDetailModel MapToDetailModel(PlayerEntity? entity)
     {
         throw new NotImplementedException();
     }
@@ -60,7 +60,7 @@ public class PlayerModelMapper : ModelMapperBase<PlayerEntity, PlayerListModel, 
     }
 
 
-    public override PlayerEntity MapToEntity(PlayerProfileModel model)
+    public override PlayerEntity MapToEntity(PlayerDetailModel model)
     {
         return new PlayerEntity
         {
@@ -84,13 +84,15 @@ public class PlayerModelMapper : ModelMapperBase<PlayerEntity, PlayerListModel, 
             KmBus = model.KmBus,
             KmTBus = model.KmTBus,
             KmTram = model.KmTram,
-            
-            GoldVersionExpiration = default,
-            Email = string.Empty,
-            BirthYear = 0,
-            Fullscreen = false,
-            AdvancedControl = false,
-            DisplayResolution = DisplayResolution.Res1920X1080,
+
+            GoldVersionExpiration = model.GoldVersionExpiration,
+            Email = model.Email,
+            BirthYear = model.BirthYear,
+            Fullscreen = model.Fullscreen,
+            AdvancedControl = model.AdvancedControl,
+            TrafficLevel = model.TrafficLevel,
+            ViewLength = model.ViewLength,
+            DisplayResolution = model.DisplayResolution,
         };
     }
 }
