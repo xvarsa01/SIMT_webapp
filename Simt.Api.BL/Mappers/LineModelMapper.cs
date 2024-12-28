@@ -17,7 +17,7 @@ public class LineModelMapper : ModelMapperBase<LineEntity, LineListModel, LineDe
         {
             Id = entity.Id,
             Traction = entity.Traction,
-            Line = entity.Line,
+            Line = entity.LineNumber,
         };
     }
 
@@ -32,7 +32,11 @@ public class LineModelMapper : ModelMapperBase<LineEntity, LineListModel, LineDe
         {
             Id = entity.Id,
             Traction = entity.Traction,
-            Line = entity.Line,
+            IntervalPeak = entity.IntervalPeak,
+            IntervalNonPeak = entity.IntervalNonPeak,
+            IntervalNight = entity.IntervalNight,
+            MapId = entity.MapId,
+            LineNumber = entity.LineNumber,
             TotalDrivenCount = entity.Services.Count,
         };
     }
@@ -44,7 +48,12 @@ public class LineModelMapper : ModelMapperBase<LineEntity, LineListModel, LineDe
         {
             Id = model.Id,
             Traction = model.Traction,
-            Line = model.Line,
+            IntervalPeak = model.IntervalPeak,
+            IntervalNonPeak = model.IntervalNonPeak,
+            IntervalNight = model.IntervalNight,
+            MapId = model.MapId,
+            LineNumber = model.LineNumber,
+            Map = null!,
         };
     }
 }

@@ -5,8 +5,13 @@ namespace Simt.Common.Models;
 
 public record LineDetailModel() : ModelBase
 {
-    public required string Line { get; set; }
+    public required string LineNumber { get; set; }
     public required Traction Traction { get; set; }
+    public int IntervalPeak { get; set; }
+    public int IntervalNonPeak { get; set; }
+    public int IntervalNight { get; set; }
+
+    public required Guid MapId { get; set; }
     public  required int TotalDrivenCount { get; set; }
     
     public List<ServiceListModel> Services { get; set; } = new();
@@ -14,8 +19,12 @@ public record LineDetailModel() : ModelBase
     public static LineDetailModel Empty => new()
     {
         Id = Guid.NewGuid(),
-        Line = string.Empty,
+        LineNumber = string.Empty,
         Traction = Traction.Bus,
-        TotalDrivenCount = 0
+        IntervalPeak = 0,
+        IntervalNonPeak = 0,
+        IntervalNight = 0,
+        TotalDrivenCount = 0,
+        MapId = Guid.Empty
     };
 }
