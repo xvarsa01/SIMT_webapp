@@ -10,6 +10,9 @@ public record VehicleEntity:IEntity
     public required string Manufacturer { get; set; }
     public required string Type { get; set; }
     public required string Operator { get; set; }
+    public required string ManufacturerShort { get; set; }
+    public required string TypeShort { get; set; }
+    public required string OperatorShort { get; set; }
     public required string VehicleNumber { get; set; }
     public required string Scin { get; set; }
     public string? SizeB { get; set; }
@@ -18,6 +21,12 @@ public record VehicleEntity:IEntity
     public string? GameVersion { get; set; }
     public string? Icon { get; set; }
     public required bool GoldVersion{ get; set; }
+    public required bool AlternativeDrive{ get; set; }
+    public required bool TwoWay{ get; set; }
+    public required bool DieselDrive{ get; set; }
+    public required bool CngDrive{ get; set; }
+    public required bool BatteryDrive{ get; set; }
+    public required bool AirConditioning{ get; set; }
     
     public Status Status { get; set; }
     public Traction Traction { get; set; }

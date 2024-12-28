@@ -8,12 +8,21 @@ public record VehicleDetailModel() : ModelBase
     public required string Manufacturer { get; set; }
     public required string Type { get; set; }
     public required string Operator { get; set; }
+    public required string ManufacturerShort { get; set; }
+    public required string TypeShort { get; set; }
+    public required string OperatorShort { get; set; }
     public required string VehicleNumber { get; set; }
     public required string Scin { get; set; }
     public string? SizeB { get; set; }
     public string? Line { get; set; }
     public string? Author { get; set; }
     public string? GameVersion { get; set; }
+    public required bool AlternativeDrive{ get; set; }
+    public required bool TwoWay{ get; set; }
+    public required bool DieselDrive{ get; set; }
+    public required bool CngDrive{ get; set; }
+    public required bool BatteryDrive{ get; set; }
+    public required bool AirConditioning{ get; set; }
     
     public required bool GoldVersion{ get; set; }
     
@@ -27,6 +36,9 @@ public record VehicleDetailModel() : ModelBase
         Manufacturer = String.Empty,
         Type = string.Empty,
         Operator = string.Empty,
+        ManufacturerShort = string.Empty,
+        TypeShort = string.Empty,
+        OperatorShort = string.Empty,
         VehicleNumber = String.Empty,
         Scin = string.Empty,
         SizeB = null,
@@ -34,6 +46,12 @@ public record VehicleDetailModel() : ModelBase
         Author = null,
         GameVersion = null,
         GoldVersion = false,
+        AlternativeDrive = false,
+        TwoWay = false,
+        DieselDrive = false,
+        CngDrive = false,
+        BatteryDrive = false,
+        AirConditioning = false,
         Status = Status.InGame,
         Traction = Traction.Bus,
         LowFloor = LowFloor.HighFloor
