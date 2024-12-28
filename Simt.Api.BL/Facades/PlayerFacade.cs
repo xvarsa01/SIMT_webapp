@@ -5,18 +5,18 @@ using Simt.DAL.Repositories;
 
 namespace Simt.BL.Facades;
 
-public class PlayerFacade : FacadeBase<IRepository<PlayerEntity>, PlayerEntity, PlayerListModel, PlayerProfileModel>
+public class PlayerFacade : FacadeBase<PlayerRepository, PlayerEntity, PlayerListModel, PlayerProfileModel>
 {
-    private readonly IRepository<PlayerEntity> playerRepository;
-    private readonly ModelMapperBase<PlayerEntity, PlayerListModel, PlayerProfileModel> modelMapper;
+    private readonly PlayerRepository _playerRepository;
+    private readonly ModelMapperBase<PlayerEntity, PlayerListModel, PlayerProfileModel> _modelMapper;
     
     public PlayerFacade(
-        IRepository<PlayerEntity> repository,
+        PlayerRepository repository,
         ModelMapperBase<PlayerEntity, PlayerListModel, PlayerProfileModel> modelMapper)
-        :base(repository, modelMapper)
+        : base(repository, modelMapper)
     {
-        playerRepository = repository;
-        this.modelMapper = modelMapper;
+        _playerRepository = repository;
+        _modelMapper = modelMapper;
     }
     
     
