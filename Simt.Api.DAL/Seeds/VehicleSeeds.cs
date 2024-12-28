@@ -16,7 +16,7 @@ public static class VehicleSeeds
         TypeShort = "T3R.P",
         OperatorShort = "DPP",
         VehicleNumber = "8361",
-        Scin = "1044-0012",
+        SCIN = "1044-0012",
         SizeB = "1.6.99-2159 1.7.100-2159",
         Line = null,
         Author = null,

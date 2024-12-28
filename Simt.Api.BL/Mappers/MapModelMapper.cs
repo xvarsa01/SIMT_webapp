@@ -37,7 +37,6 @@ public class MapModelMapper : ModelMapperBase<MapEntity, MapListModel, MapDetail
     
     public override MapEntity MapToEntity(MapDetailModel model)
     {
-
         return new MapEntity
         {
             Id = model.Id,

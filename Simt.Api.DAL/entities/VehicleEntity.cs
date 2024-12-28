@@ -14,7 +14,7 @@ public record VehicleEntity:IEntity
     public required string TypeShort { get; set; }
     public required string OperatorShort { get; set; }
     public required string VehicleNumber { get; set; }
-    public required string Scin { get; set; }
+    public required string SCIN { get; set; }
     public string? SizeB { get; set; }
     public string? Line { get; set; }
     public string? Author { get; set; }
