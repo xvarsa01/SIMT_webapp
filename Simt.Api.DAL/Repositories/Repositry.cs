@@ -4,7 +4,7 @@ using Simt.DAL.entities;
 
 namespace Simt.DAL.Repositories;
 
-public class RepositoryBase<TEntity>(DbContext dbContext, IMapper mapper) : IRepository<TEntity> 
+public class RepositoryBase<TEntity>(SimtDbContext dbContext) : IRepository<TEntity> 
     where TEntity : class, IEntity
 {
     private readonly DbSet<TEntity> _dbSet = dbContext.Set<TEntity>();
