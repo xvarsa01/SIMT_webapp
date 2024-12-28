@@ -29,4 +29,6 @@ public record RouteEntity() : IEntity
     public required StationEntity FinalStop { get; set; }
     public required LineEntity Line { get; set; }
     public ICollection<RouteStopEntity> Stops { get; init; } = [];
+    
+    public ICollection<ServiceEntity> Services { get; init; } = [];
 }

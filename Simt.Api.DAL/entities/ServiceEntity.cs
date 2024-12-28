@@ -11,14 +11,13 @@ public record ServiceEntity:IEntity
     public required int GameMoneyGained { get; set; }
     public required DateTime DateTime { get; set; }
     public required bool Finished { get; set; }
-    public required string LineDirection { get; set; }
     
     public required Guid PlayerId { get; set; }
-    public required Guid LineId { get; set; }
+    public required Guid RouteId { get; set; }
     public required Guid VehicleId { get; set; }
     
     public required PlayerEntity Player { get; init; }
-    public required LineEntity Line { get; init; }
+    public required RouteEntity Route { get; init; }
     public required VehicleEntity Vehicle { get; init; }
 }
 

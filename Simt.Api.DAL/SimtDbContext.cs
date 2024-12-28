@@ -23,9 +23,9 @@ public class SimtDbContext : DbContext
             .HasMany<ServiceEntity>(i => i.Services)
             .WithOne(s => s.Player);
         
-        modelBuilder.Entity<LineEntity>()
+        modelBuilder.Entity<RouteEntity>()
             .HasMany<ServiceEntity>(i => i.Services)
-            .WithOne(s => s.Line);
+            .WithOne(s => s.Route);
         
         modelBuilder.Entity<VehicleEntity>()
             .HasMany<ServiceEntity>(i => i.Services)

@@ -17,11 +17,11 @@ public class ServiceModelMapper : ModelMapperBase<ServiceEntity, ServiceListMode
         {
             Id = entity.Id,
             DateTime = entity.DateTime,
-            LineDirection = entity.LineDirection,
+            LineDirection = entity.Route.FinalStop.StopName,
             PlayerId = entity.PlayerId,
-            LineId = entity.LineId,
-            LineName = entity.Line.Line,
-            LineTraction = entity.Line.Traction,
+            RouteId = entity.RouteId,
+            LineName = entity.Route.Line.LineNumber,
+            LineTraction = entity.Route.Line.Traction,
             VehicleId = entity.VehicleId,
             VehicleNumber = entity.Vehicle.VehicleNumber,
             VehicleType = entity.Vehicle.Type
@@ -45,11 +45,11 @@ public class ServiceModelMapper : ModelMapperBase<ServiceEntity, ServiceListMode
             DateTime = entity.DateTime,
             Finished = entity.Finished,
             PlayerId = entity.PlayerId,
-            LineId = entity.LineId,
+            RouteId = entity.RouteId,
             VehicleId = entity.VehicleId,
-            LineName = entity.Line.Line,
-            LineDirection = entity.LineDirection,
-            LineTraction = entity.Line.Traction,
+            LineName = entity.Route.Line.LineNumber,
+            LineDirection = entity.Route.FinalStop.StopName,
+            LineTraction = entity.Route.Line.Traction,
             VehicleType = entity.Vehicle.Type,
             VehicleNumber = entity.Vehicle.VehicleNumber,
         };
@@ -66,12 +66,11 @@ public class ServiceModelMapper : ModelMapperBase<ServiceEntity, ServiceListMode
             GameMoneyGained = model.GameMoneyGained,
             DateTime = model.DateTime,
             Finished = model.Finished,
-            LineDirection = model.LineDirection,
             PlayerId = model.PlayerId,
-            LineId = model.LineId,
+            RouteId = model.RouteId,
             VehicleId = model.VehicleId,
             Player = null!,
-            Line = null!,
+            Route = null!,
             Vehicle = null!
         };
     }

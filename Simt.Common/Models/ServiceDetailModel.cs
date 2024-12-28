@@ -13,7 +13,7 @@ public record ServiceDetailModel() : ModelBase
     public required bool Finished { get; set; }
         
     public required Guid PlayerId { get; set; }
-    public required Guid LineId { get; set; }
+    public required Guid RouteId { get; set; }
     public required Guid VehicleId { get; set; }
     
     public required string LineName { get; set; }
@@ -33,7 +33,7 @@ public record ServiceDetailModel() : ModelBase
         DateTime = default,
         Finished = false,
         PlayerId = Guid.Empty,
-        LineId = Guid.Empty,
+        RouteId = Guid.Empty,
         VehicleId = Guid.Empty,
         LineName = String.Empty,
         LineDirection = String.Empty,

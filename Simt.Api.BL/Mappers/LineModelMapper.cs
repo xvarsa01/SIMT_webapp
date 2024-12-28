@@ -37,7 +37,6 @@ public class LineModelMapper : ModelMapperBase<LineEntity, LineListModel, LineDe
             IntervalNight = entity.IntervalNight,
             MapId = entity.MapId,
             LineNumber = entity.LineNumber,
-            TotalDrivenCount = entity.Services.Count,
         };
     }
     

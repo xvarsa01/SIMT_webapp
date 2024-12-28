@@ -33,13 +33,16 @@ public static class LineSeeds
     
     static LineSeeds()
     {
-        Line1.Services.Add(ServiceSeeds.Service1);
+        Line1.Routes.Add(RouteSeeds.Route1A);
+        Line1.Routes.Add(RouteSeeds.Route1B);
+        Line13.Routes.Add(RouteSeeds.Route13A);
+        Line13.Routes.Add(RouteSeeds.Route13B);
     }
     
     public static void Seed(this ModelBuilder modelBuilder) =>
         modelBuilder.Entity<LineEntity>().HasData(
-            Line1 with{Services = []},
-            Line13 with{Services = []},
-            Line20 with{Services = []}
+            Line1 with{Routes = []},
+            Line13 with{Routes = []},
+            Line20 with{Routes = []}
         );
 }

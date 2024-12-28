@@ -12,7 +12,6 @@ public record LineDetailModel() : ModelBase
     public int IntervalNight { get; set; }
 
     public required Guid MapId { get; set; }
-    public  required int TotalDrivenCount { get; set; }
     
     public List<ServiceListModel> Services { get; set; } = new();
 
@@ -24,7 +23,6 @@ public record LineDetailModel() : ModelBase
         IntervalPeak = 0,
         IntervalNonPeak = 0,
         IntervalNight = 0,
-        TotalDrivenCount = 0,
         MapId = Guid.Empty
     };
 }

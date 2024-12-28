@@ -16,7 +16,6 @@ public record LineEntity():IEntity
     public required Guid MapId { get; set; }
     public required MapEntity Map { get; set; }
     public ICollection<RouteEntity> Routes { get; init; } = [];
-    public ICollection<ServiceEntity> Services { get; init; } = [];
 }
 
 public class LineEntityMapperProfile : Profile  
