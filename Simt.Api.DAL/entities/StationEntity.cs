@@ -7,4 +7,5 @@ public record StationEntity() : IEntity
     public required bool FinalStop { get; set; }
     public required bool RequestStop { get; set; }
     public required bool LowFloor { get; set; }
+    public ICollection<RouteStopEntity> LineRouteStops { get; init; } = [];
 }

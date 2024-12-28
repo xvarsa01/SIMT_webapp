@@ -49,6 +49,13 @@ public static class StationSeeds
         RequestStop = false,
         LowFloor = true,
     };
+        
+
+    static StationSeeds()
+    {
+        Fibichova.LineRouteStops.Add(RouteStopSeeds.Route13AFibichova);
+        Fibichova.LineRouteStops.Add(RouteStopSeeds.Route13BFibichova);
+    }
     
     public static void Seed(this ModelBuilder modelBuilder) =>
         modelBuilder.Entity<StationEntity>().HasData(
