@@ -3,6 +3,14 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+#custom
+Simt.Api.DAL/Migrations/
+*seeds.Designer.cs
+*.db
+*.db-shm
+*.db-val
+.name
+
 # User-specific files
 *.suo
 *.user

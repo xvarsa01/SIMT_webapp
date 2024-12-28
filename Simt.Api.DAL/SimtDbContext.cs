@@ -4,8 +4,12 @@ using Simt.DAL.Seeds;
 
 namespace Simt.DAL;
 
-public class SimtDbContext(DbContextOptions contextOptions, bool seedDemoData = true): DbContext (contextOptions)
+public class SimtDbContext : DbContext
 {
+    public SimtDbContext(DbContextOptions<SimtDbContext> options, bool seedDemoData = false) : base(options)
+    {
+        // _seedDemoData = seedDemoData;
+    }
     public DbSet<PlayerEntity> Players => Set<PlayerEntity>();
     public DbSet<LineEntity> Lines => Set<LineEntity>();
     public DbSet<ServiceEntity> Services => Set<ServiceEntity>();
@@ -30,10 +34,10 @@ public class SimtDbContext(DbContextOptions contextOptions, bool seedDemoData = 
         
         if (true)
         {
-            PlayerSeeds.Seed(modelBuilder);
-            LineSeeds.Seed(modelBuilder);
-            VehicleSeeds.Seed(modelBuilder);
-            ServiceSeeds.Seed(modelBuilder);
+            // PlayerSeeds.Seed(modelBuilder);
+            // LineSeeds.Seed(modelBuilder);
+            // VehicleSeeds.Seed(modelBuilder);
+            // ServiceSeeds.Seed(modelBuilder);
         }
     }
 }
