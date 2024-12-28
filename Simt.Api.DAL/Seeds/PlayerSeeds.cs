@@ -15,7 +15,7 @@ public static class PlayerSeeds
         ProfileName = "Adam",
         ProfileCity = "Bratislava",
         BirthYear = 2003,
-        RegistrationDate = DateOnly.Parse("14.4.2018"),
+        RegistrationDate = DateOnly.Parse("2018-04-14"),
         LastLogin = 0,
         PlayTime = 0,
         PassengersCarried = 0,

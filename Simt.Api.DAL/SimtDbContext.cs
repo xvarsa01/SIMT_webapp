@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Simt.Api.DAL.entities;
+using Simt.Api.DAL.Seeds;
 
 namespace Simt.Api.DAL;
 
@@ -33,10 +34,10 @@ public class SimtDbContext : DbContext
         
         if (true)
         {
-            // PlayerSeeds.Seed(modelBuilder);
-            // LineSeeds.Seed(modelBuilder);
-            // VehicleSeeds.Seed(modelBuilder);
-            // ServiceSeeds.Seed(modelBuilder);
+            PlayerSeeds.Seed(modelBuilder);
+            LineSeeds.Seed(modelBuilder);
+            VehicleSeeds.Seed(modelBuilder);
+            ServiceSeeds.Seed(modelBuilder);
         }
     }
 }
