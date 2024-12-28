@@ -92,13 +92,18 @@ public static class RouteSeeds
     {
         Route13A.Stops.Add(RouteStopSeeds.Route13AFibichova);
         Route13B.Stops.Add(RouteStopSeeds.Route13BFibichova);
+        
+        Route1A.Services.Add(ServiceSeeds.Service1);
+        Route13A.Services.Add(ServiceSeeds.Service2);
+        Route13B.Services.Add(ServiceSeeds.Service3);
+        Route1B.Services.Add(ServiceSeeds.Service4);
     }
     
     public static void Seed(this ModelBuilder modelBuilder) =>
         modelBuilder.Entity<RouteEntity>().HasData(
-            Route1A with{Stops = []},
-            Route1B with{Stops = []},
-            Route13A with{Stops = []},
-            Route13B with{Stops = []}
+            Route1A with{Stops = [], Services = []},
+            Route1B with{Stops = [], Services = []},
+            Route13A with{Stops = [], Services = []},
+            Route13B with{Stops = [], Services = []}
         );
 }
