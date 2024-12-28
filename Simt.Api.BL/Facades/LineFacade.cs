@@ -1,9 +1,9 @@
-using Simt.BL.Mappers.InterfaceBase;
+using Simt.Api.BL.Mappers.InterfaceBase;
+using Simt.Api.DAL.entities;
+using Simt.Api.DAL.Repositories;
 using Simt.Common.Models;
-using Simt.DAL.entities;
-using Simt.DAL.Repositories;
 
-namespace Simt.BL.Facades;
+namespace Simt.Api.BL.Facades;
 
 public class LineFacade : FacadeBase<LineRepository, LineEntity, LineListModel, LineDetailModel>
 {

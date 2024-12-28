@@ -1,7 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Simt.BL.Facades;
-using Simt.DAL;
-using Simt.DAL.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

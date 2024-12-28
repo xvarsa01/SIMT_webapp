@@ -1,11 +1,11 @@
-﻿using Simt.DAL.Factories;
-// using Simt.DAL.Mappers;
-using Simt.DAL.Migrator;
-using Simt.DAL.Options;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Simt.Api.DAL.Factories;
+using Simt.Api.DAL.Migrator;
+using Simt.Api.DAL.Options;
+// using Simt.DAL.Mappers;
 
-namespace Simt.DAL;
+namespace Simt.Api.DAL;
 
 public static class DALInstaller
 {

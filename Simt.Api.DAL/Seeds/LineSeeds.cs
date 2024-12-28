@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Simt.Api.DAL.entities;
 using Simt.Common.enums;
-using Simt.DAL.entities;
 
-namespace Simt.DAL.Seeds;
+namespace Simt.Api.DAL.Seeds;
 
 public static class LineSeeds
 {

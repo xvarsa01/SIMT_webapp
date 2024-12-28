@@ -1,7 +1,7 @@
-﻿using Simt.DAL.Options;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Simt.Api.DAL.Options;
 
-namespace Simt.DAL.Migrator;
+namespace Simt.Api.DAL.Migrator;
 
 public class DbMigrator(IDbContextFactory<SimtDbContext> dbContextFactory, DALOptions options)
     : IDbMigrator

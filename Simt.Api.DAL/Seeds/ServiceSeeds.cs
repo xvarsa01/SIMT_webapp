@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Simt.DAL.entities;
+using Simt.Api.DAL.entities;
 
-namespace Simt.DAL.Seeds;
+namespace Simt.Api.DAL.Seeds;
 
 public static class ServiceSeeds
 {

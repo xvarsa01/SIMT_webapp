@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace Simt.DAL.entities;
+namespace Simt.Api.DAL.entities;
 
 public record ServiceEntity:IEntity
 {

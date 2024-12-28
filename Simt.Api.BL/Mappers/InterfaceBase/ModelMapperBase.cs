@@ -1,4 +1,4 @@
-﻿namespace Simt.BL.Mappers.InterfaceBase;
+﻿namespace Simt.Api.BL.Mappers.InterfaceBase;
 
 public abstract class ModelMapperBase<TEntity, TListModel, TDetailModel> : IModelMapper<TEntity, TListModel, TDetailModel>
 {

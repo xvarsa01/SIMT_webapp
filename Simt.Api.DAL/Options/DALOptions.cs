@@ -1,4 +1,4 @@
-﻿namespace Simt.DAL.Options;
+﻿namespace Simt.Api.DAL.Options;
 
 public record DALOptions
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Simt.DAL.Factories;
+namespace Simt.Api.DAL.Factories;
 
 public class DbContextSqLiteFactory : IDbContextFactory<SimtDbContext>
 {

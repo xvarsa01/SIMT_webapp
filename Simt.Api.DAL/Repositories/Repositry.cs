@@ -1,8 +1,7 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using Simt.DAL.entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Simt.Api.DAL.entities;
 
-namespace Simt.DAL.Repositories;
+namespace Simt.Api.DAL.Repositories;
 
 public class RepositoryBase<TEntity>(SimtDbContext dbContext) : IRepository<TEntity> 
     where TEntity : class, IEntity

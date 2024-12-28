@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Simt.Common.enums;
 
-namespace Simt.DAL.entities;
+namespace Simt.Api.DAL.entities;
 
 public record VehicleEntity:IEntity
 {

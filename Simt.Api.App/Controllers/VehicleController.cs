@@ -1,6 +1,6 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
-using Simt.BL.Facades;
+using Simt.Api.BL.Facades;
 using Simt.Common.Models;
 
 namespace Simt.Api.App.Controllers;

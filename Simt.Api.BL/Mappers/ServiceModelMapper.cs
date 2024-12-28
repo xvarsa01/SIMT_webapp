@@ -1,9 +1,8 @@
-using Simt.BL.Mappers.InterfaceBase;
-using Simt.Common.enums;
+using Simt.Api.BL.Mappers.InterfaceBase;
+using Simt.Api.DAL.entities;
 using Simt.Common.Models;
-using Simt.DAL.entities;
 
-namespace Simt.BL.Mappers;
+namespace Simt.Api.BL.Mappers;
 
 public class ServiceModelMapper : ModelMapperBase<ServiceEntity, ServiceListModel, ServiceDetailModel>
 {

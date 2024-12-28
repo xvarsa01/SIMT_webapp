@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Reflection;
-using Simt.BL.Mappers.InterfaceBase;
-using Simt.DAL.entities;
-using Simt.DAL.Repositories;
+using Simt.Api.BL.Mappers.InterfaceBase;
+using Simt.Api.DAL.entities;
+using Simt.Api.DAL.Repositories;
 
-namespace Simt.BL.Facades;
+namespace Simt.Api.BL.Facades;
 
 public class FacadeBase<TRepository, TEntity, TListModel, TDetailModel>
     where TRepository : IRepository<TEntity>

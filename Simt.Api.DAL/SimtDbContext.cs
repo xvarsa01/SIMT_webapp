@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Simt.DAL.entities;
-using Simt.DAL.Seeds;
+using Simt.Api.DAL.entities;
 
-namespace Simt.DAL;
+namespace Simt.Api.DAL;
 
 public class SimtDbContext : DbContext
 {

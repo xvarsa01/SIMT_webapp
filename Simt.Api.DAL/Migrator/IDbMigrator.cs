@@ -1,4 +1,4 @@
-namespace Simt.DAL.Migrator;
+namespace Simt.Api.DAL.Migrator;
 
 public interface IDbMigrator
 {

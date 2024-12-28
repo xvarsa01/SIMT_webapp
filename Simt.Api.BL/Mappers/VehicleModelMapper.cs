@@ -1,9 +1,8 @@
-using Simt.BL.Mappers.InterfaceBase;
+using Simt.Api.BL.Mappers.InterfaceBase;
+using Simt.Api.DAL.entities;
 using Simt.Common.Models;
-using Simt.Common.Models.InterfaceBase;
-using Simt.DAL.entities;
 
-namespace Simt.BL.Mappers;
+namespace Simt.Api.BL.Mappers;
 
 public class VehicleModelMapper : ModelMapperBase<VehicleEntity, VehicleListModel, VehicleDetailModel>
 {

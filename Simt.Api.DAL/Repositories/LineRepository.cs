@@ -1,6 +1,6 @@
-using Simt.DAL.entities;
+using Simt.Api.DAL.entities;
 
-namespace Simt.DAL.Repositories;
+namespace Simt.Api.DAL.Repositories;
 
 public class LineRepository(SimtDbContext dbContext) : RepositoryBase<LineEntity>(dbContext)
 {

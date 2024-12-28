@@ -1,4 +1,4 @@
-﻿namespace Simt.DAL.entities;
+﻿namespace Simt.Api.DAL.entities;
 
 public interface IEntity
 {
