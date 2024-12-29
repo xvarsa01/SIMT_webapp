@@ -10,6 +10,10 @@ public class SimtDbContext : DbContext
     {
         // _seedDemoData = seedDemoData;
     }
+    public DbSet<MapEntity> Map => Set<MapEntity>();
+    public DbSet<StationEntity> Station => Set<StationEntity>();
+    public DbSet<RouteEntity> Route => Set<RouteEntity>();
+    public DbSet<RouteStopEntity> RouteStop => Set<RouteStopEntity>();
     public DbSet<PlayerEntity> Players => Set<PlayerEntity>();
     public DbSet<LineEntity> Lines => Set<LineEntity>();
     public DbSet<ServiceEntity> Services => Set<ServiceEntity>();
@@ -18,6 +22,10 @@ public class SimtDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        
+        modelBuilder.Entity<MapEntity>()
+            .HasMany<LineEntity>(m => m.Lines)
+            .WithOne(l => l.Map);
 
         modelBuilder.Entity<PlayerEntity>()
             .HasMany<ServiceEntity>(i => i.Services)
@@ -34,8 +42,12 @@ public class SimtDbContext : DbContext
         
         if (true)
         {
-            PlayerSeeds.Seed(modelBuilder);
+            MapSeeds.Seed(modelBuilder);
+            StationSeeds.Seed(modelBuilder);
+            PlayerSeeds.Seed(modelBuilder); 
             LineSeeds.Seed(modelBuilder);
+            RouteSeeds.Seed(modelBuilder);
+            RouteStopSeeds.Seed(modelBuilder);
             VehicleSeeds.Seed(modelBuilder);
             ServiceSeeds.Seed(modelBuilder);
         }

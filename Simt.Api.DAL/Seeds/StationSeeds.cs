@@ -59,10 +59,10 @@ public static class StationSeeds
     
     public static void Seed(this ModelBuilder modelBuilder) =>
         modelBuilder.Entity<StationEntity>().HasData(
-            Rolky,
-            Fibichova,
-            HlavniNadrazi,
-            Koprasy,
-            StrelnaHora
+            Rolky with{LineRouteStops = []},
+            Fibichova with{LineRouteStops = []},
+            HlavniNadrazi with{LineRouteStops = []},
+            Koprasy with{LineRouteStops = []},
+            StrelnaHora with{LineRouteStops = []}
         );
 }

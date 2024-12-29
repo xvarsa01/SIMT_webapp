@@ -41,8 +41,8 @@ public static class LineSeeds
     
     public static void Seed(this ModelBuilder modelBuilder) =>
         modelBuilder.Entity<LineEntity>().HasData(
-            Line1 with{Routes = []},
-            Line13 with{Routes = []},
-            Line20 with{Routes = []}
+            Line1 with{Routes = [], Map = null!},
+            Line13 with{Routes = [], Map = null!},
+            Line20 with{Routes = [], Map = null!}
         );
 }

@@ -30,8 +30,8 @@ public static class RouteStopSeeds
     
     
     public static void Seed(this ModelBuilder modelBuilder) =>
-        modelBuilder.Entity<RouteEntity>().HasData(
-            Route13AFibichova,
-            Route13BFibichova
+        modelBuilder.Entity<RouteStopEntity>().HasData(
+            Route13AFibichova with{Route = null!, Stop = null!},
+            Route13BFibichova with{Route = null!, Stop = null!}
         );
 }

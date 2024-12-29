@@ -18,11 +18,19 @@ public static class MapSeeds
         Id = Guid.Parse("cbcdc97a-adfc-401e-a7a5-925f020116d4"),
         MapName = "Mapa Simtov",
         Public = true,
-    };    
+    };
+
+    static MapSeeds()
+    {
+        // TODO why this cant be here????
+        // TestovaciMapa.Lines.Add(LineSeeds.Line1);
+        // TestovaciMapa.Lines.Add(LineSeeds.Line13);
+        // TestovaciMapa.Lines.Add(LineSeeds.Line20);
+    }
     
     public static void Seed(this ModelBuilder modelBuilder) =>
-        modelBuilder.Entity<LineEntity>().HasData(
-            TestovaciMapa,
-            MapaSimtov
+        modelBuilder.Entity<MapEntity>().HasData(
+            TestovaciMapa with {Lines = [] },
+            MapaSimtov with {Lines = [] }
         );
 }

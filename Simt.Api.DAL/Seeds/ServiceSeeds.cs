@@ -72,9 +72,9 @@ public static class ServiceSeeds
     
     public static void Seed(this ModelBuilder modelBuilder) =>
         modelBuilder.Entity<ServiceEntity>().HasData(
-            Service1,
-            Service2,
-            Service3,
-            Service4
+            Service1 with{Player = null!, Route = null!, Vehicle = null!},
+            Service2 with{Player = null!, Route = null!, Vehicle = null!},
+            Service3 with{Player = null!, Route = null!, Vehicle = null!},
+            Service4 with{Player = null!, Route = null!, Vehicle = null!}
         );
 }

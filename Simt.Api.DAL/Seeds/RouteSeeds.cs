@@ -101,9 +101,9 @@ public static class RouteSeeds
     
     public static void Seed(this ModelBuilder modelBuilder) =>
         modelBuilder.Entity<RouteEntity>().HasData(
-            Route1A with{Stops = [], Services = []},
-            Route1B with{Stops = [], Services = []},
-            Route13A with{Stops = [], Services = []},
-            Route13B with{Stops = [], Services = []}
+            Route1A with{Stops = [], Services = [], FinalStop = null!, StartStop = null!, Line = null!},
+            Route1B with{Stops = [], Services = [], FinalStop = null!, StartStop = null!, Line = null!},
+            Route13A with{Stops = [], Services = [], FinalStop = null!, StartStop = null!, Line = null!},
+            Route13B with{Stops = [], Services = [], FinalStop = null!, StartStop = null!, Line = null!}
         );
 }

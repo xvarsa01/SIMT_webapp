@@ -12,10 +12,10 @@ public static class PlayerSeeds
         GoldVersionExpiration = DateOnly.MaxValue,
         Nick = "Adam137",
         Email = "adam137@gmail.com",
-        MyStatus = "",
+        MyStatus = "a",
         ProfileName = "Adam",
         ProfileCity = "Bratislava",
-        ProfileWeb = "",
+        ProfileWeb = "a",
         BirthYear = 2003,
         RegistrationDate = DateOnly.Parse("2018-04-14"),
         LastLogin = 2,
@@ -24,8 +24,8 @@ public static class PlayerSeeds
         PointsGained = 17613,
         GameMoney = 552548,
         Fuel = 45,
-        Cng = 117.4826,
-        ServiceSpending = 453031.0,
+        Cng = 117,
+        ServiceSpending = 453031,
         KmOverall = 5589,
         KmYear = 5589,
         KmBus = 1868,
@@ -37,7 +37,7 @@ public static class PlayerSeeds
         TrafficLevel = TrafficLevel.TrafficLevel3,
         ViewLength = ViewLength.ViewLength500M,
     };
-
+    
     public static readonly PlayerEntity PlayerTomas = new()
     {
         Id = Guid.Parse("28acb56a-a0e1-4590-953a-6dc69ac98deb"),
@@ -87,9 +87,9 @@ public static class PlayerSeeds
         PassengersCarried = 96740,
         PointsGained = 55059,
         GameMoney = 3546856,
-        Fuel = 	117.5714,
+        Fuel = 117.5714,
         Cng = 45.0868,
-        ServiceSpending = 	1117700,
+        ServiceSpending = 1117700,
         KmOverall = 34144,
         KmYear = 20918,
         KmBus = 2003,
