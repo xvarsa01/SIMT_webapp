@@ -5,7 +5,7 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Mappers;
 
-public class PlayerModelMapper : ModelMapperBase<PlayerEntity, PlayerListModel, PlayerDetailModel>
+public class PlayerModelMapper (ServiceModelMapper serviceModelMapper) : ModelMapperBase<PlayerEntity, PlayerListModel, PlayerDetailModel>
 {
     public override PlayerListModel MapToListModel(PlayerEntity? entity)
     {
@@ -24,7 +24,44 @@ public class PlayerModelMapper : ModelMapperBase<PlayerEntity, PlayerListModel, 
     }
     public override PlayerDetailModel MapToDetailModel(PlayerEntity? entity)
     {
-        throw new NotImplementedException();
+        if (entity == null)
+        {
+            return PlayerDetailModel.Empty;
+        }
+
+        return new PlayerDetailModel
+        {
+            Id = entity.Id,
+            GoldVersionExpiration = entity.GoldVersionExpiration,
+            Nick = entity.Nick,
+            Email = entity.Email,
+            ProfileName = entity.ProfileName,
+            ProfileCity = entity.ProfileCity,
+            ProfileWeb = entity.ProfileWeb,
+            BirthYear = entity.BirthYear,
+            MyStatus = entity.MyStatus,
+            RegistrationDate = entity.RegistrationDate,
+            LastLogin = entity.LastLogin,
+            PlayTime = entity.PlayTime,
+            PassengersCarried = entity.PassengersCarried,
+            PointsGained = entity.PointsGained,
+            GameMoney = entity.GameMoney,
+            Fuel = entity.Fuel,
+            Cng = entity.Cng,
+            ServiceSpending = entity.ServiceSpending,
+            KmOverall = entity.KmOverall,
+            KmYear = entity.KmYear,
+            KmBus = entity.KmBus,
+            KmTBus = entity.KmTBus,
+            KmTram = entity.KmTram,
+            Fullscreen = entity.Fullscreen,
+            AdvancedControl = entity.AdvancedControl,
+            DisplayResolution = entity.DisplayResolution,
+            TrafficLevel = entity.TrafficLevel,
+            VisibilityLength = entity.VisibilityLength,
+            FavouriteVehicleId = entity.FavouriteVehicleId ?? Guid.Empty,
+            Services = serviceModelMapper.MapToListModel(entity.Services).ToList(),
+        };
     }
     
     public PlayerProfileModel MapToProfileModel(PlayerEntity? entity)
@@ -91,7 +128,7 @@ public class PlayerModelMapper : ModelMapperBase<PlayerEntity, PlayerListModel, 
             Fullscreen = model.Fullscreen,
             AdvancedControl = model.AdvancedControl,
             TrafficLevel = model.TrafficLevel,
-            ViewLength = model.ViewLength,
+            VisibilityLength = model.VisibilityLength,
             DisplayResolution = model.DisplayResolution,
         };
     }
