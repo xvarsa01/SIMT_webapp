@@ -1,6 +1,6 @@
 namespace Simt.Common.enums;
 
-public enum ViewLength
+public enum VisibilityLength
 {
     ViewLength150M,
     ViewLength250M,

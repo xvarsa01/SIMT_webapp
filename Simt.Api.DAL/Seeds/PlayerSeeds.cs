@@ -35,7 +35,7 @@ public static class PlayerSeeds
         AdvancedControl = true,
         DisplayResolution = DisplayResolution.Res1920X1080,
         TrafficLevel = TrafficLevel.TrafficLevel3,
-        ViewLength = ViewLength.ViewLength500M,
+        VisibilityLength = VisibilityLength.ViewLength500M,
     };
     
     public static readonly PlayerEntity PlayerTomas = new()
@@ -67,7 +67,7 @@ public static class PlayerSeeds
         AdvancedControl = true,
         DisplayResolution = DisplayResolution.Res1920X1080,
         TrafficLevel = TrafficLevel.TrafficLevel3,
-        ViewLength = ViewLength.ViewLength500M,
+        VisibilityLength = VisibilityLength.ViewLength500M,
     };
     
     public static readonly PlayerEntity PlayerPeter = new()
@@ -99,7 +99,7 @@ public static class PlayerSeeds
         AdvancedControl = true,
         DisplayResolution = DisplayResolution.Res1920X1080,
         TrafficLevel = TrafficLevel.TrafficLevel3,
-        ViewLength = ViewLength.ViewLength500M,
+        VisibilityLength = VisibilityLength.ViewLength500M,
     };
 
     static PlayerSeeds()

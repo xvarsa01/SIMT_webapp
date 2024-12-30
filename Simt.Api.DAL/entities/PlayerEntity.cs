@@ -34,7 +34,9 @@ public record PlayerEntity:IEntity
     public required bool AdvancedControl { get; set; }
     public required DisplayResolution DisplayResolution { get; set; }
     public required TrafficLevel TrafficLevel { get; set; }
-    public required ViewLength ViewLength { get; set; }
+    public required VisibilityLength VisibilityLength { get; set; }
+    
+    public Guid? FavouriteVehicleId { get; set; }
     public VehicleEntity? FavouriteVehicle { get; set; }
     public ICollection<ServiceEntity> Services { get; init; } = [];
 }

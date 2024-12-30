@@ -33,10 +33,10 @@ public record PlayerDetailModel() : ModelBase
     public required bool AdvancedControl { get; set; }
     public required DisplayResolution DisplayResolution { get; set; }
     public required TrafficLevel TrafficLevel { get; set; }
-    public required ViewLength ViewLength { get; set; }
+    public required VisibilityLength VisibilityLength { get; set; }
     public required Guid FavouriteVehicleId {get;set;}
     
-    public ICollection<ServiceDetailModel> Services { get; init; } = [];
+    public ICollection<ServiceListModel> Services { get; init; } = [];
     
     public static PlayerDetailModel Empty => new()
     {
@@ -68,7 +68,7 @@ public record PlayerDetailModel() : ModelBase
         AdvancedControl = false,
         DisplayResolution = DisplayResolution.Res1920X1080,
         TrafficLevel = TrafficLevel.TrafficLevel3,
-        ViewLength = ViewLength.ViewLength250M,
+        VisibilityLength = VisibilityLength.ViewLength250M,
         FavouriteVehicleId = Guid.Empty,
     };
 }
