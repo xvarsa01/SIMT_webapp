@@ -4,7 +4,7 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Mappers;
 
-public class LineModelMapper : ModelMapperBase<LineEntity, LineListModel, LineDetailModel>
+public class LineModelMapper (RouteModelMapper routeModelMapper) : ModelMapperBase<LineEntity, LineListModel, LineDetailModel>
 {
     public override LineListModel MapToListModel(LineEntity? entity)
     {
@@ -31,12 +31,13 @@ public class LineModelMapper : ModelMapperBase<LineEntity, LineListModel, LineDe
         return new LineDetailModel
         {
             Id = entity.Id,
+            LineNumber = entity.LineNumber,
             Traction = entity.Traction,
             IntervalPeak = entity.IntervalPeak,
             IntervalNonPeak = entity.IntervalNonPeak,
             IntervalNight = entity.IntervalNight,
             MapId = entity.MapId,
-            LineNumber = entity.LineNumber,
+            Routes = routeModelMapper.MapToListModel(entity.Routes),
         };
     }
     

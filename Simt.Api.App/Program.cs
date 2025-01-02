@@ -59,4 +59,5 @@ void ConfigureDependencies(IServiceCollection serviceCollection)
     serviceCollection.AddScoped<ModelMapperBase<ServiceEntity, ServiceListModel, ServiceDetailModel>, ServiceModelMapper>();
     serviceCollection.AddScoped<PlayerModelMapper>();
     serviceCollection.AddScoped<ServiceModelMapper>();
+    serviceCollection.AddScoped<RouteModelMapper>();
 }

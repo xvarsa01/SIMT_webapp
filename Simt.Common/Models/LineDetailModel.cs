@@ -13,7 +13,7 @@ public record LineDetailModel() : ModelBase
 
     public required Guid MapId { get; set; }
     
-    public List<ServiceListModel> Services { get; set; } = new();
+    public List<RouteListModel> Routes { get; set; } = new();
 
     public static LineDetailModel Empty => new()
     {
