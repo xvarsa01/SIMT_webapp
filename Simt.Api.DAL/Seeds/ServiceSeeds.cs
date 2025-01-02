@@ -69,12 +69,29 @@ public static class ServiceSeeds
         Route = RouteSeeds.Route1B,
         Vehicle = VehicleSeeds.TatraT3
     };
+    public static readonly ServiceEntity Service5 = new ()
+    {
+        Id = Guid.Parse("343c92e6-7e07-42ca-8f81-81f94c444a5b"),
+        AvgAhead = 5,
+        AvgDelay = 15,
+        PassengersCarried = 31,
+        GameMoneyGained = 0,
+        DateTime = DateTime.Now,
+        Finished = false,
+        PlayerId = PlayerSeeds.PlayerTomas.Id,
+        RouteId = RouteSeeds.Route1B.Id,
+        VehicleId = VehicleSeeds.TatraT3.Id,
+        Player = PlayerSeeds.PlayerTomas,
+        Route = RouteSeeds.Route1B,
+        Vehicle = VehicleSeeds.TatraT3
+    };
     
     public static void Seed(this ModelBuilder modelBuilder) =>
         modelBuilder.Entity<ServiceEntity>().HasData(
             Service1 with{Player = null!, Route = null!, Vehicle = null!},
             Service2 with{Player = null!, Route = null!, Vehicle = null!},
             Service3 with{Player = null!, Route = null!, Vehicle = null!},
-            Service4 with{Player = null!, Route = null!, Vehicle = null!}
+            Service4 with{Player = null!, Route = null!, Vehicle = null!},
+            Service5 with{Player = null!, Route = null!, Vehicle = null!}
         );
 }
