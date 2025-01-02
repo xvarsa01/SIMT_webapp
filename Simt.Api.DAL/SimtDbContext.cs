@@ -22,10 +22,11 @@ public class SimtDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        
+
         modelBuilder.Entity<MapEntity>()
-            .HasMany<LineEntity>(m => m.Lines)
-            .WithOne(l => l.Map);
+            .HasMany(e => e.Lines)
+            .WithOne(e => e.Map)
+            .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
 
         modelBuilder.Entity<PlayerEntity>()
             .HasMany<ServiceEntity>(i => i.Services)
@@ -42,10 +43,10 @@ public class SimtDbContext : DbContext
         
         if (true)
         {
-            MapSeeds.Seed(modelBuilder);
             StationSeeds.Seed(modelBuilder);
             PlayerSeeds.Seed(modelBuilder); 
             LineSeeds.Seed(modelBuilder);
+            MapSeeds.Seed(modelBuilder);
             RouteSeeds.Seed(modelBuilder);
             RouteStopSeeds.Seed(modelBuilder);
             VehicleSeeds.Seed(modelBuilder);

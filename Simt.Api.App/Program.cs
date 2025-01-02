@@ -47,16 +47,19 @@ void ConfigureDependencies(IServiceCollection serviceCollection)
     serviceCollection.AddScoped<PlayerFacade>();
     serviceCollection.AddScoped<LineFacade>();
     serviceCollection.AddScoped<ServiceFacade>();
+    serviceCollection.AddScoped<MapFacade>();
 
     serviceCollection.AddScoped<VehicleRepository>();
     serviceCollection.AddScoped<PlayerRepository>();
     serviceCollection.AddScoped<LineRepository>();
     serviceCollection.AddScoped<ServiceRepository>();
+    serviceCollection.AddScoped<MapRepository>();
 
     serviceCollection.AddScoped<ModelMapperBase<VehicleEntity, VehicleListModel, VehicleDetailModel>, VehicleModelMapper>();
     serviceCollection.AddScoped<ModelMapperBase<PlayerEntity, PlayerListModel, PlayerDetailModel>, PlayerModelMapper>();
     serviceCollection.AddScoped<ModelMapperBase<LineEntity, LineListModel, LineDetailModel>, LineModelMapper>();
     serviceCollection.AddScoped<ModelMapperBase<ServiceEntity, ServiceListModel, ServiceDetailModel>, ServiceModelMapper>();
+    serviceCollection.AddScoped<ModelMapperBase<MapEntity, MapListModel, MapDetailModel>, MapModelMapper>();
     serviceCollection.AddScoped<PlayerModelMapper>();
     serviceCollection.AddScoped<ServiceModelMapper>();
     serviceCollection.AddScoped<RouteModelMapper>();

@@ -17,6 +17,10 @@ public class MapModelMapper : ModelMapperBase<MapEntity, MapListModel, MapDetail
         {
             Id = entity.Id,
             MapName = entity.MapName,
+            SCIN = entity.SCIN,
+            LastChangeTime = entity.LastChangeTime,
+            Version = entity.Version,
+            RoutesCount = entity.Lines.Sum(line => line.Routes.Count), // Aggregating routes count
         };
     }
 
@@ -31,7 +35,11 @@ public class MapModelMapper : ModelMapperBase<MapEntity, MapListModel, MapDetail
         {
             Id = entity.Id,
             MapName = entity.MapName,
+            SCIN = entity.SCIN,
+            LastChangeTime = entity.LastChangeTime,
+            Version = entity.Version,
             Public = entity.Public,
+            RoutesCount = entity.Lines.Sum(line => line.Routes.Count), // Aggregating routes count
         };
     }
     
@@ -41,6 +49,9 @@ public class MapModelMapper : ModelMapperBase<MapEntity, MapListModel, MapDetail
         {
             Id = model.Id,
             MapName = model.MapName,
+            SCIN = model.SCIN,
+            LastChangeTime = model.LastChangeTime,
+            Version = model.Version,
             Public = model.Public,
         };
     }
