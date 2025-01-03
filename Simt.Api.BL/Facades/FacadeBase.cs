@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Reflection;
+using Simt.Api.BL.Facades.Interface;
 using Simt.Api.BL.Mappers.InterfaceBase;
 using Simt.Api.DAL.entities;
 using Simt.Api.DAL.Repositories;
 
 namespace Simt.Api.BL.Facades;
 
-public class FacadeBase<TRepository, TEntity, TListModel, TDetailModel>
+public class FacadeBase<TRepository, TEntity, TListModel, TDetailModel> : IFacade<TEntity, TListModel, TDetailModel>
     where TRepository : IRepository<TEntity>
     where TEntity : class, IEntity
     where TListModel : class

@@ -8,11 +8,11 @@ namespace Simt.Api.BL.Facades;
 public class RouteFacade : FacadeBase<RouteRepository, RouteEntity, RouteListModel, RouteDetailModel>
 {
     private readonly RouteRepository _routeRepository;
-    private readonly ModelMapperBase<RouteEntity, RouteListModel, RouteDetailModel> _modelMapper;
+    private readonly IModelMapper<RouteEntity, RouteListModel, RouteDetailModel> _modelMapper;
 
     public RouteFacade(
         RouteRepository repository, 
-        ModelMapperBase<RouteEntity, RouteListModel, RouteDetailModel> modelMapper) 
+        IModelMapper<RouteEntity, RouteListModel, RouteDetailModel> modelMapper) 
         : base(repository, modelMapper)
     {
         _routeRepository = repository;

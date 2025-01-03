@@ -1,9 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using Simt.Api.BL;
 using Simt.Api.BL.Facades;
+using Simt.Api.BL.Installers;
 using Simt.Api.BL.Mappers;
 using Simt.Api.BL.Mappers.InterfaceBase;
 using Simt.Api.DAL;
 using Simt.Api.DAL.entities;
+using Simt.Api.DAL.Installers;
 using Simt.Api.DAL.Repositories;
 using Simt.Common.Models;
 
@@ -43,27 +46,6 @@ void ConfigureDependencies(IServiceCollection serviceCollection)
     serviceCollection.AddDbContext<SimtDbContext>(options =>
         options.UseSqlite(connectionString));
 
-    serviceCollection.AddScoped<VehicleFacade>();
-    serviceCollection.AddScoped<PlayerFacade>();
-    serviceCollection.AddScoped<LineFacade>();
-    serviceCollection.AddScoped<ServiceFacade>();
-    serviceCollection.AddScoped<MapFacade>();
-    serviceCollection.AddScoped<RouteFacade>();
-
-    serviceCollection.AddScoped<VehicleRepository>();
-    serviceCollection.AddScoped<PlayerRepository>();
-    serviceCollection.AddScoped<LineRepository>();
-    serviceCollection.AddScoped<ServiceRepository>();
-    serviceCollection.AddScoped<MapRepository>();
-    serviceCollection.AddScoped<RouteRepository>();
-
-    serviceCollection.AddScoped<ModelMapperBase<VehicleEntity, VehicleListModel, VehicleDetailModel>, VehicleModelMapper>();
-    serviceCollection.AddScoped<ModelMapperBase<PlayerEntity, PlayerListModel, PlayerDetailModel>, PlayerModelMapper>();
-    serviceCollection.AddScoped<ModelMapperBase<LineEntity, LineListModel, LineDetailModel>, LineModelMapper>();
-    serviceCollection.AddScoped<ModelMapperBase<ServiceEntity, ServiceListModel, ServiceDetailModel>, ServiceModelMapper>();
-    serviceCollection.AddScoped<ModelMapperBase<MapEntity, MapListModel, MapDetailModel>, MapModelMapper>();
-    serviceCollection.AddScoped<ModelMapperBase<RouteEntity, RouteListModel, RouteDetailModel>, RouteModelMapper>();
-    serviceCollection.AddScoped<PlayerModelMapper>();
-    serviceCollection.AddScoped<ServiceModelMapper>();
-    serviceCollection.AddScoped<RouteModelMapper>();
+    serviceCollection.AddBLServices();
+    serviceCollection.AddDALServices();
 }

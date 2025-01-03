@@ -8,11 +8,11 @@ namespace Simt.Api.BL.Facades;
 public class VehicleFacade : FacadeBase<VehicleRepository, VehicleEntity, VehicleListModel, VehicleDetailModel>
 {
     private readonly VehicleRepository _vehicleRepository;
-    private readonly ModelMapperBase<VehicleEntity, VehicleListModel, VehicleDetailModel> _modelMapper;
+    private readonly IModelMapper<VehicleEntity, VehicleListModel, VehicleDetailModel> _modelMapper;
 
     public VehicleFacade(
         VehicleRepository repository, 
-        ModelMapperBase<VehicleEntity, VehicleListModel, VehicleDetailModel> modelMapper) 
+        IModelMapper<VehicleEntity, VehicleListModel, VehicleDetailModel> modelMapper) 
         : base(repository, modelMapper)
     {
         _vehicleRepository = repository;

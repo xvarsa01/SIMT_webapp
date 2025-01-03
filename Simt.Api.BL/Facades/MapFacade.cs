@@ -8,11 +8,11 @@ namespace Simt.Api.BL.Facades;
 public class MapFacade : FacadeBase<MapRepository, MapEntity, MapListModel, MapDetailModel>
 {
     private readonly MapRepository _mapRepository;
-    private readonly ModelMapperBase<MapEntity, MapListModel, MapDetailModel> _modelMapper;
+    private readonly IModelMapper<MapEntity, MapListModel, MapDetailModel> _modelMapper;
 
     public MapFacade(
         MapRepository repository, 
-        ModelMapperBase<MapEntity, MapListModel, MapDetailModel> modelMapper) 
+        IModelMapper<MapEntity, MapListModel, MapDetailModel> modelMapper) 
         : base(repository, modelMapper)
     {
         _mapRepository = repository;

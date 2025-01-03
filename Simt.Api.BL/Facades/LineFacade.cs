@@ -8,11 +8,11 @@ namespace Simt.Api.BL.Facades;
 public class LineFacade : FacadeBase<LineRepository, LineEntity, LineListModel, LineDetailModel>
 {
     private readonly LineRepository _lineRepository;
-    private readonly ModelMapperBase<LineEntity, LineListModel, LineDetailModel> _modelMapper;
+    private readonly IModelMapper<LineEntity, LineListModel, LineDetailModel> _modelMapper;
 
     public LineFacade(
         LineRepository repository, 
-        ModelMapperBase<LineEntity, LineListModel, LineDetailModel> modelMapper) 
+        IModelMapper<LineEntity, LineListModel, LineDetailModel> modelMapper) 
         : base(repository, modelMapper)
     {
         _lineRepository = repository;
