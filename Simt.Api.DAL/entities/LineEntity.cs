@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Simt.Common.enums;
+﻿using Simt.Common.enums;
 
 namespace Simt.Api.DAL.entities;
 
@@ -16,12 +15,4 @@ public record LineEntity():IEntity
     public required Guid MapId { get; set; }
     public required MapEntity Map { get; set; }
     public ICollection<RouteEntity> Routes { get; init; } = [];
-}
-
-public class LineEntityMapperProfile : Profile  
-{
-    public LineEntityMapperProfile()
-    {
-        CreateMap<LineEntity, LineEntity>();
-    }
 }

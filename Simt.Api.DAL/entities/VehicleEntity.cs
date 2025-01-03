@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Simt.Common.enums;
+﻿using Simt.Common.enums;
 
 namespace Simt.Api.DAL.entities;
 
@@ -33,12 +32,4 @@ public record VehicleEntity:IEntity
     public LowFloor LowFloor { get; set; }
     
     public ICollection<ServiceEntity> Services { get; init; } = [];
-}
-
-public class VehicleEntityMapperProfile : Profile
-{
-    public VehicleEntityMapperProfile()
-    {
-        CreateMap<VehicleEntity, VehicleEntity>();
-    }
 }

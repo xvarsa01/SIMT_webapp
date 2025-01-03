@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Simt.Common.enums;
+﻿using Simt.Common.enums;
 
 namespace Simt.Api.DAL.entities;
 
@@ -39,12 +38,4 @@ public record PlayerEntity:IEntity
     public Guid? FavouriteVehicleId { get; set; }
     public VehicleEntity? FavouriteVehicle { get; set; }
     public ICollection<ServiceEntity> Services { get; init; } = [];
-}
-
-public class PlayerEntityMapperProfile : Profile  
-{
-    public PlayerEntityMapperProfile()
-    {
-        CreateMap<PlayerEntity, PlayerEntity>();
-    }
 }
