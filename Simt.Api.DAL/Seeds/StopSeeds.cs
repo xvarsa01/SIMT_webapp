@@ -12,7 +12,6 @@ public static class StopSeeds
         StopName = "Rolky",
         FinalStop = true,
         RequestStop = false,
-        LowFloor = true,
     };
     
     public static readonly StopEntity Fibichova = new ()
@@ -21,7 +20,6 @@ public static class StopSeeds
         StopName = "Fibichova",
         FinalStop = false,
         RequestStop = false,
-        LowFloor = true,
     };
 
     public static readonly StopEntity HlavniNadrazi = new ()
@@ -30,7 +28,6 @@ public static class StopSeeds
         StopName = "Hlavni Nadrazi",
         FinalStop = true,
         RequestStop = false,
-        LowFloor = true,
     };
     
     public static readonly StopEntity Koprasy = new ()
@@ -39,30 +36,41 @@ public static class StopSeeds
         StopName = "Koprasy",
         FinalStop = true,
         RequestStop = false,
-        LowFloor = true,
     };
+    
     public static readonly StopEntity StrelnaHora = new ()
     {
         Id = Guid.Parse("bdc3df34-195b-4051-bbb4-ff382d9cad3f"),
         StopName = "Strelna Hora",
         FinalStop = true,
         RequestStop = false,
-        LowFloor = true,
     };
         
 
     static StopSeeds()
     {
-        Fibichova.LineRouteStops.Add(RouteStopSeeds.Route13AFibichova);
-        Fibichova.LineRouteStops.Add(RouteStopSeeds.Route13BFibichova);
+        Rolky.Platforms.Add(PlatformSeeds.RolkyVystup);
+        Rolky.Platforms.Add(PlatformSeeds.RolkyNastup);
+        
+        Fibichova.Platforms.Add(PlatformSeeds.FibichovaA);
+        Fibichova.Platforms.Add(PlatformSeeds.FibichovaB);
+        
+        HlavniNadrazi.Platforms.Add(PlatformSeeds.HlavniNadraziA);
+        HlavniNadrazi.Platforms.Add(PlatformSeeds.HlavniNadraziB);
+        
+        Koprasy.Platforms.Add(PlatformSeeds.KoprasyVystup);
+        Koprasy.Platforms.Add(PlatformSeeds.KoprasyNastup);
+        
+        StrelnaHora.Platforms.Add(PlatformSeeds.StrelnaHoraVystup);
+        StrelnaHora.Platforms.Add(PlatformSeeds.StrelnaHoraNastup);
     }
     
     public static void Seed(this ModelBuilder modelBuilder) =>
         modelBuilder.Entity<StopEntity>().HasData(
-            Rolky with{LineRouteStops = []},
-            Fibichova with{LineRouteStops = []},
-            HlavniNadrazi with{LineRouteStops = []},
-            Koprasy with{LineRouteStops = []},
-            StrelnaHora with{LineRouteStops = []}
+            Rolky with{Platforms = []},
+            Fibichova with{Platforms = []},
+            HlavniNadrazi with{Platforms = []},
+            Koprasy with{Platforms = []},
+            StrelnaHora with{Platforms = []}
         );
 }

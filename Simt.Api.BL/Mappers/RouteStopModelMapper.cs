@@ -16,28 +16,15 @@ public class RouteStopModelMapper : ModelMapperBase<RouteStopEntity, RouteStopMo
         return new RouteStopModel
         {
             Id = entity.Id,
-            Platform = entity.Platform,
             NumberOfStopOnLine = entity.NumberOfStopOnLine,
             RouteId = entity.RouteId,
-            StopId = entity.StopId,
+            PlatformId = entity.PlatformId,
         };
     }
 
     public override RouteStopModel MapToDetailModel(RouteStopEntity? entity)
     {
-        if (entity is null)
-        {
-            return RouteStopModel.Empty;
-        }
-
-        return new RouteStopModel
-        {
-            Id = entity.Id,
-            Platform = entity.Platform,
-            NumberOfStopOnLine = entity.NumberOfStopOnLine,
-            RouteId = entity.RouteId,
-            StopId = entity.StopId,
-        };
+        return MapToListModel(entity);
     }
     
     public override RouteStopEntity MapToEntity(RouteStopModel model)
@@ -45,12 +32,11 @@ public class RouteStopModelMapper : ModelMapperBase<RouteStopEntity, RouteStopMo
         return new RouteStopEntity
         {
             Id = model.Id,
-            Platform = model.Platform,
             NumberOfStopOnLine = model.NumberOfStopOnLine,
-            RouteId = model.StopId,
-            StopId = model.StopId,
+            RouteId = model.RouteId,
+            PlatformId = model.PlatformId,
             Route = null!,
-            Stop = null!,
+            Platform = null!,
         };
     }
 }

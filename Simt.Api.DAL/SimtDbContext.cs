@@ -58,14 +58,20 @@ public class SimtDbContext : DbContext
             .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
         
         modelBuilder.Entity<StopEntity>()
-            .HasMany(e => e.LineRouteStops)
-            .WithOne(e => e.Stop)
+            .HasMany(e => e.Platforms)
+            .WithOne(e => e.ParentStop)
+            .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<PlatformEntity>()
+            .HasMany(e => e.RouteStops)
+            .WithOne(e => e.Platform)
             .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
 
         
         if (true)
         {
             StopSeeds.Seed(modelBuilder);
+            PlatformSeeds.Seed(modelBuilder);
             PlayerSeeds.Seed(modelBuilder); 
             LineSeeds.Seed(modelBuilder);
             MapSeeds.Seed(modelBuilder);

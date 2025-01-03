@@ -7,7 +7,8 @@ public record StopDetailModel() : ModelBase
     public required string? StopName { get; set; }
     public required bool FinalStop { get; set; }
     public required bool RequestStop { get; set; }
-    public required bool LowFloor { get; set; }
+    
+    public List<PlatformModel> Platforms { get; set; } = new();
 
     public static StopDetailModel Empty => new()
     {
@@ -15,6 +16,5 @@ public record StopDetailModel() : ModelBase
         StopName = string.Empty,
         FinalStop = false,
         RequestStop = false,
-        LowFloor = false,
     };
 }

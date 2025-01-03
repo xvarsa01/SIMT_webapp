@@ -90,8 +90,8 @@ public static class RouteSeeds
     
     static RouteSeeds()
     {
-        Route13A.Stops.Add(RouteStopSeeds.Route13AFibichova);
-        Route13B.Stops.Add(RouteStopSeeds.Route13BFibichova);
+        Route13A.Stops.Add(RouteStopSeeds.Route13AFibichovaA);
+        Route13B.Stops.Add(RouteStopSeeds.Route13BFibichovaB);
         
         Route1A.Services.Add(ServiceSeeds.Service1);
         Route13A.Services.Add(ServiceSeeds.Service2);

@@ -1,37 +1,34 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Simt.Api.DAL.entities;
-using Simt.Common.enums;
 
 namespace Simt.Api.DAL.Seeds;
 
 public static class RouteStopSeeds
 {
-    public static readonly RouteStopEntity Route13AFibichova = new ()
+    public static readonly RouteStopEntity Route13AFibichovaA = new ()
     {
         Id = Guid.Parse("6bcd2244-c18c-485a-ba60-c877a7d1cc9c"),
-        Platform = 1,
         NumberOfStopOnLine = 1,
         RouteId = RouteSeeds.Route13A.Id,
-        StopId = StopSeeds.Fibichova.Id,
+        PlatformId = PlatformSeeds.FibichovaA.Id,
         Route = RouteSeeds.Route13A,
-        Stop = StopSeeds.Fibichova,
+        Platform = PlatformSeeds.FibichovaA,
     };    
     
-    public static readonly RouteStopEntity Route13BFibichova = new ()
+    public static readonly RouteStopEntity Route13BFibichovaB = new ()
     {
         Id = Guid.Parse("ec36fb48-b8d0-4723-98e0-40a8a28c88dd"),
-        Platform = 2,
         NumberOfStopOnLine = 1,
         RouteId = RouteSeeds.Route13B.Id,
-        StopId = StopSeeds.Fibichova.Id,
+        PlatformId = PlatformSeeds.FibichovaB.Id,
         Route = RouteSeeds.Route13B,
-        Stop = StopSeeds.Fibichova,
+        Platform = PlatformSeeds.FibichovaB,
     };
     
     
     public static void Seed(this ModelBuilder modelBuilder) =>
         modelBuilder.Entity<RouteStopEntity>().HasData(
-            Route13AFibichova with{Route = null!, Stop = null!},
-            Route13BFibichova with{Route = null!, Stop = null!}
+            Route13AFibichovaA with{Route = null!, Platform = null!},
+            Route13BFibichovaB with{Route = null!, Platform = null!}
         );
 }

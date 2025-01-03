@@ -4,7 +4,7 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Mappers;
 
-public class StopModelMapper : ModelMapperBase<StopEntity, StopListModel, StopDetailModel>
+public class StopModelMapper (PlatformModelMapper platformModelMapper) : ModelMapperBase<StopEntity, StopListModel, StopDetailModel>
 {
     public override StopListModel MapToListModel(StopEntity? entity)
     {
@@ -34,7 +34,7 @@ public class StopModelMapper : ModelMapperBase<StopEntity, StopListModel, StopDe
             StopName = entity.StopName,
             FinalStop = entity.FinalStop,
             RequestStop = entity.RequestStop,
-            LowFloor = entity.LowFloor,
+            Platforms = platformModelMapper.MapToListModel(entity.Platforms)
         };
     }
     
@@ -46,7 +46,6 @@ public class StopModelMapper : ModelMapperBase<StopEntity, StopListModel, StopDe
             StopName = model.StopName,
             FinalStop = model.FinalStop,
             RequestStop = model.FinalStop,
-            LowFloor = model.LowFloor,
         };
     }
 }
