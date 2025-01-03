@@ -22,6 +22,7 @@ public class RouteRepository(SimtDbContext dbContext) : RepositoryBase<RouteEnti
             .Include(e => e.Line)
             .Include(e => e.StartStop)
             .Include(e => e.FinalStop)
+            .Include(e => e.Stops)
             .SingleOrDefaultAsync(entity => entity.Id == id);
     }
 }

@@ -4,7 +4,7 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Mappers;
 
-public class RouteModelMapper : ModelMapperBase<RouteEntity, RouteListModel, RouteDetailModel>
+public class RouteModelMapper (RouteStopModelMapper routeStopModelMapper) : ModelMapperBase<RouteEntity, RouteListModel, RouteDetailModel>
 {
     public override RouteListModel MapToListModel(RouteEntity? entity)
     {
@@ -53,9 +53,7 @@ public class RouteModelMapper : ModelMapperBase<RouteEntity, RouteListModel, Rou
             StartStopName = entity.StartStop.StopName,
             FinalStopName = entity.FinalStop.StopName,
             LineNumber = entity.Line.LineNumber,
-            
-            // TODO
-            Stops = []
+            Stops = routeStopModelMapper.MapToListModel(entity.Stops)
         };
     }
     
