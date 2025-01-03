@@ -4,16 +4,16 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Mappers;
 
-public class StationModelMapper : ModelMapperBase<StationEntity, StationListModel, StationDetailModel>
+public class StopModelMapper : ModelMapperBase<StopEntity, StopListModel, StopDetailModel>
 {
-    public override StationListModel MapToListModel(StationEntity? entity)
+    public override StopListModel MapToListModel(StopEntity? entity)
     {
         if (entity is null)
         {
-            return StationListModel.Empty;
+            return StopListModel.Empty;
         }
 
-        return new StationListModel
+        return new StopListModel
         {
             Id = entity.Id,
             StopName = entity.StopName,
@@ -21,14 +21,14 @@ public class StationModelMapper : ModelMapperBase<StationEntity, StationListMode
         };
     }
 
-    public override StationDetailModel MapToDetailModel(StationEntity? entity)
+    public override StopDetailModel MapToDetailModel(StopEntity? entity)
     {
         if (entity is null)
         {
-            return StationDetailModel.Empty;
+            return StopDetailModel.Empty;
         }
 
-        return new StationDetailModel
+        return new StopDetailModel
         {
             Id = entity.Id,
             StopName = entity.StopName,
@@ -38,9 +38,9 @@ public class StationModelMapper : ModelMapperBase<StationEntity, StationListMode
         };
     }
     
-    public override StationEntity MapToEntity(StationDetailModel model)
+    public override StopEntity MapToEntity(StopDetailModel model)
     {
-        return new StationEntity
+        return new StopEntity
         {
             Id = model.Id,
             StopName = model.StopName,

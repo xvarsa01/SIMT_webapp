@@ -9,5 +9,5 @@ public record RouteStopEntity() : IEntity
     public required Guid RouteId { get; set; }
     public required Guid StopId { get; set; }
     public required RouteEntity Route { get; set; }
-    public required StationEntity Stop { get; set; }
+    public required StopEntity Stop { get; set; }
 }

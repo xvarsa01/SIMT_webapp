@@ -12,9 +12,9 @@ public static class RouteStopSeeds
         Platform = 1,
         NumberOfStopOnLine = 1,
         RouteId = RouteSeeds.Route13A.Id,
-        StopId = StationSeeds.Fibichova.Id,
+        StopId = StopSeeds.Fibichova.Id,
         Route = RouteSeeds.Route13A,
-        Stop = StationSeeds.Fibichova,
+        Stop = StopSeeds.Fibichova,
     };    
     
     public static readonly RouteStopEntity Route13BFibichova = new ()
@@ -23,9 +23,9 @@ public static class RouteStopSeeds
         Platform = 2,
         NumberOfStopOnLine = 1,
         RouteId = RouteSeeds.Route13B.Id,
-        StopId = StationSeeds.Fibichova.Id,
+        StopId = StopSeeds.Fibichova.Id,
         Route = RouteSeeds.Route13B,
-        Stop = StationSeeds.Fibichova,
+        Stop = StopSeeds.Fibichova,
     };
     
     

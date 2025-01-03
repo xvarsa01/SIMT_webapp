@@ -19,11 +19,11 @@ public static class RouteSeeds
         OnlyLowFloor = false,
         TwoWay = false,
         AlternativeDrive = false,
-        StartStopId = StationSeeds.Koprasy.Id,
-        FinalStopId = StationSeeds.StrelnaHora.Id,
+        StartStopId = StopSeeds.Koprasy.Id,
+        FinalStopId = StopSeeds.StrelnaHora.Id,
         LineId = LineSeeds.Line1.Id,
-        StartStop = StationSeeds.Koprasy,
-        FinalStop = StationSeeds.StrelnaHora,
+        StartStop = StopSeeds.Koprasy,
+        FinalStop = StopSeeds.StrelnaHora,
         Line = LineSeeds.Line1,
     };    
     public static readonly RouteEntity Route1B = new ()
@@ -39,11 +39,11 @@ public static class RouteSeeds
         OnlyLowFloor = false,
         TwoWay = false,
         AlternativeDrive = false,
-        StartStopId = StationSeeds.StrelnaHora.Id,
-        FinalStopId = StationSeeds.Koprasy.Id,
+        StartStopId = StopSeeds.StrelnaHora.Id,
+        FinalStopId = StopSeeds.Koprasy.Id,
         LineId = LineSeeds.Line1.Id,
-        StartStop = StationSeeds.StrelnaHora,
-        FinalStop = StationSeeds.Koprasy,
+        StartStop = StopSeeds.StrelnaHora,
+        FinalStop = StopSeeds.Koprasy,
         Line = LineSeeds.Line1,
     };
     public static readonly RouteEntity Route13A = new ()
@@ -59,11 +59,11 @@ public static class RouteSeeds
         OnlyLowFloor = false,
         TwoWay = false,
         AlternativeDrive = false,
-        StartStopId = StationSeeds.Rolky.Id,
-        FinalStopId = StationSeeds.HlavniNadrazi.Id,
+        StartStopId = StopSeeds.Rolky.Id,
+        FinalStopId = StopSeeds.HlavniNadrazi.Id,
         LineId = LineSeeds.Line13.Id,
-        StartStop = StationSeeds.Rolky,
-        FinalStop = StationSeeds.HlavniNadrazi,
+        StartStop = StopSeeds.Rolky,
+        FinalStop = StopSeeds.HlavniNadrazi,
         Line = LineSeeds.Line13,
     };    
     public static readonly RouteEntity Route13B = new ()
@@ -79,11 +79,11 @@ public static class RouteSeeds
         OnlyLowFloor = false,
         TwoWay = false,
         AlternativeDrive = false,
-        StartStopId = StationSeeds.HlavniNadrazi.Id,
-        FinalStopId = StationSeeds.Rolky.Id,
+        StartStopId = StopSeeds.HlavniNadrazi.Id,
+        FinalStopId = StopSeeds.Rolky.Id,
         LineId = LineSeeds.Line13.Id,
-        StartStop = StationSeeds.HlavniNadrazi,
-        FinalStop = StationSeeds.Rolky,
+        StartStop = StopSeeds.HlavniNadrazi,
+        FinalStop = StopSeeds.Rolky,
         Line = LineSeeds.Line13,
     };
    

@@ -11,7 +11,7 @@ public class SimtDbContext : DbContext
         // _seedDemoData = seedDemoData;
     }
     public DbSet<MapEntity> Map => Set<MapEntity>();
-    public DbSet<StationEntity> Station => Set<StationEntity>();
+    public DbSet<StopEntity> Stop => Set<StopEntity>();
     public DbSet<RouteEntity> Route => Set<RouteEntity>();
     public DbSet<RouteStopEntity> RouteStop => Set<RouteStopEntity>();
     public DbSet<PlayerEntity> Players => Set<PlayerEntity>();
@@ -57,7 +57,7 @@ public class SimtDbContext : DbContext
             .WithOne(e => e.Route)
             .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
         
-        modelBuilder.Entity<StationEntity>()
+        modelBuilder.Entity<StopEntity>()
             .HasMany(e => e.LineRouteStops)
             .WithOne(e => e.Stop)
             .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
@@ -65,7 +65,7 @@ public class SimtDbContext : DbContext
         
         if (true)
         {
-            StationSeeds.Seed(modelBuilder);
+            StopSeeds.Seed(modelBuilder);
             PlayerSeeds.Seed(modelBuilder); 
             LineSeeds.Seed(modelBuilder);
             MapSeeds.Seed(modelBuilder);

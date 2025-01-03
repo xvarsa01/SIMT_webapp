@@ -25,8 +25,8 @@ public record RouteEntity() : IEntity
     public required Guid StartStopId { get; set; }
     public required Guid FinalStopId { get; set; }
     public required Guid LineId { get; set; }
-    public required StationEntity StartStop { get; set; }
-    public required StationEntity FinalStop { get; set; }
+    public required StopEntity StartStop { get; set; }
+    public required StopEntity FinalStop { get; set; }
     public required LineEntity Line { get; set; }
     public ICollection<RouteStopEntity> Stops { get; init; } = [];
     
