@@ -10,8 +10,8 @@ public record RouteListModel : ModelBase
     public required Guid StartStopId { get; set; }
     public required Guid FinalStopId { get; set; }
     public required Guid LineId { get; set; }
-    public required string StartStopName { get; set; }
-    public required string FinalStopName { get; set; }
+    public required string? StartStopName { get; set; }
+    public required string? FinalStopName { get; set; }
     public required string LineName { get; set; }
 
     public static RouteListModel Empty => new()

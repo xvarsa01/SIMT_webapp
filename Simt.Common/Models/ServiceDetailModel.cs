@@ -13,12 +13,12 @@ public record ServiceDetailModel() : ModelBase
     public required bool Finished { get; set; }
         
     public required Guid PlayerId { get; set; }
-    public required Guid RouteId { get; set; }
-    public required Guid VehicleId { get; set; }
+    public required Guid? RouteId { get; set; }
+    public required Guid? VehicleId { get; set; }
     
     public required string LineName { get; set; }
-    public required string LineDirection { get; set; }
-    public required Traction LineTraction { get; set; }
+    public required string? LineDirection { get; set; }
+    public required Traction? LineTraction { get; set; }
     
     public required string VehicleType { get; set; }
     public required string VehicleNumber { get; set; }

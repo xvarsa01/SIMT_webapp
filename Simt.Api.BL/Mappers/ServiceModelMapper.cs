@@ -17,11 +17,17 @@ public class ServiceModelMapper : ModelMapperBase<ServiceEntity, ServiceListMode
         {
             Id = entity.Id,
             DateTime = entity.DateTime,
-            LineDirection = entity.Route.FinalStop.StopName,
+            LineDirection = entity.RouteId != null
+                ? entity.Route.FinalStop.StopName
+                : null,
             PlayerId = entity.PlayerId,
             RouteId = entity.RouteId,
-            LineName = entity.Route.Line.LineNumber,
-            LineTraction = entity.Route.Line.Traction,
+            LineName = entity.RouteId != null
+                ? entity.Route.Line.LineNumber
+                : "Deleted Line",
+            LineTraction = entity.RouteId != null
+                ? entity.Route.Line.Traction
+                : null,
             VehicleId = entity.VehicleId,
             VehicleNumber = entity.Vehicle.VehicleNumber,
             VehicleType = entity.Vehicle.Type
@@ -47,9 +53,15 @@ public class ServiceModelMapper : ModelMapperBase<ServiceEntity, ServiceListMode
             PlayerId = entity.PlayerId,
             RouteId = entity.RouteId,
             VehicleId = entity.VehicleId,
-            LineName = entity.Route.Line.LineNumber,
-            LineDirection = entity.Route.FinalStop.StopName,
-            LineTraction = entity.Route.Line.Traction,
+            LineName = entity.RouteId != null
+                ? entity.Route.Line.LineNumber
+                : "Deleted Line",
+            LineDirection = entity.RouteId != null
+                ? entity.Route.FinalStop.StopName
+                : null,
+            LineTraction = entity.RouteId != null
+                ? entity.Route.Line.Traction
+                : null,
             VehicleType = entity.Vehicle.Type,
             VehicleNumber = entity.Vehicle.VehicleNumber,
         };

@@ -53,6 +53,9 @@ public class RouteModelMapper : ModelMapperBase<RouteEntity, RouteListModel, Rou
             StartStopName = entity.StartStop.StopName,
             FinalStopName = entity.FinalStop.StopName,
             LineNumber = entity.Line.LineNumber,
+            
+            // TODO
+            Stops = []
         };
     }
     

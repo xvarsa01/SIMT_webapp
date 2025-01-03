@@ -28,17 +28,39 @@ public class SimtDbContext : DbContext
             .WithOne(e => e.Map)
             .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
 
+        modelBuilder.Entity<LineEntity>()
+            .HasMany(e => e.Routes)
+            .WithOne(e => e.Line)
+            .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<RouteEntity>()
+            .HasMany<ServiceEntity>(i => i.Services)
+            .WithOne(s => s.Route)
+            .OnDelete(deleteBehavior: DeleteBehavior.SetNull);
+        
         modelBuilder.Entity<PlayerEntity>()
             .HasMany<ServiceEntity>(i => i.Services)
             .WithOne(s => s.Player);
         
-        modelBuilder.Entity<RouteEntity>()
-            .HasMany<ServiceEntity>(i => i.Services)
-            .WithOne(s => s.Route);
-        
         modelBuilder.Entity<VehicleEntity>()
             .HasMany<ServiceEntity>(i => i.Services)
             .WithOne(s => s.Vehicle);
+
+        
+        modelBuilder.Entity<RouteEntity>()
+            .HasOne(e => e.StartStop);
+        modelBuilder.Entity<RouteEntity>()
+            .HasOne(e => e.FinalStop);
+        
+        modelBuilder.Entity<RouteEntity>()
+            .HasMany(e => e.Stops)
+            .WithOne(e => e.Route)
+            .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
+        
+        modelBuilder.Entity<StationEntity>()
+            .HasMany(e => e.LineRouteStops)
+            .WithOne(e => e.Stop)
+            .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
 
         
         if (true)

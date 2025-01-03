@@ -13,8 +13,8 @@ public record ServiceEntity:IEntity
     public required bool Finished { get; set; }
     
     public required Guid PlayerId { get; set; }
-    public required Guid RouteId { get; set; }
-    public required Guid VehicleId { get; set; }
+    public required Guid? RouteId { get; set; }
+    public required Guid? VehicleId { get; set; }
     
     public required PlayerEntity Player { get; init; }
     public required RouteEntity Route { get; init; }
