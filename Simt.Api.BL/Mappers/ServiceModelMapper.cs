@@ -18,7 +18,7 @@ public class ServiceModelMapper : ModelMapperBase<ServiceEntity, ServiceListMode
             Id = entity.Id,
             DateTime = entity.DateTime,
             LineDirection = entity.RouteId != null
-                ? entity.Route.FinalStop.StopName
+                ? entity.Route.FinalPlatform.ParentStop.StopName
                 : null,
             PlayerId = entity.PlayerId,
             RouteId = entity.RouteId,
@@ -57,7 +57,7 @@ public class ServiceModelMapper : ModelMapperBase<ServiceEntity, ServiceListMode
                 ? entity.Route.Line.LineNumber
                 : "Deleted Line",
             LineDirection = entity.RouteId != null
-                ? entity.Route.FinalStop.StopName
+                ? entity.Route.FinalPlatform.ParentStop.StopName
                 : null,
             LineTraction = entity.RouteId != null
                 ? entity.Route.Line.Traction

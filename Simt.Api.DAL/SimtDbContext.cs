@@ -13,7 +13,7 @@ public class SimtDbContext : DbContext
     public DbSet<MapEntity> Map => Set<MapEntity>();
     public DbSet<StopEntity> Stop => Set<StopEntity>();
     public DbSet<RouteEntity> Route => Set<RouteEntity>();
-    public DbSet<RouteStopEntity> RouteStop => Set<RouteStopEntity>();
+    public DbSet<RoutePlatformEntity> RouteStop => Set<RoutePlatformEntity>();
     public DbSet<PlayerEntity> Players => Set<PlayerEntity>();
     public DbSet<LineEntity> Lines => Set<LineEntity>();
     public DbSet<ServiceEntity> Services => Set<ServiceEntity>();
@@ -48,12 +48,7 @@ public class SimtDbContext : DbContext
 
         
         modelBuilder.Entity<RouteEntity>()
-            .HasOne(e => e.StartStop);
-        modelBuilder.Entity<RouteEntity>()
-            .HasOne(e => e.FinalStop);
-        
-        modelBuilder.Entity<RouteEntity>()
-            .HasMany(e => e.Stops)
+            .HasMany(e => e.RouteStops)
             .WithOne(e => e.Route)
             .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
         
@@ -65,6 +60,16 @@ public class SimtDbContext : DbContext
         modelBuilder.Entity<PlatformEntity>()
             .HasMany(e => e.RouteStops)
             .WithOne(e => e.Platform)
+            .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
+        
+        modelBuilder.Entity<PlatformEntity>()
+            .HasMany(e => e.RouteStarts)
+            .WithOne(e => e.StartPlatform)
+            .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
+        
+        modelBuilder.Entity<PlatformEntity>()
+            .HasMany(e => e.RouteFinals)
+            .WithOne(e => e.FinalPlatform)
             .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
 
         

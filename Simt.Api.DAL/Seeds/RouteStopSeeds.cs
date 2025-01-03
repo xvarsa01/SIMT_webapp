@@ -5,7 +5,7 @@ namespace Simt.Api.DAL.Seeds;
 
 public static class RouteStopSeeds
 {
-    public static readonly RouteStopEntity Route13AFibichovaA = new ()
+    public static readonly RoutePlatformEntity Route13AFibichovaA = new ()
     {
         Id = Guid.Parse("6bcd2244-c18c-485a-ba60-c877a7d1cc9c"),
         NumberOfStopOnLine = 1,
@@ -15,7 +15,7 @@ public static class RouteStopSeeds
         Platform = PlatformSeeds.FibichovaA,
     };    
     
-    public static readonly RouteStopEntity Route13BFibichovaB = new ()
+    public static readonly RoutePlatformEntity Route13BFibichovaB = new ()
     {
         Id = Guid.Parse("ec36fb48-b8d0-4723-98e0-40a8a28c88dd"),
         NumberOfStopOnLine = 1,
@@ -27,7 +27,7 @@ public static class RouteStopSeeds
     
     
     public static void Seed(this ModelBuilder modelBuilder) =>
-        modelBuilder.Entity<RouteStopEntity>().HasData(
+        modelBuilder.Entity<RoutePlatformEntity>().HasData(
             Route13AFibichovaA with{Route = null!, Platform = null!},
             Route13BFibichovaB with{Route = null!, Platform = null!}
         );

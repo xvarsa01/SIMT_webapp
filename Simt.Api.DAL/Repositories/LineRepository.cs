@@ -11,9 +11,9 @@ public class LineRepository(SimtDbContext dbContext) : RepositoryBase<LineEntity
     {
         return await _dbSet
             .Include(e => e.Routes)
-            .ThenInclude(e => e.StartStop)
+            .ThenInclude(e => e.StartPlatform)
             .Include(e => e.Routes)
-            .ThenInclude(e => e.FinalStop)
+            .ThenInclude(e => e.FinalPlatform)
             .SingleOrDefaultAsync(entity => entity.Id == id);
     }
 }

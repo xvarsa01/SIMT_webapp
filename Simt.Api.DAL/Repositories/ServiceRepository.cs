@@ -11,7 +11,7 @@ public class ServiceRepository(SimtDbContext dbContext) : RepositoryBase<Service
     {
         return await _dbSet
             .Include(e => e.Route)
-            .Include(e => e.Route).ThenInclude(e => e.FinalStop)
+            .Include(e => e.Route).ThenInclude(e => e.FinalPlatform)
             .Include(e => e.Route).ThenInclude(e => e.Line)
             .Include(e => e.Vehicle)
             .ToListAsync();
@@ -22,7 +22,7 @@ public class ServiceRepository(SimtDbContext dbContext) : RepositoryBase<Service
         return await _dbSet
             .Where(e => e.Finished == false)
             .Include(e => e.Route)
-            .Include(e => e.Route).ThenInclude(e => e.FinalStop)
+            .Include(e => e.Route).ThenInclude(e => e.FinalPlatform)
             .Include(e => e.Route).ThenInclude(e => e.Line)
             .Include(e => e.Vehicle)
             .ToListAsync();
@@ -33,7 +33,7 @@ public class ServiceRepository(SimtDbContext dbContext) : RepositoryBase<Service
         return await _dbSet
             .Where(e => e.PlayerId == playerId)
             .Include(e => e.Route)
-            .Include(e => e.Route).ThenInclude(e => e.FinalStop)
+            .Include(e => e.Route).ThenInclude(e => e.FinalPlatform)
             .Include(e => e.Route).ThenInclude(e => e.Line)
             .Include(e => e.Vehicle)
             .Skip(pageSize * (pageNumber - 1))
@@ -45,7 +45,7 @@ public class ServiceRepository(SimtDbContext dbContext) : RepositoryBase<Service
     {
         return await _dbSet
             .Include(e => e.Route)
-            .Include(e => e.Route).ThenInclude(e => e.FinalStop)
+            .Include(e => e.Route).ThenInclude(e => e.FinalPlatform)
             .Include(e => e.Route).ThenInclude(e => e.Line)
             .Include(e => e.Vehicle)
             .SingleOrDefaultAsync(entity => entity.Id == id);

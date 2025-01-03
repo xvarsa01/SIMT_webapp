@@ -22,13 +22,13 @@ public record RouteEntity() : IEntity
     public string? MenuInfoMessageEn{ get; set; }
     public string? MenuInfoMessageDe{ get; set; }
     
-    public required Guid StartStopId { get; set; }
-    public required Guid FinalStopId { get; set; }
+    public required Guid StartPlatformId { get; set; }
+    public required Guid FinalPlatformId { get; set; }
     public required Guid LineId { get; set; }
-    public required StopEntity StartStop { get; set; }
-    public required StopEntity FinalStop { get; set; }
+    public required PlatformEntity StartPlatform { get; set; }
+    public required PlatformEntity FinalPlatform { get; set; }
     public required LineEntity Line { get; set; }
-    public ICollection<RouteStopEntity> Stops { get; init; } = [];
+    public ICollection<RoutePlatformEntity> RouteStops { get; init; } = [];
     
     public ICollection<ServiceEntity> Services { get; init; } = [];
 }

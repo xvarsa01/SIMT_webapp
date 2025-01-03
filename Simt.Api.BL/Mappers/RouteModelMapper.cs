@@ -18,11 +18,11 @@ public class RouteModelMapper (RouteStopModelMapper routeStopModelMapper) : Mode
             Id = entity.Id,
             RouteCode = entity.RouteCode,
             Status = entity.Status,
-            StartStopId = entity.StartStopId,
-            FinalStopId = entity.FinalStopId,
+            StartPlatformId = entity.StartPlatformId,
+            FinalPlatformId = entity.FinalPlatformId,
             LineId = entity.LineId,
-            StartStopName = entity.StartStop.StopName,
-            FinalStopName = entity.FinalStop.StopName,
+            StartStopName = entity.StartPlatform.ParentStop.StopName,
+            FinalStopName = entity.FinalPlatform.ParentStop.StopName,
             LineName = entity.Line.LineNumber,
         };
     }
@@ -47,13 +47,13 @@ public class RouteModelMapper (RouteStopModelMapper routeStopModelMapper) : Mode
             OnlyLowFloor = entity.OnlyLowFloor,
             TwoWay = entity.TwoWay,
             AlternativeDrive = entity.AlternativeDrive,
-            StartStopId = entity.StartStopId,
-            FinalStopId = entity.FinalStopId,
+            StartPlatformId = entity.StartPlatformId,
+            FinalPlatformId = entity.FinalPlatformId,
             LineId = entity.LineId,
-            StartStopName = entity.StartStop.StopName,
-            FinalStopName = entity.FinalStop.StopName,
+            StartStopName = entity.StartPlatform.ParentStop.StopName,
+            FinalStopName = entity.FinalPlatform.ParentStop.StopName,
             LineNumber = entity.Line.LineNumber,
-            Stops = routeStopModelMapper.MapToListModel(entity.Stops)
+            Stops = routeStopModelMapper.MapToListModel(entity.RouteStops)
         };
     }
     
@@ -72,12 +72,12 @@ public class RouteModelMapper (RouteStopModelMapper routeStopModelMapper) : Mode
             OnlyLowFloor =  model.OnlyLowFloor,
             TwoWay = model.TwoWay,
             AlternativeDrive = model.AlternativeDrive,
-            StartStopId = model.StartStopId,
-            FinalStopId = model.FinalStopId,
+            StartPlatformId = model.StartPlatformId,
+            FinalPlatformId = model.FinalPlatformId,
             LineId = model.LineId,
             Line = null!,
-            StartStop = null!,
-            FinalStop = null!,
+            StartPlatform = null!,
+            FinalPlatform = null!,
         };
     }
 }

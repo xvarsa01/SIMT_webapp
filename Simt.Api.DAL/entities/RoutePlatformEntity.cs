@@ -1,6 +1,6 @@
 namespace Simt.Api.DAL.entities;
 
-public record RouteStopEntity() : IEntity
+public record RoutePlatformEntity() : IEntity
 {
     public required Guid Id { get; set; }
     public required int NumberOfStopOnLine { get; set; }

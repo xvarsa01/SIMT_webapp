@@ -8,5 +8,7 @@ public record PlatformEntity() : IEntity
     
     public required Guid ParentStopId { get; set; }
     public required StopEntity ParentStop { get; set; }
-    public ICollection<RouteStopEntity> RouteStops { get; init; } = [];
+    public ICollection<RoutePlatformEntity> RouteStops { get; init; } = [];
+    public ICollection<RouteEntity> RouteStarts { get; init; } = [];
+    public ICollection<RouteEntity> RouteFinals { get; init; } = [];
 }

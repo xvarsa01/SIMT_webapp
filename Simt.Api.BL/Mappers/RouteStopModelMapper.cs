@@ -4,9 +4,9 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Mappers;
 
-public class RouteStopModelMapper : ModelMapperBase<RouteStopEntity, RouteStopModel, RouteStopModel>
+public class RouteStopModelMapper : ModelMapperBase<RoutePlatformEntity, RouteStopModel, RouteStopModel>
 {
-    public override RouteStopModel MapToListModel(RouteStopEntity? entity)
+    public override RouteStopModel MapToListModel(RoutePlatformEntity? entity)
     {
         if (entity is null)
         {
@@ -22,14 +22,14 @@ public class RouteStopModelMapper : ModelMapperBase<RouteStopEntity, RouteStopMo
         };
     }
 
-    public override RouteStopModel MapToDetailModel(RouteStopEntity? entity)
+    public override RouteStopModel MapToDetailModel(RoutePlatformEntity? entity)
     {
         return MapToListModel(entity);
     }
     
-    public override RouteStopEntity MapToEntity(RouteStopModel model)
+    public override RoutePlatformEntity MapToEntity(RouteStopModel model)
     {
-        return new RouteStopEntity
+        return new RoutePlatformEntity
         {
             Id = model.Id,
             NumberOfStopOnLine = model.NumberOfStopOnLine,

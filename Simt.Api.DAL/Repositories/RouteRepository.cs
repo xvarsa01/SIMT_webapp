@@ -11,8 +11,8 @@ public class RouteRepository(SimtDbContext dbContext) : RepositoryBase<RouteEnti
     {
         return await _dbSet
             .Include(e => e.Line)
-            .Include(e => e.StartStop)
-            .Include(e => e.FinalStop)
+            .Include(e => e.StartPlatform).ThenInclude(e => e.ParentStop)
+            .Include(e => e.FinalPlatform).ThenInclude(e => e.ParentStop)
             .ToListAsync();
     }
     
@@ -20,9 +20,9 @@ public class RouteRepository(SimtDbContext dbContext) : RepositoryBase<RouteEnti
     {
         return await _dbSet
             .Include(e => e.Line)
-            .Include(e => e.StartStop)
-            .Include(e => e.FinalStop)
-            .Include(e => e.Stops)
+            .Include(e => e.StartPlatform).ThenInclude(e => e.ParentStop)
+            .Include(e => e.FinalPlatform).ThenInclude(e => e.ParentStop)
+            .Include(e => e.RouteStops)
             .SingleOrDefaultAsync(entity => entity.Id == id);
     }
 }

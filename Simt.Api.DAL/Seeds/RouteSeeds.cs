@@ -19,11 +19,11 @@ public static class RouteSeeds
         OnlyLowFloor = false,
         TwoWay = false,
         AlternativeDrive = false,
-        StartStopId = StopSeeds.Koprasy.Id,
-        FinalStopId = StopSeeds.StrelnaHora.Id,
+        StartPlatformId = PlatformSeeds.KoprasyNastup.Id,
+        FinalPlatformId = PlatformSeeds.StrelnaHoraVystup.Id,
         LineId = LineSeeds.Line1.Id,
-        StartStop = StopSeeds.Koprasy,
-        FinalStop = StopSeeds.StrelnaHora,
+        StartPlatform = PlatformSeeds.KoprasyNastup,
+        FinalPlatform = PlatformSeeds.StrelnaHoraVystup,
         Line = LineSeeds.Line1,
     };    
     public static readonly RouteEntity Route1B = new ()
@@ -39,11 +39,11 @@ public static class RouteSeeds
         OnlyLowFloor = false,
         TwoWay = false,
         AlternativeDrive = false,
-        StartStopId = StopSeeds.StrelnaHora.Id,
-        FinalStopId = StopSeeds.Koprasy.Id,
+        StartPlatformId = PlatformSeeds.StrelnaHoraNastup.Id,
+        FinalPlatformId = PlatformSeeds.KoprasyVystup.Id,
         LineId = LineSeeds.Line1.Id,
-        StartStop = StopSeeds.StrelnaHora,
-        FinalStop = StopSeeds.Koprasy,
+        StartPlatform = PlatformSeeds.StrelnaHoraNastup,
+        FinalPlatform = PlatformSeeds.KoprasyVystup,
         Line = LineSeeds.Line1,
     };
     public static readonly RouteEntity Route13A = new ()
@@ -59,11 +59,11 @@ public static class RouteSeeds
         OnlyLowFloor = false,
         TwoWay = false,
         AlternativeDrive = false,
-        StartStopId = StopSeeds.Rolky.Id,
-        FinalStopId = StopSeeds.HlavniNadrazi.Id,
+        StartPlatformId = PlatformSeeds.RolkyNastup.Id,
+        FinalPlatformId = PlatformSeeds.HlavniNadraziB.Id,
         LineId = LineSeeds.Line13.Id,
-        StartStop = StopSeeds.Rolky,
-        FinalStop = StopSeeds.HlavniNadrazi,
+        StartPlatform = PlatformSeeds.RolkyNastup,
+        FinalPlatform = PlatformSeeds.HlavniNadraziB,
         Line = LineSeeds.Line13,
     };    
     public static readonly RouteEntity Route13B = new ()
@@ -79,19 +79,19 @@ public static class RouteSeeds
         OnlyLowFloor = false,
         TwoWay = false,
         AlternativeDrive = false,
-        StartStopId = StopSeeds.HlavniNadrazi.Id,
-        FinalStopId = StopSeeds.Rolky.Id,
+        StartPlatformId = PlatformSeeds.HlavniNadraziB.Id,
+        FinalPlatformId = PlatformSeeds.RolkyVystup.Id,
         LineId = LineSeeds.Line13.Id,
-        StartStop = StopSeeds.HlavniNadrazi,
-        FinalStop = StopSeeds.Rolky,
+        StartPlatform = PlatformSeeds.HlavniNadraziA,
+        FinalPlatform = PlatformSeeds.RolkyVystup,
         Line = LineSeeds.Line13,
     };
    
     
     static RouteSeeds()
     {
-        Route13A.Stops.Add(RouteStopSeeds.Route13AFibichovaA);
-        Route13B.Stops.Add(RouteStopSeeds.Route13BFibichovaB);
+        Route13A.RouteStops.Add(RouteStopSeeds.Route13AFibichovaA);
+        Route13B.RouteStops.Add(RouteStopSeeds.Route13BFibichovaB);
         
         Route1A.Services.Add(ServiceSeeds.Service1);
         Route13A.Services.Add(ServiceSeeds.Service2);
@@ -101,9 +101,9 @@ public static class RouteSeeds
     
     public static void Seed(this ModelBuilder modelBuilder) =>
         modelBuilder.Entity<RouteEntity>().HasData(
-            Route1A with{Stops = [], Services = [], FinalStop = null!, StartStop = null!, Line = null!},
-            Route1B with{Stops = [], Services = [], FinalStop = null!, StartStop = null!, Line = null!},
-            Route13A with{Stops = [], Services = [], FinalStop = null!, StartStop = null!, Line = null!},
-            Route13B with{Stops = [], Services = [], FinalStop = null!, StartStop = null!, Line = null!}
+            Route1A with{RouteStops = [], Services = [], FinalPlatform = null!, StartPlatform = null!, Line = null!},
+            Route1B with{RouteStops = [], Services = [], FinalPlatform = null!, StartPlatform = null!, Line = null!},
+            Route13A with{RouteStops = [], Services = [], FinalPlatform = null!, StartPlatform = null!, Line = null!},
+            Route13B with{RouteStops = [], Services = [], FinalPlatform = null!, StartPlatform = null!, Line = null!}
         );
 }
