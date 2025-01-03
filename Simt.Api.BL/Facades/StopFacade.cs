@@ -46,6 +46,23 @@ public class StopFacade : FacadeBase<StopRepository, StopEntity, StopListModel, 
                     lineListModelList.Add(_lineModelMapper.MapToListModel(line));
                 }
             }
+
+            foreach (var routeStartingHere in platform.RouteStarts)
+            {
+                var line = routeStartingHere.Line;
+                if (addedLineIds.Add(line.Id)) // Add to HashSet and check for duplicates
+                {
+                    lineListModelList.Add(_lineModelMapper.MapToListModel(line));
+                }
+            }
+            foreach (var routeFinishingHere in platform.RouteFinals)
+            {
+                var line = routeFinishingHere.Line;
+                if (addedLineIds.Add(line.Id)) // Add to HashSet and check for duplicates
+                {
+                    lineListModelList.Add(_lineModelMapper.MapToListModel(line));
+                }
+            }
         }
         return lineListModelList;
     }

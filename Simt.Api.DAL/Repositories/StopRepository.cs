@@ -14,6 +14,15 @@ public class StopRepository(SimtDbContext dbContext) : RepositoryBase<StopEntity
             .ThenInclude(e => e.RouteStops)
             .ThenInclude(e => e.Route)
             .ThenInclude(e => e.Line)
+            
+            .Include(e => e.Platforms)
+            .ThenInclude(e => e.RouteStarts)
+            .ThenInclude(e => e.Line)
+            
+            .Include(e => e.Platforms)
+            .ThenInclude(e => e.RouteFinals)
+            .ThenInclude(e => e.Line)
+            
             .SingleOrDefaultAsync(entity => entity.Id == id);
     }
 }
