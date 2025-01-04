@@ -18,16 +18,16 @@ public class PlatformController : ControllerBase
     }
 
     [HttpGet("all")]
-    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<PlatformModel>>))]
-    public async Task<List<PlatformModel>> GetAll()
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<PlatformDetailModel>>))]
+    public async Task<List<PlatformListModel>> GetAll()
     {
         return await _platformFacade.GetAllAsync();
     }
 
     [HttpGet("{id}")]
-    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<PlatformModel>))]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<PlatformDetailModel>))]
     [SwaggerResponse(HttpStatusCode.NotFound, null)]
-    public async Task<ActionResult<PlatformModel?>> GetById(Guid id)
+    public async Task<ActionResult<PlatformDetailModel?>> GetById(Guid id)
     { 
         var model = await _platformFacade.GetByIdAsync(id);
         if (model == null)
@@ -38,8 +38,8 @@ public class PlatformController : ControllerBase
     }
     
     [HttpPost()]
-    [SwaggerResponse(HttpStatusCode.Created, typeof(ActionResult<PlatformModel>))]
-    public async Task<ActionResult<PlatformModel>> CreateAsync(PlatformModel model)
+    [SwaggerResponse(HttpStatusCode.Created, typeof(ActionResult<PlatformDetailModel>))]
+    public async Task<ActionResult<PlatformDetailModel>> CreateAsync(PlatformDetailModel model)
     {
         var id = await _platformFacade.CreateAsync(model);
         var detailModel = await _platformFacade.GetByIdAsync(id);
@@ -47,8 +47,8 @@ public class PlatformController : ControllerBase
     }
 
     [HttpPut]
-    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<PlatformModel>))]
-    public async Task<ActionResult<PlatformModel>> Update(PlatformModel model)
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<PlatformDetailModel>))]
+    public async Task<ActionResult<PlatformDetailModel>> Update(PlatformDetailModel model)
     {
         var id = await _platformFacade.UpdateAsync(model);
         if (id != null)

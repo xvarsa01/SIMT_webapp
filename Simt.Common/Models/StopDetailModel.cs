@@ -8,7 +8,7 @@ public record StopDetailModel() : ModelBase
     public required bool FinalStop { get; set; }
     public required bool RequestStop { get; set; }
     
-    public List<PlatformModel> Platforms { get; set; } = new();
+    public List<PlatformListModel> Platforms { get; set; } = new();
 
     public static StopDetailModel Empty => new()
     {

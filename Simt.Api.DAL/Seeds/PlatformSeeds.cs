@@ -96,19 +96,31 @@ public static class PlatformSeeds
     {
         FibichovaA.RouteStops.Add(RouteStopSeeds.Route13AFibichovaA);
         FibichovaB.RouteStops.Add(RouteStopSeeds.Route13BFibichovaB);
+        
+        RolkyNastup.RouteStarts.Add(RouteSeeds.Route13A);
+        RolkyVystup.RouteFinals.Add(RouteSeeds.Route13B);
+        
+        HlavniNadraziA.RouteStarts.Add(RouteSeeds.Route13B);
+        HlavniNadraziB.RouteFinals.Add(RouteSeeds.Route13A);
+        
+        KoprasyNastup.RouteStarts.Add(RouteSeeds.Route1A);
+        KoprasyVystup.RouteFinals.Add(RouteSeeds.Route1B);
+        
+        StrelnaHoraNastup.RouteStarts.Add(RouteSeeds.Route1B);
+        StrelnaHoraVystup.RouteFinals.Add(RouteSeeds.Route1A);
     }
     
     public static void Seed(this ModelBuilder modelBuilder) =>
         modelBuilder.Entity<PlatformEntity>().HasData(
-            RolkyVystup with{RouteStops = [], ParentStop = null!},
-            RolkyNastup with{RouteStops = [], ParentStop = null!},
-            FibichovaA with{RouteStops = [], ParentStop = null!},
-            FibichovaB with{RouteStops = [], ParentStop = null!},
-            HlavniNadraziA with{RouteStops = [], ParentStop = null!},
-            HlavniNadraziB with{RouteStops = [], ParentStop = null!},
-            KoprasyVystup with{RouteStops = [], ParentStop = null!},
-            KoprasyNastup with{RouteStops = [], ParentStop = null!},
-            StrelnaHoraVystup with{RouteStops = [], ParentStop = null!},
-            StrelnaHoraNastup with{RouteStops = [], ParentStop = null!}
+            RolkyVystup with{RouteStops = [], RouteStarts = [], RouteFinals = [], ParentStop = null!},
+            RolkyNastup with{RouteStops = [], RouteStarts = [], RouteFinals = [], ParentStop = null!},
+            FibichovaA with{RouteStops = [], RouteStarts = [], RouteFinals = [], ParentStop = null!},
+            FibichovaB with{RouteStops = [], RouteStarts = [], RouteFinals = [], ParentStop = null!},
+            HlavniNadraziA with{RouteStops = [], RouteStarts = [], RouteFinals = [], ParentStop = null!},
+            HlavniNadraziB with{RouteStops = [], RouteStarts = [], RouteFinals = [], ParentStop = null!},
+            KoprasyVystup with{RouteStops = [], RouteStarts = [], RouteFinals = [], ParentStop = null!},
+            KoprasyNastup with{RouteStops = [], RouteStarts = [], RouteFinals = [], ParentStop = null!},
+            StrelnaHoraVystup with{RouteStops = [], RouteStarts = [], RouteFinals = [], ParentStop = null!},
+            StrelnaHoraNastup with{RouteStops = [], RouteStarts = [], RouteFinals = [], ParentStop = null!}
         );
 }

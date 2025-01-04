@@ -4,38 +4,53 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Mappers;
 
-public class PlatformModelMapper (RouteStopModelMapper routeStopModelMapper) : ModelMapperBase<PlatformEntity, PlatformModel, PlatformModel>
+public class PlatformModelMapper (RouteStopModelMapper routeStopModelMapper, RouteModelMapper routeModelMapper)
+    : ModelMapperBase<PlatformEntity, PlatformListModel, PlatformDetailModel>
 {
-    public override PlatformModel MapToListModel(PlatformEntity? entity)
+    public override PlatformListModel MapToListModel(PlatformEntity? entity)
     {
         if (entity is null)
         {
-            return PlatformModel.Empty;
+            return PlatformListModel.Empty;
         }
 
-        return new PlatformModel
+        return new PlatformListModel
+        {
+            Id = entity.Id,
+            PlatformName = entity.PlatformName,
+            ParentStopId = entity.ParentStopId,
+            ParentStopName = entity.ParentStop.StopName!
+        };
+    }
+
+    public override PlatformDetailModel MapToDetailModel(PlatformEntity? entity)
+    {
+        if (entity is null)
+        {
+            return PlatformDetailModel.Empty;
+        }
+
+        return new PlatformDetailModel
         {
             Id = entity.Id,
             PlatformName = entity.PlatformName,
             LowFloor = entity.LowFloor,
             ParentStopId = entity.ParentStopId,
-            RouteStops = routeStopModelMapper.MapToListModel(entity.RouteStops)
+            ParentStopName = entity.ParentStop.StopName!,
+            RouteStops = routeStopModelMapper.MapToListModel(entity.RouteStops),
+            RouteStarts = routeModelMapper.MapToListModel(entity.RouteStarts),
+            RouteFinals = routeModelMapper.MapToListModel(entity.RouteFinals),
         };
     }
-
-    public override PlatformModel MapToDetailModel(PlatformEntity? entity)
-    {
-        return MapToListModel(entity);
-    }
     
-    public override PlatformEntity MapToEntity(PlatformModel model)
+    public override PlatformEntity MapToEntity(PlatformDetailModel detailModel)
     {
         return new PlatformEntity
         {
-            Id = model.Id,
-            PlatformName = model.PlatformName,
-            LowFloor = model.LowFloor,
-            ParentStopId = model.ParentStopId,
+            Id = detailModel.Id,
+            PlatformName = detailModel.PlatformName,
+            LowFloor = detailModel.LowFloor,
+            ParentStopId = detailModel.ParentStopId,
             ParentStop = null!,
         };
     }

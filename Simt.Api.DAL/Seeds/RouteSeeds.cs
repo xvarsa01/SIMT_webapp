@@ -79,7 +79,7 @@ public static class RouteSeeds
         OnlyLowFloor = false,
         TwoWay = false,
         AlternativeDrive = false,
-        StartPlatformId = PlatformSeeds.HlavniNadraziB.Id,
+        StartPlatformId = PlatformSeeds.HlavniNadraziA.Id,
         FinalPlatformId = PlatformSeeds.RolkyVystup.Id,
         LineId = LineSeeds.Line13.Id,
         StartPlatform = PlatformSeeds.HlavniNadraziA,

@@ -5,14 +5,14 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Facades;
 
-public class PlatformFacade : FacadeBase<PlatformRepository, PlatformEntity, PlatformModel, PlatformModel>
+public class PlatformFacade : FacadeBase<PlatformRepository, PlatformEntity, PlatformListModel, PlatformDetailModel>
 {
     private readonly PlatformRepository _platformRepository;
-    private readonly IModelMapper<PlatformEntity, PlatformModel, PlatformModel> _modelMapper;
+    private readonly IModelMapper<PlatformEntity, PlatformListModel, PlatformDetailModel> _modelMapper;
 
     public PlatformFacade(
         PlatformRepository repository, 
-        IModelMapper<PlatformEntity, PlatformModel, PlatformModel> modelMapper) 
+        IModelMapper<PlatformEntity, PlatformListModel, PlatformDetailModel> modelMapper) 
         : base(repository, modelMapper)
     {
         _platformRepository = repository;
