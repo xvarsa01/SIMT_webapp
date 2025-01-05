@@ -13,6 +13,10 @@ using Simt.Common.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddHttpsRedirection(options =>
+{
+    options.HttpsPort = null; // Or set a valid HTTPS port
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -41,11 +45,22 @@ app.Run();
 
 void ConfigureDependencies(IServiceCollection serviceCollection)
 {
-    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+    var dbName = builder.Configuration.GetConnectionString("DefaultConnection")
                            ?? throw new ArgumentException("The connection string is missing");
+    
+    var connectionString = "Data Source=../Simt.Api.DAL/";
+    if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "true")
+    {
+        connectionString = "Data Source=../../../../Simt.Api.DAL/";
+    }
+    
     serviceCollection.AddDbContext<SimtDbContext>(options =>
-        options.UseSqlite(connectionString));
+        options.UseSqlite(connectionString+dbName));
 
     serviceCollection.AddBLServices();
     serviceCollection.AddDALServices();
+}
+
+public partial class Program
+{
 }
