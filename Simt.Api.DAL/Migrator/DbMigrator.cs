@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Simt.Api.DAL.Options;
+using Simt.Api.DAL.Installers;
 
 namespace Simt.Api.DAL.Migrator;
 
-public class DbMigrator(IDbContextFactory<SimtDbContext> dbContextFactory, DALOptions options)
+public class DbMigrator(IDbContextFactory<SimtDbContext> dbContextFactory, DbConfiguration dbConfiguration)
     : IDbMigrator
 {
     public void Migrate() => MigrateAsync(CancellationToken.None).GetAwaiter().GetResult();
@@ -11,15 +11,13 @@ public class DbMigrator(IDbContextFactory<SimtDbContext> dbContextFactory, DALOp
     public async Task MigrateAsync(CancellationToken cancellationToken)
     {
         await using SimtDbContext dbContext = await dbContextFactory.CreateDbContextAsync(cancellationToken);
-
-        if(options.RecreateDatabaseEachTime)
+        if(dbConfiguration.Sqlite is { Enabled: true, RecreateDatabaseEachTime: true } || 
+           dbConfiguration.SqlServer is { Enabled: true, RecreateDatabaseEachTime: true })
         {
             await dbContext.Database.EnsureDeletedAsync(cancellationToken);
         }
 
-        // Ensures that database is created applying the latest state
-        // Application of migration later on may fail
-        // If you want to use migrations, you should create database by calling  dbContext.Database.MigrateAsync(cancellationToken) instead
-        await dbContext.Database.EnsureCreatedAsync(cancellationToken);
+        // await dbContext.Database.MigrateAsync(cancellationToken);           // this creates CD using created Migrations
+        await dbContext.Database.EnsureCreatedAsync(cancellationToken);     // this creates DB just using actual seeds
     }
 }

@@ -1,14 +1,6 @@
-using Microsoft.EntityFrameworkCore;
-using Simt.Api.BL;
-using Simt.Api.BL.Facades;
 using Simt.Api.BL.Installers;
-using Simt.Api.BL.Mappers;
-using Simt.Api.BL.Mappers.InterfaceBase;
-using Simt.Api.DAL;
-using Simt.Api.DAL.entities;
 using Simt.Api.DAL.Installers;
-using Simt.Api.DAL.Repositories;
-using Simt.Common.Models;
+using Simt.Api.DAL.Migrator;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,26 +33,28 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+MigrateDb(app.Services.GetRequiredService<IDbMigrator>());
+
 app.Run();
 
 void ConfigureDependencies(IServiceCollection serviceCollection)
 {
-    var dbName = builder.Configuration.GetConnectionString("DefaultConnection")
-                           ?? throw new ArgumentException("The connection string is missing");
-    
-    var connectionString = "Data Source=../Simt.Api.DAL/";
-    if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "true")
-    {
-        connectionString = "Data Source=../../../../Simt.Api.DAL/";
-    }
-    
-    serviceCollection.AddDbContext<SimtDbContext>(options =>
-        options.UseSqlite(connectionString+dbName));
+    var dbConfig = GetDbConfig();
 
+    serviceCollection.AddDALServices(dbConfig);
     serviceCollection.AddBLServices();
-    serviceCollection.AddDALServices();
+    
+    serviceCollection.AddSingleton<IDbMigrator, DbMigrator>();
 }
 
+DbConfiguration GetDbConfig()
+{
+    DbConfiguration dbConfig = new();
+    builder.Configuration.GetSection("DAL").Bind(dbConfig);
+    return dbConfig;
+}
+
+void MigrateDb(IDbMigrator migrator) => migrator.Migrate();
 public partial class Program
 {
 }
