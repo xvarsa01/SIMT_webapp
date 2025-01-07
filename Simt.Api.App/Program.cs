@@ -41,7 +41,10 @@ void ConfigureDependencies(IServiceCollection serviceCollection)
 {
     var dbConfig = GetDbConfig();
 
-    serviceCollection.AddDALServices(dbConfig);
+    serviceCollection.AddSingleton<IDALInstaller, DALInstaller>();
+    var configurator = serviceCollection.BuildServiceProvider().GetRequiredService<IDALInstaller>();
+    configurator.AddDALServices(serviceCollection, dbConfig);
+    
     serviceCollection.AddBLServices();
     
     serviceCollection.AddSingleton<IDbMigrator, DbMigrator>();

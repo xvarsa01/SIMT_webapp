@@ -1,13 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using Simt.Api.DAL.Factories;
 using Simt.Api.DAL.Repositories;
 
 namespace Simt.Api.DAL.Installers;
 
-public static class DALInstaller
+public class DALInstaller : IDALInstaller
 {
-    public static void AddDALServices(this IServiceCollection services, DbConfiguration dbConfig)
+    public void AddDALServices(IServiceCollection services, DbConfiguration dbConfig)
     {
         if (dbConfig is null)
         {
@@ -23,17 +24,13 @@ public static class DALInstaller
         {
             throw new InvalidOperationException("No database provider enabled in Simt.Api.App appsettings.json . Choose just one of them.");
         }
-        
+
         if (dbConfig.Sqlite.Enabled)
         {
+            var dataSourceString = "Data Source=";
+
             var dbName = dbConfig.Sqlite.DatabaseName
                          ?? throw new ArgumentException("The connection string is missing");
-        
-            var dataSourceString = "Data Source=";
-            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "true")
-            {
-                dataSourceString = "Data Source=../../../";
-            }
         
             services.AddSingleton<IDbContextFactory<SimtDbContext>>(_ =>
                 new DbContextSqLiteFactory(dbName, dbConfig.Sqlite.SeedDemoData));
@@ -44,7 +41,7 @@ public static class DALInstaller
         {
             
         }
-        
+
         services.AddSingleton(dbConfig);
         services.Scan(selector => selector
             .FromAssemblyOf<SimtDbContext>() 

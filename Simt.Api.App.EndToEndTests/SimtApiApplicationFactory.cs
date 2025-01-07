@@ -7,7 +7,7 @@ public class SimtApiApplicationFactory : WebApplicationFactory<Program>
 {
     protected override IHost CreateHost(IHostBuilder builder)
     {
-        Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "true");
+        Environment.SetEnvironmentVariable("ASPNETCORE_TESTING", "true");
 
         builder.ConfigureServices(collection =>
         {

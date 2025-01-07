@@ -16,7 +16,7 @@ public record SqlServerConfig
 
 public record SqliteConfig
 {
-    public string DatabaseName { get; init; } = null!;
+    public string DatabaseName { get; set; } = null!;
     public bool SeedDemoData { get; set; }
     public bool RecreateDatabaseEachTime { get; set; }
     public bool Enabled { get; set; }
