@@ -8,13 +8,13 @@ namespace Simt.Api.App.EndToEndTests;
 [Collection("SequentialTests")]
 public class VehicleControllerTests : IAsyncDisposable
 {
-    private readonly SimtApiApplicationFactory application;
+    private readonly SimtApiApplicationFactory _application;
     private readonly Lazy<HttpClient> _client;
     
     public VehicleControllerTests()
     {
-        application = new SimtApiApplicationFactory();
-        _client = new Lazy<HttpClient>(application.CreateClient());
+        _application = new SimtApiApplicationFactory();
+        _client = new Lazy<HttpClient>(_application.CreateClient());
     }
     
     private readonly VehicleDetailModel _newVehicle = new()
@@ -75,6 +75,6 @@ public class VehicleControllerTests : IAsyncDisposable
     
     public async ValueTask DisposeAsync()
     {
-        await application.DisposeAsync();
+        await _application.DisposeAsync();
     }
 }
