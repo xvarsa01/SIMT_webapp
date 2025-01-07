@@ -4,12 +4,8 @@ using Simt.Api.DAL.Seeds;
 
 namespace Simt.Api.DAL;
 
-public class SimtDbContext : DbContext
+public class SimtDbContext (DbContextOptions contextOptions, bool seedDemoData = false) : DbContext(contextOptions)
 {
-    public SimtDbContext(DbContextOptions<SimtDbContext> options, bool seedDemoData = false) : base(options)
-    {
-        // _seedDemoData = seedDemoData;
-    }
     public DbSet<MapEntity> Map => Set<MapEntity>();
     public DbSet<StopEntity> Stop => Set<StopEntity>();
     public DbSet<RouteEntity> Route => Set<RouteEntity>();
@@ -73,7 +69,7 @@ public class SimtDbContext : DbContext
             .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
 
         
-        if (true)
+        if (seedDemoData)
         {
             StopSeeds.Seed(modelBuilder);
             PlatformSeeds.Seed(modelBuilder);
