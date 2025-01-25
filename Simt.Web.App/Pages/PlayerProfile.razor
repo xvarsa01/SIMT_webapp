@@ -1,0 +1,99 @@
+@page "/profil/{Nick}"
+
+<h3>PlayerProfile</h3>
+
+@if (_found)
+{
+    <p>@Player!.Nick</p>
+    <div class="profile-card">
+        <table>
+            <tr>
+                <th>Registration date</th>
+                <td>
+                    @(Player.RegistrationDate == DateOnly.MinValue ? "Kdysi davno" : Player.RegistrationDate.ToString())
+                </td>
+            </tr>
+            <tr>
+                <th>Last login</th>
+                <td>before @Player.LastLogin days</td>
+            </tr>
+            <tr>
+                <th>Hours played</th>
+                <td>@Player.PlayTime hours</td>
+            </tr>
+            <tr>
+                <th>Passengers transported</th>
+                <td>@Player.PassengersCarried</td>
+            </tr>
+            <tr>
+                <th>Gain points</th>
+                <td>@Player.PointsGained</td>
+            </tr>
+            <tr>
+                <th>Game money</th>
+                <td>@Player.GameMoney Kč</td>
+            </tr>
+            <tr>
+                <th>Fuel</th>
+                <td>@Player.Fuel l</td>
+            </tr>
+            <tr>
+                <th>CNG</th>
+                <td>@Player.Cng kg</td>
+            </tr>
+            <tr>
+                <th>Service costs</th>
+                <td>@Player.ServiceSpending Kč</td>
+            </tr>
+            <tr>
+                <th>Total kilometers</th>
+                <td>@Player.KmOverall km</td>
+            </tr>
+            <tr>
+                <th>This year kilometers</th>
+                <td>@Player.KmYear km</td>
+            </tr>
+        </table>
+    </div>
+
+    <p></p>
+
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>Traction</th>
+                <th>Line</th>
+                <th>Direction</th>
+                <th>Avg Delay</th>
+                <th>Avg Ahead</th>
+                <th>Passengers</th>
+                <th>Money gained</th>
+                <th>Vehicle</th>
+                <th>DateTime</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var service in ServicesOfPlayer)
+            {
+                <tr>
+                    <td> @service.LineTraction</td>
+                    <td> @service.LineName</td>
+                    <td> @service.LineDirection</td>
+                    <td> @service.AvgDelay</td>
+                    <td> @service.AvgAhead</td>
+                    <td> @service.PassengersCarried</td>
+                    <td> @service.GameMoneyGained</td>
+                    <td> @service.VehicleType @service.VehicleNumber</td>
+                    <td> @service.DateTime</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <button @onclick="LoadMoreServices">View older Records</button>
+    </div>
+}
+else
+{
+    <p>Profile not found</p>
+}
