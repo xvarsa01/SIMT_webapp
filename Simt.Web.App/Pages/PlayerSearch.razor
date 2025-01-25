@@ -1,0 +1,28 @@
+@page "/profily"
+
+<h3>PlayerSearch</h3>
+
+<div>
+    <input @oninput="OnSearchChange" placeholder="Zadaj aspon 3 znaky">
+    
+    <table>
+        <thead>
+        <tr>
+            <th>Nick</th>
+            <th>Name</th>
+            <th>City</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var player in SearchedPlayers)
+        {
+            <tr>
+                <td> @player.Nick</td>
+                <td> @player.ProfileName</td>
+                <td> @player.ProfileCity</td>
+                <td> <button @onclick="() => OpenProfile(player.Nick)">Open profile</button></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
