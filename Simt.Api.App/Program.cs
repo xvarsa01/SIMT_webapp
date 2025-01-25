@@ -17,6 +17,9 @@ builder.Services.AddSwaggerGen();
 
 ConfigureDependencies(builder.Services);
 
+ConfigureOpenApiDocuments(builder.Services);
+ConfigureSwaggerGen();
+
 
 var app = builder.Build();
 
@@ -48,6 +51,37 @@ void ConfigureDependencies(IServiceCollection serviceCollection)
     serviceCollection.AddBLServices();
     
     serviceCollection.AddSingleton<IDbMigrator, DbMigrator>();
+}
+
+void ConfigureOpenApiDocuments(IServiceCollection serviceCollection)
+{
+    serviceCollection.AddEndpointsApiExplorer();
+    serviceCollection.AddOpenApiDocument();
+}
+
+void ConfigureSwaggerGen()
+{
+    builder.Services.AddSwaggerGen(options =>
+    {
+        options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+        {
+            Title = "SIMT API",
+            Version = "v1",
+            Description = "API Documentation"
+        });
+
+        options.AddServer(new Microsoft.OpenApi.Models.OpenApiServer
+        {
+            //This is for gen docs and direct connect to api
+            Url = "https://localhost:7259"
+        });
+        options.CustomOperationIds(apiDesc =>
+        {
+            var controllerName = apiDesc.ActionDescriptor.RouteValues["controller"];
+            var actionName = apiDesc.ActionDescriptor.RouteValues["action"];
+            return $"{controllerName}_{actionName}";
+        });
+    });
 }
 
 DbConfiguration GetDbConfig()
