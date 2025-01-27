@@ -1,5 +1,6 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using NSwag.Annotations;
 using Simt.Api.BL.Facades;
 using Simt.Common.Models;
 
@@ -22,6 +23,19 @@ public class PlayerController : ControllerBase
     {
         return _playerFacade.GetAllAsync();
     }
+    
+    [HttpGet("search")]
+    [SwaggerResponse(200, typeof(ActionResult<IEnumerable<PlayerListModel>>))]
+    [SwaggerResponse(204, null)]
+    public async Task<ActionResult<IEnumerable<PlayerListModel>>> GetAllSearched(string searchTerm)
+    {
+        var results = await _playerFacade.GetAllAsync(searchTerm);
+        if (!results.Any())
+        {
+            return NoContent();
+        }
+        return Ok(results);
+    }
 
     [HttpGet("{id}")]
     // [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<PlayerModel>))]
@@ -29,6 +43,19 @@ public class PlayerController : ControllerBase
     public async Task<ActionResult<PlayerDetailModel?>> GetById(Guid id)
     { 
         var model = await _playerFacade.GetByIdAsync(id);
+        if (model == null)
+        {
+            return NotFound();
+        }
+        return Ok(model);
+    }
+    
+    [HttpGet("nick")]
+    // [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<PlayerModel>))]
+    // [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<PlayerModel>))]
+    public async Task<ActionResult<PlayerDetailModel?>> GetByNick(string nick)
+    { 
+        var model = await _playerFacade.GetByNickAsync(nick);
         if (model == null)
         {
             return NotFound();
