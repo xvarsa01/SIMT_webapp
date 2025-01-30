@@ -33,6 +33,7 @@ ConfigureSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseOpenApi();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
