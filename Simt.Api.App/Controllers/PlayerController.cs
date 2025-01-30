@@ -39,7 +39,7 @@ public class PlayerController : ControllerBase
 
     [HttpGet("{id}")]
     [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<PlayerDetailModel>))]
-    [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<PlatformDetailModel>))]
+    [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<PlayerDetailModel>))]
     public async Task<ActionResult<PlayerDetailModel?>> GetById(Guid id)
     { 
         var model = await _playerFacade.GetByIdAsync(id);
@@ -52,7 +52,7 @@ public class PlayerController : ControllerBase
     
     [HttpGet("nick")]
     [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<PlayerDetailModel>))]
-    [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<PlatformDetailModel>))]
+    [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<PlayerDetailModel>))]
     public async Task<ActionResult<PlayerDetailModel?>> GetByNick(string nick)
     { 
         var model = await _playerFacade.GetByNickAsync(nick);
@@ -64,7 +64,7 @@ public class PlayerController : ControllerBase
     }
     
     [HttpPost()]
-    [SwaggerResponse(HttpStatusCode.Created, typeof(ActionResult<PlatformDetailModel>))]
+    [SwaggerResponse(HttpStatusCode.Created, typeof(ActionResult<PlayerDetailModel>))]
     public async Task<ActionResult<PlayerDetailModel>> CreateAsync(PlayerDetailModel model)
     {
         var id = await _playerFacade.CreateAsync(model);
@@ -73,7 +73,7 @@ public class PlayerController : ControllerBase
     }
 
     [HttpPut]
-    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<PlatformDetailModel>))]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<PlayerDetailModel>))]
     public async Task<ActionResult<PlayerDetailModel>> Update(PlayerDetailModel model)
     {
         var id = await _playerFacade.UpdateAsync(model);
