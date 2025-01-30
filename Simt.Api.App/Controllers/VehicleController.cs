@@ -71,4 +71,25 @@ public class VehicleController : ControllerBase
         await _vehicleFacade.DeleteAsync(id);
         return NoContent();
     }
+    
+    [HttpGet("buses")]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<VehicleListModel>>))]
+    public Task<List<VehicleListModel>> GetAllBusesAsync()
+    {
+        return _vehicleFacade.GetAllBusesAsync();
+    }
+    
+    [HttpGet("trolleybuses")]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<VehicleListModel>>))]
+    public Task<List<VehicleListModel>> GetAllTrolleybusesAsync()
+    {
+        return _vehicleFacade.GetAllTrolleybusesAsync();
+    }
+    
+    [HttpGet("trams")]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<VehicleListModel>>))]
+    public Task<List<VehicleListModel>> GetAllTramsAsync()
+    {
+        return _vehicleFacade.GetAllTramsAsync();
+    }
 }
