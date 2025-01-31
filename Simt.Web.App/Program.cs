@@ -13,6 +13,9 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddScoped<IPlayerApiClient, PlayerApiClient>();
 builder.Services.AddScoped<PlayerFacade>();
 
+builder.Services.AddScoped<IVehicleApiClient, VehicleApiClient>();
+builder.Services.AddScoped<VehicleFacade>();
+
 builder.Services.AddScoped<IServiceApiClient, ServiceApiClient>();
 builder.Services.AddScoped<ServiceFacade>();
 

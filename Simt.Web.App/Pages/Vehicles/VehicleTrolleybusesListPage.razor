@@ -1,0 +1,21 @@
+@page "/vozidla/trolejbusy"
+<h3>VehicleTrolleybusesListPage</h3>
+
+<div>
+    <table>
+        <tbody>
+        @foreach (var trolleybus in TrolleybusesList)
+        {
+            <tr>
+                <td> @trolleybus.Manufacturer @trolleybus.Type</td>
+                <td> @trolleybus.Operator</td>
+                <td> @trolleybus.VehicleNumber</td>
+                <td> <button @onclick="() => OpenDetail(trolleybus.Id)">Open</button></td>
+                
+                @* TODO switch method after API function that returns tram detail from number + operator *@
+                @* <td> <button @onclick="() => OpenDetail(tram.VehicleNumber, tram.Operator)">Open profile</button></td> *@
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

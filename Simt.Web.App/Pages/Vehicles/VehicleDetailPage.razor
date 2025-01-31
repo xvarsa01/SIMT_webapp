@@ -1,0 +1,62 @@
+@page "/vozidla/{id}"
+@using Simt.Common.enums
+<h3>VehicleDetailPAge</h3>
+
+@if (_found)
+{
+    <p>@Vehicle!.Manufacturer @Vehicle.Type</p>
+    <div>
+        <table>
+            <tr>
+                <th>Dopravce</th>
+                <td> @Vehicle.Operator</td>
+            </tr>
+            <tr>
+                <th>Evidenčné číslo:</th>
+                <td>@Vehicle.VehicleNumber</td>
+            </tr>
+            <tr>
+                <th>Rok výroby::</th>
+                <td>TODO</td>
+            </tr>
+            <tr>
+                <th>Hmotnost:</th>
+                <td>TODO kg</td>
+            </tr>
+            <tr>
+                <th>Délka:</th>
+                <td>TODO mm</td>
+            </tr>
+            @if (Vehicle.Traction == Traction.Tram)
+            {
+                <tr>
+                    <th>Obojsmernost:</th>
+                    <td>@Vehicle.TwoWay</td>
+                </tr>
+            }
+            @if (Vehicle.Traction == Traction.Trolejbus)
+            {
+                <tr>
+                    <th>Alternatívny pohon:</th>
+                    <td>@Vehicle.AlternativeDrive</td>
+                </tr>
+            }
+            <tr>
+                <th>Nízkopodložnosť:</th>
+                <td>@Vehicle.LowFloor</td>
+            </tr>
+            <tr>
+                <th>Klimatizace:</th>
+                <td>@Vehicle.AirConditioning</td>
+            </tr>
+        </table>
+        @if (Vehicle.GoldVersion)
+        {
+            <p>Dostupne iba v Zlatej verzi</p>
+        }
+    </div>
+}
+else
+{
+    <p>Vehicle not found</p>
+}
