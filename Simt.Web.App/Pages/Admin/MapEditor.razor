@@ -1,0 +1,73 @@
+@page "/admin/mapy"
+<h3>MapEditor</h3>
+
+@if (_loading)
+{
+}
+else
+{
+    <table>
+        <thead>
+        <tr>
+            <th>Název</th>
+            <th>SCIN</th>
+            <th>Změna</th>
+            <th>Tras</th>
+            <th>Verze</th>
+            <th>Akce</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var map in MapLists)
+        {
+            <tr>
+                <td> @map.MapName</td>
+                <td> @map.SCIN</td>
+                <td> @map.LastChangeTime</td>
+                <td> @map.RoutesCount</td>
+                <td> @map.Version</td>
+                <td>
+                    <button @onclick="() => SelectMap(map.Id)">Vybrat</button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    
+    @if (MapDetailModel != null)
+    {
+        <div>
+            <EditForm Model="@MapDetailModel">
+                <DataAnnotationsValidator />
+
+                <div>
+                    Název
+                    <label>
+                        <InputText @bind-Value="@MapDetailModel.MapName"/>
+                        <small class="form-text text-danger">
+                            <ValidationMessage For="@(() => MapDetailModel.MapName)"/>
+                        </small>
+                    </label>
+                </div>
+                <div>
+                    SCIN
+                    <label>
+                        <InputText @bind-Value="@MapDetailModel.SCIN"/>
+                        <small class="form-text text-danger">
+                            <ValidationMessage For="@(() => MapDetailModel.SCIN)"/>
+                        </small>
+                    </label>
+                </div>
+                <div>
+                    Verejná:
+                    <button @onclick="ChangePublic">@(MapDetailModel.Public ? "ano" : "nie")</button>
+                </div>
+                <button type="submit" class="btn btn-success" @onclick="@Save">
+                    Uložiť
+                </button>
+                
+            </EditForm>
+        </div>
+        
+    }
+}
