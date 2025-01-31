@@ -25,15 +25,11 @@ public class PlayerController : ControllerBase
     }
     
     [HttpGet("search")]
-    [SwaggerResponse(200, typeof(ActionResult<IEnumerable<PlayerListModel>>))]
-    [SwaggerResponse(204, null)]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<IEnumerable<PlayerListModel>>))]
     public async Task<ActionResult<IEnumerable<PlayerListModel>>> GetAllSearched(string searchTerm)
     {
         var results = await _playerFacade.GetAllAsync(searchTerm);
-        if (!results.Any())
-        {
-            return NoContent();
-        }
+
         return Ok(results);
     }
 
