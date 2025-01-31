@@ -1,5 +1,6 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using NSwag.Annotations;
 using Simt.Api.BL.Facades;
 using Simt.Common.Models;
 
@@ -17,15 +18,24 @@ public class PlayerController : ControllerBase
     }
 
     [HttpGet("all")]
-    // [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<PlayerModel>>))]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<PlayerListModel>>))]
     public Task<List<PlayerListModel>> GetAll()
     {
         return _playerFacade.GetAllAsync();
     }
+    
+    [HttpGet("search")]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<IEnumerable<PlayerListModel>>))]
+    public async Task<ActionResult<IEnumerable<PlayerListModel>>> GetAllSearched(string searchTerm)
+    {
+        var results = await _playerFacade.GetAllAsync(searchTerm);
+
+        return Ok(results);
+    }
 
     [HttpGet("{id}")]
-    // [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<PlayerModel>))]
-    // [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<PlayerModel>))]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<PlayerDetailModel>))]
+    [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<PlayerDetailModel>))]
     public async Task<ActionResult<PlayerDetailModel?>> GetById(Guid id)
     { 
         var model = await _playerFacade.GetByIdAsync(id);
@@ -36,8 +46,21 @@ public class PlayerController : ControllerBase
         return Ok(model);
     }
     
+    [HttpGet("nick")]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<PlayerDetailModel>))]
+    [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<PlayerDetailModel>))]
+    public async Task<ActionResult<PlayerDetailModel?>> GetByNick(string nick)
+    { 
+        var model = await _playerFacade.GetByNickAsync(nick);
+        if (model == null)
+        {
+            return NotFound();
+        }
+        return Ok(model);
+    }
+    
     [HttpPost()]
-    // [SwaggerResponse(HttpStatusCode.Created, typeof(ActionResult<PlayerModel>))]
+    [SwaggerResponse(HttpStatusCode.Created, typeof(ActionResult<PlayerDetailModel>))]
     public async Task<ActionResult<PlayerDetailModel>> CreateAsync(PlayerDetailModel model)
     {
         var id = await _playerFacade.CreateAsync(model);
@@ -46,7 +69,7 @@ public class PlayerController : ControllerBase
     }
 
     [HttpPut]
-    // [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<PlayerModel>))]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<PlayerDetailModel>))]
     public async Task<ActionResult<PlayerDetailModel>> Update(PlayerDetailModel model)
     {
         var id = await _playerFacade.UpdateAsync(model);
@@ -59,7 +82,7 @@ public class PlayerController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    // [SwaggerResponse(HttpStatusCode.NoContent, null)]
+    [SwaggerResponse(HttpStatusCode.NoContent, null)]
     public async Task<ActionResult> DeleteAsync(Guid id)
     {
         var detailModel = await _playerFacade.GetByIdAsync(id);

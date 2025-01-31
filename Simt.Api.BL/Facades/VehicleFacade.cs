@@ -18,4 +18,26 @@ public class VehicleFacade : FacadeBase<VehicleRepository, VehicleEntity, Vehicl
         _vehicleRepository = repository;
         _modelMapper = modelMapper;
     }
+    
+    public virtual async Task<List<VehicleListModel>> GetAllBusesAsync()
+    {
+        List<VehicleEntity> entities = await Repository.GetAllBusesAsync();
+        
+        var models =  ModelMapper.MapToListModel(entities);
+        return models;
+    }
+    public virtual async Task<List<VehicleListModel>> GetAllTrolleybusesAsync()
+    {
+        List<VehicleEntity> entities = await Repository.GetAllTrolleybusesAsync();
+        
+        var models =  ModelMapper.MapToListModel(entities);
+        return models;
+    }
+    public virtual async Task<List<VehicleListModel>> GetAllTramsAsync()
+    {
+        List<VehicleEntity> entities = await Repository.GetAllTramsAsync();
+        
+        var models =  ModelMapper.MapToListModel(entities);
+        return models;
+    }
 }

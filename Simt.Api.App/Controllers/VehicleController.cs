@@ -1,5 +1,6 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using NSwag.Annotations;
 using Simt.Api.BL.Facades;
 using Simt.Common.Models;
 
@@ -17,15 +18,15 @@ public class VehicleController : ControllerBase
     }
 
     [HttpGet("all")]
-    // [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<vehicleModel>>))]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<VehicleListModel>>))]
     public Task<List<VehicleListModel>> GetAll()
     {
         return _vehicleFacade.GetAllAsync();
     }
 
     [HttpGet("{id}")]
-    // [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<vehicleModel>))]
-    // [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<vehicleModel>))]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<VehicleDetailModel>))]
+    [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<VehicleDetailModel>))]
     public async Task<ActionResult<VehicleDetailModel?>> GetById(Guid id)
     { 
         var model = await _vehicleFacade.GetByIdAsync(id);
@@ -37,7 +38,7 @@ public class VehicleController : ControllerBase
     }
     
     [HttpPost()]
-    // [SwaggerResponse(HttpStatusCode.Created, typeof(ActionResult<vehicleModel>))]
+    [SwaggerResponse(HttpStatusCode.Created, typeof(ActionResult<VehicleDetailModel>))]
     public async Task<ActionResult<VehicleDetailModel>> CreateAsync(VehicleDetailModel model)
     {
         var id = await _vehicleFacade.CreateAsync(model);
@@ -46,7 +47,7 @@ public class VehicleController : ControllerBase
     }
 
     [HttpPut]
-    // [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<vehicleModel>))]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<VehicleDetailModel>))]
     public async Task<ActionResult<VehicleDetailModel>> Update(VehicleDetailModel model)
     {
         var id = await _vehicleFacade.UpdateAsync(model);
@@ -59,7 +60,7 @@ public class VehicleController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    // [SwaggerResponse(HttpStatusCode.NoContent, null)]
+    [SwaggerResponse(HttpStatusCode.NoContent, null)]
     public async Task<ActionResult> DeleteAsync(Guid id)
     {
         var detailModel = await _vehicleFacade.GetByIdAsync(id);
@@ -69,5 +70,26 @@ public class VehicleController : ControllerBase
         }
         await _vehicleFacade.DeleteAsync(id);
         return NoContent();
+    }
+    
+    [HttpGet("buses")]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<VehicleListModel>>))]
+    public Task<List<VehicleListModel>> GetAllBusesAsync()
+    {
+        return _vehicleFacade.GetAllBusesAsync();
+    }
+    
+    [HttpGet("trolleybuses")]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<VehicleListModel>>))]
+    public Task<List<VehicleListModel>> GetAllTrolleybusesAsync()
+    {
+        return _vehicleFacade.GetAllTrolleybusesAsync();
+    }
+    
+    [HttpGet("trams")]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<VehicleListModel>>))]
+    public Task<List<VehicleListModel>> GetAllTramsAsync()
+    {
+        return _vehicleFacade.GetAllTramsAsync();
     }
 }

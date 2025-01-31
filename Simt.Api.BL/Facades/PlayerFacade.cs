@@ -18,4 +18,21 @@ public class PlayerFacade : FacadeBase<PlayerRepository, PlayerEntity, PlayerLis
         _playerRepository = repository;
         _modelMapper = modelMapper;
     }
+    
+    public virtual async Task<List<PlayerListModel>> GetAllAsync(string searchTerm)
+    {
+        List<PlayerEntity> entities = await Repository.GetAllAsync(searchTerm);
+        
+        var models =  ModelMapper.MapToListModel(entities);
+        return models;
+    }
+    
+    public async Task<PlayerDetailModel?> GetByNickAsync(string nick)
+    {
+        PlayerEntity? entity = await Repository.GetByNickAsync(nick);
+
+        return entity is null
+            ? null
+            : ModelMapper.MapToDetailModel(entity);
+    }
 }
