@@ -29,6 +29,9 @@ else
                 <td>
                     <button @onclick="() => SelectMap(map.Id)">Vybrat</button>
                 </td>
+                @* <td> *@
+                @*     <button @onclick="() => GetLinesForMap(map.Id)">Nacitat linky</button> *@
+                @* </td> *@
             </tr>
         }
         </tbody>
@@ -69,5 +72,42 @@ else
             </EditForm>
         </div>
         
+        @if (LineList.Count > 0)
+        {
+            <div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Číslo</th>
+                        <th>Trasa</th>
+                        <th>Status</th>
+                        <th>Trakce</th>
+                        <th>Akce</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var line in LineList)
+                    {
+                        <tr>
+                            <td> @line.Line</td>
+                            <td> TODO</td>
+                            <td> TODO</td>
+                            <td> @line.Traction</td>
+                            <td>
+                                <button @onclick="() => SelectLine(line.Id)">Vybrat</button>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div>
+                Mapa neobsahuje ziadne linky
+            </div>
+        }
+        <button @onclick="() => CreateNewLine(MapDetailModel.Id)">Vytvorit novu linku</button>
     }
 }
