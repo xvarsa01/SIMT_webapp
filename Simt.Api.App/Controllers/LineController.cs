@@ -71,4 +71,11 @@ public class LineController : ControllerBase
         await _lineFacade.DeleteAsync(id);
         return NoContent();
     }
+    
+    [HttpGet("map/{mapId}")]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<LineListModel>>))]
+    public async Task<List<LineListModel>> GetAllByMapAsync(Guid mapId)
+    {
+        return await _lineFacade.GetAllByMapAsync(mapId);
+    }
 }
