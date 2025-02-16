@@ -18,4 +18,12 @@ public class LineFacade : FacadeBase<LineRepository, LineEntity, LineListModel, 
         _lineRepository = repository;
         _modelMapper = modelMapper;
     }
+    
+    public async Task<List<LineListModel>> GetAllByMapAsync(Guid mapId)
+    {
+        List<LineEntity> entities = await Repository.GetAllByMapAsync(mapId);
+        
+        var models =  ModelMapper.MapToListModel(entities);
+        return models;
+    }
 }
