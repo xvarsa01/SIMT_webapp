@@ -37,6 +37,7 @@ public class LineModelMapper (RouteModelMapper routeModelMapper) : ModelMapperBa
             IntervalNonPeak = entity.IntervalNonPeak,
             IntervalNight = entity.IntervalNight,
             MapId = entity.MapId,
+            MapName = entity.Map.MapName,
             Routes = routeModelMapper.MapToListModel(entity.Routes),
         };
     }

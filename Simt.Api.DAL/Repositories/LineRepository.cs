@@ -19,6 +19,8 @@ public class LineRepository(SimtDbContext dbContext) : RepositoryBase<LineEntity
             .ThenInclude(e => e.FinalPlatform)
             .ThenInclude(e => e.ParentStop)
             
+            .Include(e => e.Map)
+            
             .SingleOrDefaultAsync(entity => entity.Id == id);
     }
     
