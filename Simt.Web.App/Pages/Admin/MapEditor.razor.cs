@@ -40,10 +40,9 @@ public partial class MapEditor : ComponentBase
         LineList = await LineFacade.Line_GetAllByMapAsync(mapId);
     }
     
-    private async Task SelectLine(Guid lineId)
+    private void SelectLine(Guid lineId)
     {
-        NavigationManager.NavigateTo("", forceLoad: false);
-        //TODO
+        NavigationManager.NavigateTo($"/lineEditor/{lineId}");
     }
     private async Task CreateNewLine(Guid mapId)
     {

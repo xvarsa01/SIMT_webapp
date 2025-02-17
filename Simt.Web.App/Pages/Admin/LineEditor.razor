@@ -1,0 +1,54 @@
+@page "/lineEditor/{LineIdString}"
+@using Simt.Common.enums
+<h3>LineEditor</h3>
+
+<div>
+    @if (LineDetailModel is not null)
+    {
+    <EditForm Model="@LineDetailModel">
+        <div>
+            Číslo
+            <br>
+            <InputText @bind-Value="@LineDetailModel.LineNumber"/>
+        </div>
+        <div>
+            Trasa
+            <br>
+            <span>TODO</span>
+        </div>
+        <div>
+            Mapa
+            <br>
+            <InputSelect @bind-Value="@LineDetailModel.MapName">
+                @foreach (var map in Maps)
+                {
+                    <option value="@map.MapName">@map.MapName</option>
+                }
+            </InputSelect>
+        </div>
+        <div>
+            Trakce
+            <br>
+            <InputSelect @bind-Value="@LineDetailModel.Traction">
+                @foreach (var traction in Enum.GetValues(typeof(Traction)).Cast<Traction>())
+                {
+                    <option value="@traction">@traction</option>
+                }
+            </InputSelect>
+        </div>
+        <div>
+            Interval
+            <br>
+            <InputNumber @bind-Value="@LineDetailModel.IntervalPeak"/>
+            <InputNumber @bind-Value="@LineDetailModel.IntervalNonPeak"/>
+            <InputNumber @bind-Value="@LineDetailModel.IntervalNight"/>
+        </div>
+        
+        <div>
+            <button type="submit" class="btn btn-success mr-2" @onclick="@Save" title="Uložit linku">Ulozit</button>
+            <button type="submit" class="btn btn-success mr-2" @onclick="@Delete" title="Celá linka bude nenávratně smazána">Smazat</button>
+            @* <p class="tlacitko" id="smazatLinku"><img src="https://simt.cz/app/linky/img/smazat.png" title="Celá linka bude nenávratně smazána"></p> *@
+        </div>
+    </EditForm>
+    }
+</div>
