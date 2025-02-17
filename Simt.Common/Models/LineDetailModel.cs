@@ -12,6 +12,7 @@ public record LineDetailModel() : ModelBase
     public int IntervalNight { get; set; }
 
     public required Guid MapId { get; set; }
+    public required string MapName { get; set; }
     
     public List<RouteListModel> Routes { get; set; } = new();
 
@@ -23,6 +24,7 @@ public record LineDetailModel() : ModelBase
         IntervalPeak = 0,
         IntervalNonPeak = 0,
         IntervalNight = 0,
-        MapId = Guid.Empty
+        MapId = Guid.Empty,
+        MapName = string.Empty
     };
 }
