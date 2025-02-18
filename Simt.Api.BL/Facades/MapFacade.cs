@@ -5,14 +5,14 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Facades;
 
-public class MapFacade : FacadeBase<MapRepository, MapEntity, MapListModel, MapDetailModel>
+public class MapFacade : FacadeBase<MapRepository, MapEntity, MapListModel, MapDetailModel, MapDetailModel>
 {
     private readonly MapRepository _mapRepository;
-    private readonly IModelMapper<MapEntity, MapListModel, MapDetailModel> _modelMapper;
+    private readonly IModelMapper<MapEntity, MapListModel, MapDetailModel, MapDetailModel> _modelMapper;
 
     public MapFacade(
         MapRepository repository, 
-        IModelMapper<MapEntity, MapListModel, MapDetailModel> modelMapper) 
+        IModelMapper<MapEntity, MapListModel, MapDetailModel, MapDetailModel> modelMapper) 
         : base(repository, modelMapper)
     {
         _mapRepository = repository;

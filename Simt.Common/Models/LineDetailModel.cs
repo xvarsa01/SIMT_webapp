@@ -3,17 +3,8 @@ using Simt.Common.Models.InterfaceBase;
 
 namespace Simt.Common.Models;
 
-public record LineDetailModel() : ModelBase
+public record LineDetailModel() : LineCreationModel
 {
-    public required string LineNumber { get; set; }
-    public required Traction Traction { get; set; }
-    public int IntervalPeak { get; set; }
-    public int IntervalNonPeak { get; set; }
-    public int IntervalNight { get; set; }
-
-    public required Guid MapId { get; set; }
-    public required string MapName { get; set; }
-    
     public List<RouteListModel> Routes { get; set; } = new();
 
     public static LineDetailModel Empty => new()

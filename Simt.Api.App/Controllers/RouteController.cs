@@ -39,7 +39,7 @@ public class RouteController : ControllerBase
     
     [HttpPost()]
     [SwaggerResponse(HttpStatusCode.Created, typeof(ActionResult<RouteDetailModel>))]
-    public async Task<ActionResult<RouteDetailModel>> CreateAsync(RouteDetailModel model)
+    public async Task<ActionResult<RouteDetailModel>> CreateAsync(RouteCreationModel model)
     {
         var id = await _routeFacade.CreateAsync(model);
         var detailModel = await _routeFacade.GetByIdAsync(id);
@@ -48,7 +48,7 @@ public class RouteController : ControllerBase
 
     [HttpPut]
     [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<RouteDetailModel>))]
-    public async Task<ActionResult<RouteDetailModel>> Update(RouteDetailModel model)
+    public async Task<ActionResult<RouteDetailModel>> Update(RouteCreationModel model)
     {
         var id = await _routeFacade.UpdateAsync(model);
         if (id != null)

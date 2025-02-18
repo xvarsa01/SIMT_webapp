@@ -7,17 +7,18 @@ using Simt.Api.DAL.Repositories;
 
 namespace Simt.Api.BL.Facades;
 
-public class FacadeBase<TRepository, TEntity, TListModel, TDetailModel> : IFacade<TEntity, TListModel, TDetailModel>
+public class FacadeBase<TRepository, TEntity, TListModel, TDetailModel, TCreationModel> : IFacade<TEntity, TListModel, TDetailModel, TCreationModel>
     where TRepository : IRepository<TEntity>
     where TEntity : class, IEntity
     where TListModel : class
     where TDetailModel : class
+    where TCreationModel : class
 {
     
-    protected readonly IModelMapper<TEntity, TListModel, TDetailModel> ModelMapper;
+    protected readonly IModelMapper<TEntity, TListModel, TDetailModel, TCreationModel> ModelMapper;
     protected readonly TRepository Repository;
 
-    public FacadeBase(TRepository repository, IModelMapper<TEntity, TListModel, TDetailModel> modelMapper)
+    public FacadeBase(TRepository repository, IModelMapper<TEntity, TListModel, TDetailModel, TCreationModel> modelMapper)
     {
         ModelMapper = modelMapper;
         Repository = repository;
@@ -40,7 +41,7 @@ public class FacadeBase<TRepository, TEntity, TListModel, TDetailModel> : IFacad
             : ModelMapper.MapToDetailModel(entity);
     }
     
-    public virtual async Task<Guid?> UpdateAsync(TDetailModel model)
+    public virtual async Task<Guid?> UpdateAsync(TCreationModel model)
     {
         GuardCollectionsAreNotSet(model);
         TEntity entity = ModelMapper.MapToEntity(model);
@@ -49,7 +50,7 @@ public class FacadeBase<TRepository, TEntity, TListModel, TDetailModel> : IFacad
         return updatedEntityId;
     }
 
-    public virtual async Task<Guid> CreateAsync(TDetailModel model)
+    public virtual async Task<Guid> CreateAsync(TCreationModel model)
     {
         GuardCollectionsAreNotSet(model);
         TEntity entity = ModelMapper.MapToEntity(model);
@@ -63,7 +64,7 @@ public class FacadeBase<TRepository, TEntity, TListModel, TDetailModel> : IFacad
         await Repository.DeleteAsync(id);
     }
     
-    public static void GuardCollectionsAreNotSet(TDetailModel model)
+    public static void GuardCollectionsAreNotSet(TCreationModel model)
     {
         IEnumerable<PropertyInfo> collectionProperties = model
             .GetType()

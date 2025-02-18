@@ -4,7 +4,7 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Mappers;
 
-public class ServiceModelMapper : ModelMapperBase<ServiceEntity, ServiceListModel, ServiceDetailModel>
+public class ServiceModelMapper : ModelMapperBase<ServiceEntity, ServiceListModel, ServiceDetailModel, ServiceDetailModel>
 {
     public override ServiceListModel MapToListModel(ServiceEntity? entity)
     {

@@ -61,7 +61,7 @@ public class PlayerController : ControllerBase
     
     [HttpPost()]
     [SwaggerResponse(HttpStatusCode.Created, typeof(ActionResult<PlayerDetailModel>))]
-    public async Task<ActionResult<PlayerDetailModel>> CreateAsync(PlayerDetailModel model)
+    public async Task<ActionResult<PlayerDetailModel>> CreateAsync(PlayerCreationModel model)
     {
         var id = await _playerFacade.CreateAsync(model);
         var detailModel = await _playerFacade.GetByIdAsync(id);
@@ -70,7 +70,7 @@ public class PlayerController : ControllerBase
 
     [HttpPut]
     [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<PlayerDetailModel>))]
-    public async Task<ActionResult<PlayerDetailModel>> Update(PlayerDetailModel model)
+    public async Task<ActionResult<PlayerDetailModel>> Update(PlayerCreationModel model)
     {
         var id = await _playerFacade.UpdateAsync(model);
         if (id != null)

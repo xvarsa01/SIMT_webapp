@@ -39,7 +39,7 @@ public class PlatformController : ControllerBase
     
     [HttpPost()]
     [SwaggerResponse(HttpStatusCode.Created, typeof(ActionResult<PlatformDetailModel>))]
-    public async Task<ActionResult<PlatformDetailModel>> CreateAsync(PlatformDetailModel model)
+    public async Task<ActionResult<PlatformDetailModel>> CreateAsync(PlatformCreationModel model)
     {
         var id = await _platformFacade.CreateAsync(model);
         var detailModel = await _platformFacade.GetByIdAsync(id);
@@ -48,7 +48,7 @@ public class PlatformController : ControllerBase
 
     [HttpPut]
     [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<PlatformDetailModel>))]
-    public async Task<ActionResult<PlatformDetailModel>> Update(PlatformDetailModel model)
+    public async Task<ActionResult<PlatformDetailModel>> Update(PlatformCreationModel model)
     {
         var id = await _platformFacade.UpdateAsync(model);
         if (id != null)

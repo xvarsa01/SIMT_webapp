@@ -5,7 +5,7 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Mappers;
 
-public class PlayerModelMapper (ServiceModelMapper serviceModelMapper) : ModelMapperBase<PlayerEntity, PlayerListModel, PlayerDetailModel>
+public class PlayerModelMapper (ServiceModelMapper serviceModelMapper) : ModelMapperBase<PlayerEntity, PlayerListModel, PlayerDetailModel, PlayerCreationModel>
 {
     public override PlayerListModel MapToListModel(PlayerEntity? entity)
     {
@@ -97,7 +97,7 @@ public class PlayerModelMapper (ServiceModelMapper serviceModelMapper) : ModelMa
     }
 
 
-    public override PlayerEntity MapToEntity(PlayerDetailModel model)
+    public override PlayerEntity MapToEntity(PlayerCreationModel model)
     {
         return new PlayerEntity
         {

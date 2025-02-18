@@ -5,14 +5,14 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Facades;
 
-public class VehicleFacade : FacadeBase<VehicleRepository, VehicleEntity, VehicleListModel, VehicleDetailModel>
+public class VehicleFacade : FacadeBase<VehicleRepository, VehicleEntity, VehicleListModel, VehicleDetailModel, VehicleDetailModel>
 {
     private readonly VehicleRepository _vehicleRepository;
-    private readonly IModelMapper<VehicleEntity, VehicleListModel, VehicleDetailModel> _modelMapper;
+    private readonly IModelMapper<VehicleEntity, VehicleListModel, VehicleDetailModel, VehicleDetailModel> _modelMapper;
 
     public VehicleFacade(
         VehicleRepository repository, 
-        IModelMapper<VehicleEntity, VehicleListModel, VehicleDetailModel> modelMapper) 
+        IModelMapper<VehicleEntity, VehicleListModel, VehicleDetailModel, VehicleDetailModel> modelMapper) 
         : base(repository, modelMapper)
     {
         _vehicleRepository = repository;

@@ -4,7 +4,7 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Mappers;
 
-public class MapModelMapper : ModelMapperBase<MapEntity, MapListModel, MapDetailModel>
+public class MapModelMapper : ModelMapperBase<MapEntity, MapListModel, MapDetailModel, MapDetailModel>
 {
     public override MapListModel MapToListModel(MapEntity? entity)
     {
