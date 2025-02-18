@@ -2,12 +2,8 @@ using Simt.Common.Models.InterfaceBase;
 
 namespace Simt.Common.Models;
 
-public record StopDetailModel() : ModelBase
+public record StopDetailModel() : StopCreationModel
 {
-    public required string? StopName { get; set; }
-    public required bool FinalStop { get; set; }
-    public required bool RequestStop { get; set; }
-    
     public List<PlatformListModel> Platforms { get; set; } = new();
 
     public static StopDetailModel Empty => new()
