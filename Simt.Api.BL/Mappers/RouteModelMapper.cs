@@ -4,7 +4,7 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Mappers;
 
-public class RouteModelMapper (RouteStopModelMapper routeStopModelMapper) : ModelMapperBase<RouteEntity, RouteListModel, RouteDetailModel, RouteDetailModel>
+public class RouteModelMapper (RouteStopModelMapper routeStopModelMapper) : ModelMapperBase<RouteEntity, RouteListModel, RouteDetailModel, RouteCreationModel>
 {
     public override RouteListModel MapToListModel(RouteEntity? entity)
     {
@@ -57,7 +57,7 @@ public class RouteModelMapper (RouteStopModelMapper routeStopModelMapper) : Mode
         };
     }
     
-    public override RouteEntity MapToEntity(RouteDetailModel model)
+    public override RouteEntity MapToEntity(RouteCreationModel model)
     {
         return new RouteEntity
         {

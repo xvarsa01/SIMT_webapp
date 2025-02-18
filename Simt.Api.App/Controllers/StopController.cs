@@ -52,7 +52,7 @@ public class StopController : ControllerBase
     
     [HttpPost()]
     [SwaggerResponse(HttpStatusCode.Created, typeof(ActionResult<StopDetailModel>))]
-    public async Task<ActionResult<StopDetailModel>> CreateAsync(StopDetailModel model)
+    public async Task<ActionResult<StopDetailModel>> CreateAsync(StopCreationModel model)
     {
         var id = await _stopFacade.CreateAsync(model);
         var detailModel = await _stopFacade.GetByIdAsync(id);
@@ -61,7 +61,7 @@ public class StopController : ControllerBase
 
     [HttpPut]
     [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<StopDetailModel>))]
-    public async Task<ActionResult<StopDetailModel>> Update(StopDetailModel model)
+    public async Task<ActionResult<StopDetailModel>> Update(StopCreationModel model)
     {
         var id = await _stopFacade.UpdateAsync(model);
         if (id != null)
