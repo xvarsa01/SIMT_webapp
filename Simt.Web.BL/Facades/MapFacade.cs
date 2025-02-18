@@ -2,7 +2,7 @@ using Simt.Common.Models;
 
 namespace Simt.Web.BL.Facades
 {
-    public class MapFacade(IMapApiClient apiClient) : FacadeBase<MapDetailModel, MapListModel>
+    public class MapFacade(IMapApiClient apiClient) : FacadeBase<MapDetailModel, MapListModel, MapDetailModel>
     {
         public override async Task<List<MapListModel>> GetAllAsync()
         {

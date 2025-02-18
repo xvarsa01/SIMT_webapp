@@ -2,7 +2,7 @@ using Simt.Common.Models;
 
 namespace Simt.Web.BL.Facades
 {
-    public class VehicleFacade(IVehicleApiClient apiClient) : FacadeBase<VehicleDetailModel, VehicleListModel>
+    public class VehicleFacade(IVehicleApiClient apiClient) : FacadeBase<VehicleDetailModel, VehicleListModel, VehicleDetailModel>
     {
         public override async Task<List<VehicleListModel>> GetAllAsync()
         {

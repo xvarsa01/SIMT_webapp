@@ -2,7 +2,7 @@ using Simt.Common.Models;
 
 namespace Simt.Web.BL.Facades
 {
-    public class ServiceFacade(IServiceApiClient apiClient) : FacadeBase<ServiceDetailModel, ServiceListModel>
+    public class ServiceFacade(IServiceApiClient apiClient) : FacadeBase<ServiceDetailModel, ServiceListModel, ServiceDetailModel>
     {
         public override async Task<List<ServiceListModel>> GetAllAsync()
         {

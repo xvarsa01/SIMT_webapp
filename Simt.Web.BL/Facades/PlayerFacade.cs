@@ -2,7 +2,7 @@ using Simt.Common.Models;
 
 namespace Simt.Web.BL.Facades
 {
-    public class PlayerFacade(IPlayerApiClient apiClient) : FacadeBase<PlayerDetailModel, PlayerListModel>
+    public class PlayerFacade(IPlayerApiClient apiClient) : FacadeBase<PlayerDetailModel, PlayerListModel, PlayerCreationModel>
     {
         public override async Task<List<PlayerListModel>> GetAllAsync()
         {
@@ -26,12 +26,12 @@ namespace Simt.Web.BL.Facades
             return await apiClient.Player_GetByNickAsync(nick);
         }
     
-        public override async Task<PlayerDetailModel> CreateAsync(PlayerDetailModel data)
+        public override async Task<PlayerDetailModel> CreateAsync(PlayerCreationModel data)
         {
             return await apiClient.Player_CreateAsync(data);
         }
     
-        public override async Task<PlayerDetailModel>UpdateAsync(PlayerDetailModel data)
+        public override async Task<PlayerDetailModel>UpdateAsync(PlayerCreationModel data)
         {
             return await apiClient.Player_UpdateAsync(data);
         }

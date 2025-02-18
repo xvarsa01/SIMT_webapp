@@ -2,7 +2,7 @@ using Simt.Common.Models;
 
 namespace Simt.Web.BL.Facades
 {
-    public class LineFacade(ILineApiClient apiClient) : FacadeBase<LineDetailModel, LineListModel>
+    public class LineFacade(ILineApiClient apiClient) : FacadeBase<LineDetailModel, LineListModel, LineCreationModel>
     {
         public override async Task<List<LineListModel>> GetAllAsync()
         {
@@ -15,12 +15,12 @@ namespace Simt.Web.BL.Facades
             return await apiClient.Line_GetByIdAsync(id);
         }
         
-        public override async Task<LineDetailModel> CreateAsync(LineDetailModel data)
+        public override async Task<LineDetailModel> CreateAsync(LineCreationModel data)
         {
             return await apiClient.Line_CreateAsync(data);
         }
     
-        public override async Task<LineDetailModel>UpdateAsync(LineDetailModel data)
+        public override async Task<LineDetailModel>UpdateAsync(LineCreationModel data)
         {
             return await apiClient.Line_UpdateAsync(data);
         }

@@ -49,18 +49,18 @@ namespace Simt.Web.BL
         System.Threading.Tasks.Task Line_DeleteAsync(System.Guid id, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<LineDetailModel> Line_CreateAsync(LineDetailModel model);
+        System.Threading.Tasks.Task<LineDetailModel> Line_CreateAsync(LineCreationModel model);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<LineDetailModel> Line_CreateAsync(LineDetailModel model, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<LineDetailModel> Line_CreateAsync(LineCreationModel model, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<LineDetailModel> Line_UpdateAsync(LineDetailModel model);
+        System.Threading.Tasks.Task<LineDetailModel> Line_UpdateAsync(LineCreationModel model);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<LineDetailModel> Line_UpdateAsync(LineDetailModel model, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<LineDetailModel> Line_UpdateAsync(LineCreationModel model, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<LineListModel>> Line_GetAllByMapAsync(System.Guid mapId);
@@ -356,14 +356,14 @@ namespace Simt.Web.BL
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<LineDetailModel> Line_CreateAsync(LineDetailModel model)
+        public virtual System.Threading.Tasks.Task<LineDetailModel> Line_CreateAsync(LineCreationModel model)
         {
             return Line_CreateAsync(model, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<LineDetailModel> Line_CreateAsync(LineDetailModel model, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<LineDetailModel> Line_CreateAsync(LineCreationModel model, System.Threading.CancellationToken cancellationToken)
         {
             if (model == null)
                 throw new System.ArgumentNullException("model");
@@ -439,14 +439,14 @@ namespace Simt.Web.BL
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<LineDetailModel> Line_UpdateAsync(LineDetailModel model)
+        public virtual System.Threading.Tasks.Task<LineDetailModel> Line_UpdateAsync(LineCreationModel model)
         {
             return Line_UpdateAsync(model, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<LineDetailModel> Line_UpdateAsync(LineDetailModel model, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<LineDetailModel> Line_UpdateAsync(LineCreationModel model, System.Threading.CancellationToken cancellationToken)
         {
             if (model == null)
                 throw new System.ArgumentNullException("model");
@@ -1340,18 +1340,18 @@ namespace Simt.Web.BL
         System.Threading.Tasks.Task Platform_DeleteAsync(System.Guid id, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PlatformDetailModel> Platform_CreateAsync(PlatformDetailModel model);
+        System.Threading.Tasks.Task<PlatformDetailModel> Platform_CreateAsync(PlatformCreationModel model);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PlatformDetailModel> Platform_CreateAsync(PlatformDetailModel model, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<PlatformDetailModel> Platform_CreateAsync(PlatformCreationModel model, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PlatformDetailModel> Platform_UpdateAsync(PlatformDetailModel model);
+        System.Threading.Tasks.Task<PlatformDetailModel> Platform_UpdateAsync(PlatformCreationModel model);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PlatformDetailModel> Platform_UpdateAsync(PlatformDetailModel model, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<PlatformDetailModel> Platform_UpdateAsync(PlatformCreationModel model, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -1640,14 +1640,14 @@ namespace Simt.Web.BL
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PlatformDetailModel> Platform_CreateAsync(PlatformDetailModel model)
+        public virtual System.Threading.Tasks.Task<PlatformDetailModel> Platform_CreateAsync(PlatformCreationModel model)
         {
             return Platform_CreateAsync(model, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PlatformDetailModel> Platform_CreateAsync(PlatformDetailModel model, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<PlatformDetailModel> Platform_CreateAsync(PlatformCreationModel model, System.Threading.CancellationToken cancellationToken)
         {
             if (model == null)
                 throw new System.ArgumentNullException("model");
@@ -1723,14 +1723,14 @@ namespace Simt.Web.BL
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PlatformDetailModel> Platform_UpdateAsync(PlatformDetailModel model)
+        public virtual System.Threading.Tasks.Task<PlatformDetailModel> Platform_UpdateAsync(PlatformCreationModel model)
         {
             return Platform_UpdateAsync(model, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PlatformDetailModel> Platform_UpdateAsync(PlatformDetailModel model, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<PlatformDetailModel> Platform_UpdateAsync(PlatformCreationModel model, System.Threading.CancellationToken cancellationToken)
         {
             if (model == null)
                 throw new System.ArgumentNullException("model");
@@ -1956,18 +1956,18 @@ namespace Simt.Web.BL
         System.Threading.Tasks.Task<PlayerDetailModel> Player_GetByNickAsync(string nick, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PlayerDetailModel> Player_CreateAsync(PlayerDetailModel model);
+        System.Threading.Tasks.Task<PlayerDetailModel> Player_CreateAsync(PlayerCreationModel model);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PlayerDetailModel> Player_CreateAsync(PlayerDetailModel model, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<PlayerDetailModel> Player_CreateAsync(PlayerCreationModel model, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PlayerDetailModel> Player_UpdateAsync(PlayerDetailModel model);
+        System.Threading.Tasks.Task<PlayerDetailModel> Player_UpdateAsync(PlayerCreationModel model);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PlayerDetailModel> Player_UpdateAsync(PlayerDetailModel model, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<PlayerDetailModel> Player_UpdateAsync(PlayerCreationModel model, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -2434,14 +2434,14 @@ namespace Simt.Web.BL
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PlayerDetailModel> Player_CreateAsync(PlayerDetailModel model)
+        public virtual System.Threading.Tasks.Task<PlayerDetailModel> Player_CreateAsync(PlayerCreationModel model)
         {
             return Player_CreateAsync(model, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PlayerDetailModel> Player_CreateAsync(PlayerDetailModel model, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<PlayerDetailModel> Player_CreateAsync(PlayerCreationModel model, System.Threading.CancellationToken cancellationToken)
         {
             if (model == null)
                 throw new System.ArgumentNullException("model");
@@ -2517,14 +2517,14 @@ namespace Simt.Web.BL
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PlayerDetailModel> Player_UpdateAsync(PlayerDetailModel model)
+        public virtual System.Threading.Tasks.Task<PlayerDetailModel> Player_UpdateAsync(PlayerCreationModel model)
         {
             return Player_UpdateAsync(model, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PlayerDetailModel> Player_UpdateAsync(PlayerDetailModel model, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<PlayerDetailModel> Player_UpdateAsync(PlayerCreationModel model, System.Threading.CancellationToken cancellationToken)
         {
             if (model == null)
                 throw new System.ArgumentNullException("model");
@@ -2736,18 +2736,18 @@ namespace Simt.Web.BL
         System.Threading.Tasks.Task Route_DeleteAsync(System.Guid id, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<RouteDetailModel> Route_CreateAsync(RouteDetailModel model);
+        System.Threading.Tasks.Task<RouteDetailModel> Route_CreateAsync(RouteCreationModel model);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<RouteDetailModel> Route_CreateAsync(RouteDetailModel model, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<RouteDetailModel> Route_CreateAsync(RouteCreationModel model, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<RouteDetailModel> Route_UpdateAsync(RouteDetailModel model);
+        System.Threading.Tasks.Task<RouteDetailModel> Route_UpdateAsync(RouteCreationModel model);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<RouteDetailModel> Route_UpdateAsync(RouteDetailModel model, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<RouteDetailModel> Route_UpdateAsync(RouteCreationModel model, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -3036,14 +3036,14 @@ namespace Simt.Web.BL
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<RouteDetailModel> Route_CreateAsync(RouteDetailModel model)
+        public virtual System.Threading.Tasks.Task<RouteDetailModel> Route_CreateAsync(RouteCreationModel model)
         {
             return Route_CreateAsync(model, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<RouteDetailModel> Route_CreateAsync(RouteDetailModel model, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<RouteDetailModel> Route_CreateAsync(RouteCreationModel model, System.Threading.CancellationToken cancellationToken)
         {
             if (model == null)
                 throw new System.ArgumentNullException("model");
@@ -3119,14 +3119,14 @@ namespace Simt.Web.BL
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<RouteDetailModel> Route_UpdateAsync(RouteDetailModel model)
+        public virtual System.Threading.Tasks.Task<RouteDetailModel> Route_UpdateAsync(RouteCreationModel model)
         {
             return Route_UpdateAsync(model, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<RouteDetailModel> Route_UpdateAsync(RouteDetailModel model, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<RouteDetailModel> Route_UpdateAsync(RouteCreationModel model, System.Threading.CancellationToken cancellationToken)
         {
             if (model == null)
                 throw new System.ArgumentNullException("model");
@@ -4127,18 +4127,18 @@ namespace Simt.Web.BL
         System.Threading.Tasks.Task<StopDetailModel> Stop_GetAllLinesForStopByIdAsync(System.Guid id, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<StopDetailModel> Stop_CreateAsync(StopDetailModel model);
+        System.Threading.Tasks.Task<StopDetailModel> Stop_CreateAsync(StopCreationModel model);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<StopDetailModel> Stop_CreateAsync(StopDetailModel model, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<StopDetailModel> Stop_CreateAsync(StopCreationModel model, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<StopDetailModel> Stop_UpdateAsync(StopDetailModel model);
+        System.Threading.Tasks.Task<StopDetailModel> Stop_UpdateAsync(StopCreationModel model);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<StopDetailModel> Stop_UpdateAsync(StopDetailModel model, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<StopDetailModel> Stop_UpdateAsync(StopCreationModel model, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -4513,14 +4513,14 @@ namespace Simt.Web.BL
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<StopDetailModel> Stop_CreateAsync(StopDetailModel model)
+        public virtual System.Threading.Tasks.Task<StopDetailModel> Stop_CreateAsync(StopCreationModel model)
         {
             return Stop_CreateAsync(model, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<StopDetailModel> Stop_CreateAsync(StopDetailModel model, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<StopDetailModel> Stop_CreateAsync(StopCreationModel model, System.Threading.CancellationToken cancellationToken)
         {
             if (model == null)
                 throw new System.ArgumentNullException("model");
@@ -4596,14 +4596,14 @@ namespace Simt.Web.BL
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<StopDetailModel> Stop_UpdateAsync(StopDetailModel model)
+        public virtual System.Threading.Tasks.Task<StopDetailModel> Stop_UpdateAsync(StopCreationModel model)
         {
             return Stop_UpdateAsync(model, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<StopDetailModel> Stop_UpdateAsync(StopDetailModel model, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<StopDetailModel> Stop_UpdateAsync(StopCreationModel model, System.Threading.CancellationToken cancellationToken)
         {
             if (model == null)
                 throw new System.ArgumentNullException("model");
