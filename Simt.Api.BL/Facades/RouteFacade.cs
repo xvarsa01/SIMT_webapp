@@ -5,14 +5,14 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Facades;
 
-public class RouteFacade : FacadeBase<RouteRepository, RouteEntity, RouteListModel, RouteDetailModel>
+public class RouteFacade : FacadeBase<RouteRepository, RouteEntity, RouteListModel, RouteDetailModel, RouteDetailModel>
 {
     private readonly RouteRepository _routeRepository;
-    private readonly IModelMapper<RouteEntity, RouteListModel, RouteDetailModel> _modelMapper;
+    private readonly IModelMapper<RouteEntity, RouteListModel, RouteDetailModel, RouteDetailModel> _modelMapper;
 
     public RouteFacade(
         RouteRepository repository, 
-        IModelMapper<RouteEntity, RouteListModel, RouteDetailModel> modelMapper) 
+        IModelMapper<RouteEntity, RouteListModel, RouteDetailModel, RouteDetailModel> modelMapper) 
         : base(repository, modelMapper)
     {
         _routeRepository = repository;

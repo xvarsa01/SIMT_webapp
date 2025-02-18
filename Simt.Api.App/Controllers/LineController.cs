@@ -39,7 +39,7 @@ public class LineController : ControllerBase
     
     [HttpPost()]
     [SwaggerResponse(HttpStatusCode.Created, typeof(ActionResult<LineDetailModel>))]
-    public async Task<ActionResult<LineDetailModel>> CreateAsync(LineDetailModel model)
+    public async Task<ActionResult<LineDetailModel>> CreateAsync(LineCreationModel model)
     {
         var id = await _lineFacade.CreateAsync(model);
         var detailModel = await _lineFacade.GetByIdAsync(id);
@@ -48,12 +48,12 @@ public class LineController : ControllerBase
 
     [HttpPut]
     [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<LineDetailModel>))]
-    public async Task<ActionResult<LineDetailModel>> Update(LineDetailModel model)
+    public async Task<ActionResult<LineDetailModel>> Update(LineCreationModel model)
     {
         var id = await _lineFacade.UpdateAsync(model);
         if (id != null)
         {
-            var detailModel = await _lineFacade.GetByIdAsync((Guid)id);
+            LineDetailModel? detailModel = await _lineFacade.GetByIdAsync((Guid)id);
             return Ok(detailModel);
         }
         return NotFound();

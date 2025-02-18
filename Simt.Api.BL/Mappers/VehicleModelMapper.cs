@@ -4,7 +4,7 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Mappers;
 
-public class VehicleModelMapper : ModelMapperBase<VehicleEntity, VehicleListModel, VehicleDetailModel>
+public class VehicleModelMapper : ModelMapperBase<VehicleEntity, VehicleListModel, VehicleDetailModel, VehicleDetailModel>
 {
     public override VehicleListModel MapToListModel(VehicleEntity? entity)
     {

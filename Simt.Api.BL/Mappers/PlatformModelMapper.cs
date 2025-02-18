@@ -5,7 +5,7 @@ using Simt.Common.Models;
 namespace Simt.Api.BL.Mappers;
 
 public class PlatformModelMapper (RouteStopModelMapper routeStopModelMapper, RouteModelMapper routeModelMapper)
-    : ModelMapperBase<PlatformEntity, PlatformListModel, PlatformDetailModel>
+    : ModelMapperBase<PlatformEntity, PlatformListModel, PlatformDetailModel, PlatformDetailModel>
 {
     public override PlatformListModel MapToListModel(PlatformEntity? entity)
     {

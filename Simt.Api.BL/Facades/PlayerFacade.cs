@@ -5,14 +5,14 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Facades;
 
-public class PlayerFacade : FacadeBase<PlayerRepository, PlayerEntity, PlayerListModel, PlayerDetailModel>
+public class PlayerFacade : FacadeBase<PlayerRepository, PlayerEntity, PlayerListModel, PlayerDetailModel, PlayerDetailModel>
 {
     private readonly PlayerRepository _playerRepository;
-    private readonly IModelMapper<PlayerEntity, PlayerListModel, PlayerDetailModel> _modelMapper;
+    private readonly IModelMapper<PlayerEntity, PlayerListModel, PlayerDetailModel, PlayerDetailModel> _modelMapper;
     
     public PlayerFacade(
         PlayerRepository repository,
-        IModelMapper<PlayerEntity, PlayerListModel, PlayerDetailModel> modelMapper)
+        IModelMapper<PlayerEntity, PlayerListModel, PlayerDetailModel, PlayerDetailModel> modelMapper)
         : base(repository, modelMapper)
     {
         _playerRepository = repository;

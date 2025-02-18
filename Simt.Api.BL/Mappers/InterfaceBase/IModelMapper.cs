@@ -1,6 +1,6 @@
 ﻿namespace Simt.Api.BL.Mappers.InterfaceBase;
 
-public interface IModelMapper<TEntity, TListModel, TDetailModel>
+public interface IModelMapper<TEntity, TListModel, TDetailModel, TCreateModel>
 {
     TListModel MapToListModel(TEntity? entity);
 
@@ -8,5 +8,5 @@ public interface IModelMapper<TEntity, TListModel, TDetailModel>
     List<TDetailModel> MapToDetailModel(IEnumerable<TEntity> entities);
 
     TDetailModel MapToDetailModel(TEntity? entity);
-    TEntity MapToEntity(TDetailModel model);
+    TEntity MapToEntity(TCreateModel model);
 }

@@ -4,7 +4,7 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Mappers;
 
-public class LineModelMapper (RouteModelMapper routeModelMapper) : ModelMapperBase<LineEntity, LineListModel, LineDetailModel>
+public class LineModelMapper (RouteModelMapper routeModelMapper) : ModelMapperBase<LineEntity, LineListModel, LineDetailModel, LineCreationModel>
 {
     public override LineListModel MapToListModel(LineEntity? entity)
     {
@@ -42,7 +42,7 @@ public class LineModelMapper (RouteModelMapper routeModelMapper) : ModelMapperBa
         };
     }
     
-    public override LineEntity MapToEntity(LineDetailModel model)
+    public override LineEntity MapToEntity(LineCreationModel model)
     {
 
         return new LineEntity

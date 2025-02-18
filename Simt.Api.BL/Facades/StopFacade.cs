@@ -6,15 +6,15 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Facades;
 
-public class StopFacade : FacadeBase<StopRepository, StopEntity, StopListModel, StopDetailModel>
+public class StopFacade : FacadeBase<StopRepository, StopEntity, StopListModel, StopDetailModel, StopDetailModel>
 {
     private readonly StopRepository _stopRepository;
-    private readonly IModelMapper<StopEntity, StopListModel, StopDetailModel> _modelStopper;
+    private readonly IModelMapper<StopEntity, StopListModel, StopDetailModel, StopDetailModel> _modelStopper;
     private readonly LineModelMapper _lineModelMapper;
 
     public StopFacade(
         StopRepository repository, 
-        IModelMapper<StopEntity, StopListModel, StopDetailModel> modelStopper,
+        IModelMapper<StopEntity, StopListModel, StopDetailModel, StopDetailModel> modelStopper,
         LineModelMapper lineModelMapper) 
         : base(repository, modelStopper)
     {

@@ -4,7 +4,7 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Mappers;
 
-public class StopModelMapper (PlatformModelMapper platformModelMapper) : ModelMapperBase<StopEntity, StopListModel, StopDetailModel>
+public class StopModelMapper (PlatformModelMapper platformModelMapper) : ModelMapperBase<StopEntity, StopListModel, StopDetailModel, StopDetailModel>
 {
     public override StopListModel MapToListModel(StopEntity? entity)
     {

@@ -10,13 +10,13 @@ public static class BLInstaller
     {
         services.Scan(selector => selector
             .FromAssemblyOf<BusinessLogic>()
-            .AddClasses(filter => filter.AssignableTo(typeof(IFacade<,,>)))
+            .AddClasses(filter => filter.AssignableTo(typeof(IFacade<,,,>)))
             .AsSelfWithInterfaces()
             .WithScopedLifetime());
         
         services.Scan(selector => selector
             .FromAssemblyOf<BusinessLogic>()
-            .AddClasses(filter => filter.AssignableTo(typeof(IModelMapper<,,>)))
+            .AddClasses(filter => filter.AssignableTo(typeof(IModelMapper<,,,>)))
             .AsSelfWithInterfaces()
             .WithScopedLifetime());
     }

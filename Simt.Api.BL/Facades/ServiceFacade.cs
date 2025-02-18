@@ -5,14 +5,14 @@ using Simt.Common.Models;
 
 namespace Simt.Api.BL.Facades;
 
-public class ServiceFacade : FacadeBase<ServiceRepository, ServiceEntity, ServiceListModel, ServiceDetailModel>
+public class ServiceFacade : FacadeBase<ServiceRepository, ServiceEntity, ServiceListModel, ServiceDetailModel, ServiceDetailModel>
 {
     private readonly ServiceRepository _serviceRepository;
-    private readonly IModelMapper<ServiceEntity, ServiceListModel, ServiceDetailModel> _modelMapper;
+    private readonly IModelMapper<ServiceEntity, ServiceListModel, ServiceDetailModel, ServiceDetailModel> _modelMapper;
 
     public ServiceFacade(
         ServiceRepository repository, 
-        IModelMapper<ServiceEntity, ServiceListModel, ServiceDetailModel> modelMapper) 
+        IModelMapper<ServiceEntity, ServiceListModel, ServiceDetailModel, ServiceDetailModel> modelMapper) 
         : base(repository, modelMapper)
     {
         _serviceRepository = repository;
