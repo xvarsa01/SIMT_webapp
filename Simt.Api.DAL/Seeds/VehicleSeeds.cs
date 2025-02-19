@@ -28,7 +28,7 @@ public static class VehicleSeeds
         BatteryDrive = false,
         AirConditioning = false,
         GoldVersion = true,
-        Status = Status.InGame,
+        Status = Status.Active,
         Traction = Traction.Tram,
         LowFloor = LowFloor.HighFloor
     };

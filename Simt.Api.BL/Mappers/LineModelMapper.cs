@@ -1,5 +1,6 @@
 using Simt.Api.BL.Mappers.InterfaceBase;
 using Simt.Api.DAL.entities;
+using Simt.Common.enums;
 using Simt.Common.Models;
 
 namespace Simt.Api.BL.Mappers;
@@ -18,6 +19,8 @@ public class LineModelMapper (RouteModelMapper routeModelMapper) : ModelMapperBa
             Id = entity.Id,
             Traction = entity.Traction,
             Line = entity.LineNumber,
+            Status = entity.Status,
+            MainRoute = entity.MainRoute
         };
     }
 
@@ -36,6 +39,8 @@ public class LineModelMapper (RouteModelMapper routeModelMapper) : ModelMapperBa
             IntervalPeak = entity.IntervalPeak,
             IntervalNonPeak = entity.IntervalNonPeak,
             IntervalNight = entity.IntervalNight,
+            Status = entity.Status,
+            MainRoute = entity.MainRoute,
             MapId = entity.MapId,
             MapName = entity.Map.MapName,
             Routes = routeModelMapper.MapToListModel(entity.Routes),
@@ -52,6 +57,8 @@ public class LineModelMapper (RouteModelMapper routeModelMapper) : ModelMapperBa
             IntervalPeak = model.IntervalPeak,
             IntervalNonPeak = model.IntervalNonPeak,
             IntervalNight = model.IntervalNight,
+            Status = model.Status,
+            MainRoute = model.MainRoute,
             MapId = model.MapId,
             LineNumber = model.LineNumber,
             Map = null!,

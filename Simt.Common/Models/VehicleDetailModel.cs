@@ -52,7 +52,7 @@ public record VehicleDetailModel() : ModelBase
         CngDrive = false,
         BatteryDrive = false,
         AirConditioning = false,
-        Status = Status.InGame,
+        Status = Status.Active,
         Traction = Traction.Bus,
         LowFloor = LowFloor.HighFloor
     };

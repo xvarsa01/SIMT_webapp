@@ -27,7 +27,7 @@ public class SimtDbContext (DbContextOptions contextOptions, bool seedDemoData =
         modelBuilder.Entity<LineEntity>()
             .HasMany(e => e.Routes)
             .WithOne(e => e.Line)
-            .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
+            .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
 
         modelBuilder.Entity<RouteEntity>()
             .HasMany<ServiceEntity>(i => i.Services)
@@ -46,7 +46,7 @@ public class SimtDbContext (DbContextOptions contextOptions, bool seedDemoData =
         modelBuilder.Entity<RouteEntity>()
             .HasMany(e => e.RouteStops)
             .WithOne(e => e.Route)
-            .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
+            .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
         
         modelBuilder.Entity<StopEntity>()
             .HasMany(e => e.Platforms)

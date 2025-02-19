@@ -7,11 +7,15 @@ public record LineListModel() : ModelBase
 {
     public required string Line { get; set; }
     public required Traction Traction { get; set; }
+    public required Status Status { get; set; }
+    public required string? MainRoute { get; set; }
 
     public static LineListModel Empty => new()
     {
         Id = Guid.NewGuid(),
         Line = string.Empty,
-        Traction = Traction.Bus
+        Traction = Traction.Bus,
+        Status = Status.InPreparation,
+        MainRoute = String.Empty
     };
 }

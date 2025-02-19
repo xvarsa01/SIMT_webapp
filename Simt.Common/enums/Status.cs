@@ -2,8 +2,10 @@
 
 public enum Status
 {
-    InGame,
+    NonActive,
+    Active,
     InPreparation,
-    Withdrawn,
+    Planned,
+    Deleted,
     
 }

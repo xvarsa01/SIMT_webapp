@@ -15,7 +15,9 @@ public record LineDetailModel() : LineCreationModel
         IntervalPeak = 0,
         IntervalNonPeak = 0,
         IntervalNight = 0,
+        Status = Status.InPreparation,
+        MainRoute = String.Empty,
         MapId = Guid.Empty,
-        MapName = string.Empty
+        MapName = string.Empty,
     };
 }
