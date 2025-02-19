@@ -10,6 +10,12 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
+builder.Services.AddScoped<IPlatformApiClient, PlatformApiClient>();
+builder.Services.AddScoped<PlatformFacade>();
+
+builder.Services.AddScoped<IStopApiClient, StopApiClient>();
+builder.Services.AddScoped<StopFacade>();
+
 builder.Services.AddScoped<IRouteApiClient, RouteApiClient>();
 builder.Services.AddScoped<RouteFacade>();
 
