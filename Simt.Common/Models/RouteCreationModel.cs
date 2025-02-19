@@ -38,7 +38,7 @@ public record RouteCreationModel : ModelBase
         RearBUSE = string.Empty,
         RewardMoney = 0,
         RewardPoints = 0,
-        Status = Status.InGame,
+        Status = Status.InPreparation,
         OnlyLowFloor = false,
         TwoWay = false,
         AlternativeDrive = false,

@@ -11,7 +11,8 @@ public record LineEntity():IEntity
     public int IntervalPeak { get; set; }
     public int IntervalNonPeak { get; set; }
     public int IntervalNight { get; set; }
-
+    public required Status Status { get; set; }
+    public required string? MainRoute { get; set; }
     public required Guid MapId { get; set; }
     public required MapEntity Map { get; set; }
     public ICollection<RouteEntity> Routes { get; init; } = [];

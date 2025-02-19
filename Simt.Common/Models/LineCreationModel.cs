@@ -10,6 +10,8 @@ public record LineCreationModel() : ModelBase
     public int IntervalPeak { get; set; }
     public int IntervalNonPeak { get; set; }
     public int IntervalNight { get; set; }
+    public required Status Status { get; set; }
+    public required string? MainRoute { get; set; }
 
     public required Guid MapId { get; set; }
     public required string MapName { get; set; }
@@ -22,6 +24,8 @@ public record LineCreationModel() : ModelBase
         IntervalPeak = 0,
         IntervalNonPeak = 0,
         IntervalNight = 0,
+        Status = Status.InPreparation,
+        MainRoute = string.Empty,
         MapId = Guid.Empty,
         MapName = string.Empty
     };

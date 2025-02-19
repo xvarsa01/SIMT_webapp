@@ -18,7 +18,7 @@ public record RouteListModel : ModelBase
     {
         Id = Guid.NewGuid(),
         RouteCode = string.Empty,
-        Status = Status.InGame,
+        Status = Status.InPreparation,
         StartPlatformId = Guid.Empty,
         FinalPlatformId = Guid.Empty,
         LineId = Guid.Empty,
