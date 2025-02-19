@@ -15,11 +15,14 @@ public partial class LineEditor : ComponentBase
     [Inject]
     public LineFacade LineFacade { get; set; } = null!;
     [Inject]
+    public RouteFacade RouteFacade { get; set; } = null!;
+    [Inject]
     public MapFacade MapFacade { get; set; } = null!;
     [Inject]
     public NavigationManager NavigationManager { get; init; } = null!;
     
     private LineDetailModel? LineDetailModel { get; set; }
+    private List<RouteDetailModel> RouteDetailsList { get; set; } = new();
     private List<MapListModel> Maps { get; set; } = new();
     
     protected override async Task OnParametersSetAsync()
@@ -28,6 +31,11 @@ public partial class LineEditor : ComponentBase
         {
             _lineIdGuid = parsedLineId;
             LineDetailModel = await LineFacade.GetByIdAsync(_lineIdGuid);
+            foreach (var route in LineDetailModel.Routes)
+            {
+                var routeDetail = await RouteFacade.GetByIdAsync(route.Id);
+                RouteDetailsList.Add(routeDetail);
+            }
             Maps = await MapFacade.GetAllAsync();
         }
         else

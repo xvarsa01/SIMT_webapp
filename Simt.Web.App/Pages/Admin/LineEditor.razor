@@ -5,50 +5,139 @@
 <div>
     @if (LineDetailModel is not null)
     {
-    <EditForm Model="@LineDetailModel">
-        <div>
-            Číslo
-            <br>
-            <InputText @bind-Value="@LineDetailModel.LineNumber"/>
-        </div>
-        <div>
-            Trasa
-            <br>
-            <span>TODO</span>
-        </div>
-        <div>
-            Mapa
-            <br>
-            <InputSelect @bind-Value="@LineDetailModel.MapName">
-                @foreach (var map in Maps)
-                {
-                    <option value="@map.MapName">@map.MapName</option>
-                }
-            </InputSelect>
-        </div>
-        <div>
-            Trakce
-            <br>
-            <InputSelect @bind-Value="@LineDetailModel.Traction">
-                @foreach (var traction in Enum.GetValues(typeof(Traction)).Cast<Traction>())
-                {
-                    <option value="@traction">@traction</option>
-                }
-            </InputSelect>
-        </div>
-        <div>
-            Interval
-            <br>
-            <InputNumber @bind-Value="@LineDetailModel.IntervalPeak"/>
-            <InputNumber @bind-Value="@LineDetailModel.IntervalNonPeak"/>
-            <InputNumber @bind-Value="@LineDetailModel.IntervalNight"/>
-        </div>
+        <EditForm Model="@LineDetailModel">
+            <div>
+                Číslo
+                <br>
+                <InputText @bind-Value="@LineDetailModel.LineNumber"/>
+            </div>
+            <div>
+                Trasa
+                <br>
+                <span>TODO</span>
+            </div>
+            <div>
+                Mapa
+                <br>
+                <InputSelect @bind-Value="@LineDetailModel.MapId">
+                    @foreach (var map in Maps)
+                    {
+                        <option value="@map.Id">@map.MapName</option>
+                    }
+                </InputSelect>
+            </div>
+            <div>
+                Trakce
+                <br>
+                <InputSelect @bind-Value="@LineDetailModel.Traction">
+                    @foreach (var traction in Enum.GetValues(typeof(Traction)).Cast<Traction>())
+                    {
+                        <option value="@traction">@traction</option>
+                    }
+                </InputSelect>
+            </div>
+            <div>
+                Interval
+                <br>
+                <InputNumber @bind-Value="@LineDetailModel.IntervalPeak"/>
+                <InputNumber @bind-Value="@LineDetailModel.IntervalNonPeak"/>
+                <InputNumber @bind-Value="@LineDetailModel.IntervalNight"/>
+            </div>
         
-        <div>
-            <button type="submit" class="btn btn-success mr-2" @onclick="@Save" title="Uložit linku">Ulozit</button>
-            <button type="submit" class="btn btn-success mr-2" @onclick="@Delete" title="Celá linka bude nenávratně smazána">Smazat</button>
-            @* <p class="tlacitko" id="smazatLinku"><img src="https://simt.cz/app/linky/img/smazat.png" title="Celá linka bude nenávratně smazána"></p> *@
-        </div>
-    </EditForm>
+            <div>
+                <button type="submit" class="btn btn-success mr-2" @onclick="@Save" title="Uložit linku">Ulozit</button>
+                <button type="submit" class="btn btn-danger mr-2" @onclick="@Delete" title="Celá linka bude nenávratně smazána">Smazat</button>
+            </div>
+        </EditForm>
+        
+        foreach (var route in RouteDetailsList)
+        {
+            <div class="obsah">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>Kód trasy</td>
+                        <td><InputText @bind-Value="@route.RouteCode"/></td>
+                    </tr>
+                    <tr>
+                        <td>Výchozí zastávka</td>
+                        <td><InputText @bind-Value="@route.StartStopName"/></td>
+                    </tr>
+                    <tr>
+                        <td>Cílová zastávka</td>
+                        <td><InputText @bind-Value="@route.FinalStopName"/></td>
+                    </tr>
+                    <tr>
+                        <td>Přední buse</td>
+                        <td><InputText @bind-Value="@route.FrontBUSE"/></td>
+                    </tr>
+                    <tr>
+                        <td>Boční buse</td>
+                        <td><InputText @bind-Value="@route.RearBUSE"/></td>
+                    </tr>
+                    <tr>
+                        <td>Zadní buse</td>
+                        <td><InputText @bind-Value="@route.RearBUSE"/></td>
+                    </tr>
+                    <tr>
+                        <td>Odměna Kč</td>
+                        <td><InputNumber @bind-Value="@route.RewardMoney"/></td>
+                    </tr>
+                    <tr>
+                        <td>Odměna body</td>
+                        <td><InputNumber @bind-Value="@route.RewardPoints"/></td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>
+                            <InputSelect @bind-Value="@route.Status">
+                                @foreach (var status in Enum.GetValues(typeof(Status)).Cast<Status>())
+                                {
+                                    <option value="@status">@status</option>
+                                }
+                            </InputSelect>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Obousměrné vozy</td>
+                        <td>
+                            <InputSelect @bind-Value="@route.TwoWay">
+                                <option value="true">Ano</option>
+                                <option value="false">Nie</option>
+                            </InputSelect>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Alternativní pohon</td>
+                        <td>
+                            <InputSelect @bind-Value="@route.AlternativeDrive">
+                                <option value="true">Ano</option>
+                                <option value="false">Nie</option>
+                            </InputSelect>
+                        </td>
+                    </tr>
+                    <tr><td colspan="2">Info zpráva do menu hry</td></tr>
+                    @* TODO add to enity and model message *@
+                    <tr>
+                        <td><i>CZ:</i></td>
+                        <td><input type="text" name="infoCZ" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><i>EN:</i></td>
+                        <td><input type="text" name="infoEN" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><i>DE:</i></td>
+                        <td><input type="text" name="infoDE" value=""></td>
+                    </tr>
+
+                    @* <tr><td>Poptávka</td><td><input type="range" id="poptavkaA" name="poptavka" min="0" max="100" value="10" step="5" onchange="AktualizovatPoptavku('A');"><span id="spanA">10</span></td></tr> *@
+                    </tbody>
+                </table>
+                    
+                <strong>Zastávky</strong>
+                <p><strong>jízdní doby (Š|S|N):</strong> 1 | 1 | 1)</p>
+            </div>
+        }
     }
 </div>
