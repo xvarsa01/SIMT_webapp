@@ -5,6 +5,7 @@ namespace Simt.Common.Models;
 
 public record LineDetailModel() : LineCreationModel
 {
+    public required string MapName { get; set; }
     public List<RouteListModel> Routes { get; set; } = new();
 
     public static LineDetailModel Empty => new()

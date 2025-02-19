@@ -5,6 +5,9 @@ namespace Simt.Common.Models;
 
 public record RouteDetailModel : RouteCreationModel
 {
+    public required string? StartStopName { get; set; }
+    public required string? FinalStopName { get; set; }
+    public required string LineNumber { get; set; }
     public ICollection<RouteStopModel> Stops { get; init; } = [];
 
     public static RouteDetailModel Empty => new()

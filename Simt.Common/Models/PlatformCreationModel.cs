@@ -8,7 +8,6 @@ public record PlatformCreationModel() : ModelBase
     public required bool LowFloor { get; set; }
     
     public required Guid ParentStopId { get; set; }
-    public required string ParentStopName { get; set; }
     
     public static PlatformCreationModel EmptyCreation => new()
     {
@@ -16,6 +15,5 @@ public record PlatformCreationModel() : ModelBase
         PlatformName = string.Empty,
         LowFloor = false,
         ParentStopId = Guid.Empty,
-        ParentStopName = String.Empty,
     };
 }

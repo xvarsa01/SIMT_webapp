@@ -25,9 +25,7 @@ public record RouteCreationModel : ModelBase
     public required Guid StartPlatformId { get; set; }
     public required Guid FinalPlatformId { get; set; }
     public required Guid LineId { get; set; }
-    public required string? StartStopName { get; set; }
-    public required string? FinalStopName { get; set; }
-    public required string LineNumber { get; set; }
+
     
     public static RouteCreationModel EmptyCreation => new()
     {
@@ -45,8 +43,5 @@ public record RouteCreationModel : ModelBase
         StartPlatformId = Guid.Empty,
         FinalPlatformId = Guid.Empty,
         LineId = Guid.Empty,
-        StartStopName = string.Empty,
-        FinalStopName = string.Empty,
-        LineNumber = string.Empty
     };
 }

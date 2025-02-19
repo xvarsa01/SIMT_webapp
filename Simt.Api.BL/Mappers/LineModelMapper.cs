@@ -18,7 +18,7 @@ public class LineModelMapper (RouteModelMapper routeModelMapper) : ModelMapperBa
         {
             Id = entity.Id,
             Traction = entity.Traction,
-            Line = entity.LineNumber,
+            LineNumber = entity.LineNumber,
             Status = entity.Status,
             MainRoute = entity.MainRoute
         };
