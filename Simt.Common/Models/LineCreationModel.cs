@@ -14,7 +14,6 @@ public record LineCreationModel() : ModelBase
     public required string? MainRoute { get; set; }
 
     public required Guid MapId { get; set; }
-    public required string MapName { get; set; }
     
     public static LineCreationModel EmptyCreation => new()
     {
@@ -27,6 +26,5 @@ public record LineCreationModel() : ModelBase
         Status = Status.InPreparation,
         MainRoute = string.Empty,
         MapId = Guid.Empty,
-        MapName = string.Empty
     };
 }
