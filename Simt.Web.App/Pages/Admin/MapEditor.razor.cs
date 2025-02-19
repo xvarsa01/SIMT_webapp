@@ -18,6 +18,7 @@ public partial class MapEditor : ComponentBase
     private List<LineListModel> LineList { get; set; } = new();
     private MapDetailModel? MapDetailModel { get; set; }
     private bool _loading = true;
+    private int _numberOfCreatedLines;
     
     protected override async Task OnInitializedAsync()
     {
@@ -46,8 +47,15 @@ public partial class MapEditor : ComponentBase
     }
     private async Task CreateNewLine(Guid mapId)
     {
-        NavigationManager.NavigateTo("", forceLoad: false);
-        //TODO
+        _numberOfCreatedLines++;
+        var lineNumber = $"NOVA {_numberOfCreatedLines}";
+        
+        LineCreationModel createdModel= LineCreationModel.EmptyCreation with{MapId = mapId, LineNumber = lineNumber };
+        await LineFacade.CreateAsync(createdModel);
+        
+        LineListModel createdModelList = LineListModel.Empty with{LineNumber = lineNumber, Id = createdModel.Id};
+        LineList.Add(createdModelList);
+        StateHasChanged();
     }
 
     private void ChangePublic()
