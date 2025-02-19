@@ -46,8 +46,42 @@
         
             <div>
                 <button type="submit" class="btn btn-success mr-2" @onclick="@Save" title="Uložit linku">Ulozit</button>
-                <button type="submit" class="btn btn-danger mr-2" @onclick="@Delete" title="Celá linka bude nenávratně smazána">Smazat</button>
+                <button type="submit" class="btn btn-danger mr-2" @onclick="@DeleteClicked" title="Celá linka bude nenávratně smazána">Smazat</button>
             </div>
+            @if (_showDeleteModal)
+            {
+                <div>
+                    <p>Zvol položku ke smazání:</p>
+                    <button class="btn btn-danger" @onclick="DeleteLine">Smazat celou linku</button>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Kód trasy</th>
+                            <th>Počáteční zastávka</th>
+                            <th>Konečná zastávka</th>
+                            <th>Akce</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var route in LineDetailModel.Routes)
+                        {
+                            <tr>
+                                <td>@route.RouteCode</td>
+                                <td>@route.StartStopName</td>
+                                <td>@route.FinalStopName</td>
+                                <td>
+                                    <button class="btn btn-danger" @onclick="() => DeleteRoute(route.Id)">Smazat trasu</button>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+
+                    <button class="btn btn-secondary" @onclick="CancelDelete">Zavřít</button>
+                </div>
+
+            }
+
         </EditForm>
         
         foreach (var route in RouteDetailsList)

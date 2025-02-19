@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Microsoft.AspNetCore.Components;
 using Simt.Common.Models;
 using Simt.Web.BL.Facades;
@@ -11,6 +12,7 @@ public partial class LineEditor : ComponentBase
 
     private Guid _lineIdGuid;
     private bool _notFound;
+    private bool _showDeleteModal;
     
     [Inject]
     public LineFacade LineFacade { get; set; } = null!;
@@ -46,13 +48,45 @@ public partial class LineEditor : ComponentBase
 
     private async Task Save()
     {
+        Debug.Assert(LineDetailModel != null, nameof(LineDetailModel) + " != null");
         await LineFacade.UpdateAsync(LineDetailModel);
+        foreach (var route in RouteDetailsList)
+        {
+            await RouteFacade.UpdateAsync(route with {Stops = default!});
+        }
         NavigationManager.NavigateTo($"/admin/mapy");
     }
 
-    private async Task Delete()
+    private void DeleteClicked()
     {
+        _showDeleteModal = true;
+    }
+    private async Task DeleteLine()
+    {
+        _showDeleteModal = false;
         await LineFacade.DeleteAsync(_lineIdGuid);
         NavigationManager.NavigateTo($"/admin/mapy");
+    }
+
+    private async Task DeleteRoute(Guid routeId)
+    {
+        await RouteFacade.DeleteAsync(routeId);
+        
+        var routeToRemoveDetail = RouteDetailsList.FirstOrDefault(r => r.Id == routeId);
+        if (routeToRemoveDetail != null)
+        {
+            RouteDetailsList.Remove(routeToRemoveDetail);
+        }
+        var routeToRemoveList = LineDetailModel?.Routes.FirstOrDefault(r => r.Id == routeId);
+        if (routeToRemoveList != null)
+        {
+            LineDetailModel?.Routes.Remove(routeToRemoveList);
+        }
+        StateHasChanged();
+    }
+
+    private void CancelDelete()
+    {
+        _showDeleteModal = false;
     }
 }
