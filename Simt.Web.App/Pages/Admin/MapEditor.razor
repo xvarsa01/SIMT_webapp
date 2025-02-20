@@ -12,7 +12,8 @@ else
             <th>Název</th>
             <th>SCIN</th>
             <th>Změna</th>
-            <th>Tras</th>
+            <th>Linky</th>
+            <th>Trasy</th>
             <th>Verze</th>
             <th>Akce</th>
         </tr>
@@ -24,6 +25,7 @@ else
                 <td> @map.MapName</td>
                 <td> @map.SCIN</td>
                 <td> @map.LastChangeTime</td>
+                <td> @map.LinesCount</td>
                 <td> @map.RoutesCount</td>
                 <td> @map.Version</td>
                 <td>
@@ -82,6 +84,7 @@ else
                         <th>Trasa</th>
                         <th>Status</th>
                         <th>Trakce</th>
+                        <th>Trasy</th>
                         <th>Akce</th>
                     </tr>
                     </thead>
@@ -93,6 +96,7 @@ else
                             <td> @line.MainRoute</td>
                             <td> @line.Status</td>
                             <td> @line.Traction</td>
+                            <td> @line.RoutesCount</td>
                             <td>
                                 <button @onclick="() => SelectLine(line.Id)">Vybrat</button>
                             </td>

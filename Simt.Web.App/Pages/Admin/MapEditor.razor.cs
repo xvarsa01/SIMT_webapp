@@ -55,6 +55,11 @@ public partial class MapEditor : ComponentBase
         
         LineListModel createdModelList = LineListModel.Empty with{LineNumber = lineNumber, Id = createdModel.Id};
         LineList.Add(createdModelList);
+        
+        // Update MapLists with a new reference so Blazor detects the change
+        MapLists = MapLists.Select(m =>
+            m.Id == mapId ? m with { LinesCount = m.LinesCount + 1 } : m).ToList();
+        
         StateHasChanged();
     }
 
