@@ -20,6 +20,7 @@ public class MapModelMapper : ModelMapperBase<MapEntity, MapListModel, MapDetail
             SCIN = entity.SCIN,
             LastChangeTime = entity.LastChangeTime,
             Version = entity.Version,
+            LinesCount = entity.Lines.Count,
             RoutesCount = entity.Lines.Sum(line => line.Routes.Count), // Aggregating routes count
         };
     }

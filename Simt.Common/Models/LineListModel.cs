@@ -9,6 +9,7 @@ public record LineListModel() : ModelBase
     public required Traction Traction { get; set; }
     public required Status Status { get; set; }
     public required string? MainRoute { get; set; }
+    public required int RoutesCount { get; set; }
 
     public static LineListModel Empty => new()
     {
@@ -16,6 +17,7 @@ public record LineListModel() : ModelBase
         LineNumber = string.Empty,
         Traction = Traction.Bus,
         Status = Status.InPreparation,
-        MainRoute = String.Empty
+        MainRoute = String.Empty,
+        RoutesCount = 0
     };
 }
