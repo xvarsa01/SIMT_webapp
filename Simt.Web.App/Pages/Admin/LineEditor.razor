@@ -47,6 +47,7 @@
             <div>
                 <button type="submit" class="btn btn-success mr-2" @onclick="@Save" title="Uložit linku">Ulozit</button>
                 <button type="submit" class="btn btn-danger mr-2" @onclick="@DeleteClicked" title="Celá linka bude nenávratně smazána">Smazat</button>
+                <button type="submit" class="btn btn-primary mr-2" @onclick="@CreateNewRoute" title="Přidat trasu">Nova trasa</button>
             </div>
             @if (_showDeleteModal)
             {
@@ -63,7 +64,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach (var route in LineDetailModel.Routes)
+                        @foreach (var route in LineDetailModel.Routes.OrderBy(r => r.RouteCode))
                         {
                             <tr>
                                 <td>@route.RouteCode</td>
@@ -95,11 +96,25 @@
                         </tr>
                         <tr>
                             <td>Výchozí zastávka</td>
-                            <td><InputText @bind-Value="@route.StartStopName"/></td>
+                            <td>
+                                <InputSelect @bind-Value="@route.StartPlatformId">
+                                    @foreach (var platform in Platforms)
+                                    {
+                                        <option value="@platform.Id">@platform.PlatformName</option>
+                                    }
+                                </InputSelect>
+                            </td>
                         </tr>
                         <tr>
                             <td>Cílová zastávka</td>
-                            <td><InputText @bind-Value="@route.FinalStopName"/></td>
+                            <td>
+                                <InputSelect @bind-Value="@route.FinalPlatformId">
+                                    @foreach (var platform in Platforms)
+                                    {
+                                        <option value="@platform.Id">@platform.PlatformName</option>
+                                    }
+                                </InputSelect>
+                            </td>
                         </tr>
                         <tr>
                             <td>Přední buse</td>

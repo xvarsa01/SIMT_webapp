@@ -21,11 +21,14 @@ public partial class LineEditor : ComponentBase
     [Inject]
     public MapFacade MapFacade { get; set; } = null!;
     [Inject]
+    public PlatformFacade PlatformFacade { get; set; } = null!;
+    [Inject]
     public NavigationManager NavigationManager { get; init; } = null!;
     
     private LineDetailModel? LineDetailModel { get; set; }
     private List<RouteDetailModel> RouteDetailsList { get; set; } = new();
     private List<MapListModel> Maps { get; set; } = new();
+    private List<PlatformListModel> Platforms { get; set; } = new();
     
     protected override async Task OnParametersSetAsync()
     {
@@ -38,7 +41,11 @@ public partial class LineEditor : ComponentBase
                 var routeDetail = await RouteFacade.GetByIdAsync(route.Id);
                 RouteDetailsList.Add(routeDetail);
             }
+            RouteDetailsList = RouteDetailsList.OrderBy(p => p.RouteCode).ToList();
+
             Maps = await MapFacade.GetAllAsync();
+            Platforms = (await PlatformFacade.GetAllAsync())
+                .OrderBy(p => p.PlatformName).ToList();
         }
         else
         {
@@ -88,5 +95,61 @@ public partial class LineEditor : ComponentBase
     private void CancelDelete()
     {
         _showDeleteModal = false;
+    }
+
+    private async Task CreateNewRoute()
+    {
+        string routeCode = GetNextRouteCode();
+        Guid startPlatformId = Platforms.First().Id;
+        Guid finalPlatformId = Platforms.First().Id;
+        
+        Debug.Assert(LineDetailModel != null, nameof(LineDetailModel) + " != null");    
+        RouteCreationModel routeCreationModel = RouteCreationModel.EmptyCreation with
+            {RouteCode = routeCode, LineId = LineDetailModel.Id, StartPlatformId = startPlatformId, FinalPlatformId = finalPlatformId};
+        Console.WriteLine(routeCreationModel);
+        await RouteFacade.CreateAsync(routeCreationModel);
+        
+        RouteDetailModel routeDetailModel = RouteDetailModel.Empty with
+            {RouteCode = routeCode, LineId = LineDetailModel.Id, Id = routeCreationModel.Id, StartPlatformId = startPlatformId, FinalPlatformId = finalPlatformId};
+        RouteDetailsList.Add(routeDetailModel);
+        
+        RouteListModel routeListModel = RouteListModel.Empty with
+            {RouteCode = routeCode, LineId = LineDetailModel.Id, Id = routeCreationModel.Id, StartPlatformId = startPlatformId, FinalPlatformId = finalPlatformId};
+        LineDetailModel.Routes.Add(routeListModel);
+        
+        StateHasChanged();
+    }
+    
+    private string GetNextRouteCode()
+    {
+        List<RouteDetailModel> routes = RouteDetailsList;
+        if (routes.Count == 0)
+            return "A"; // Default starting point
+
+        // Get the last alphabetically sorted RouteCode
+        string lastCode = routes.Max(r => r.RouteCode)!.ToUpper();
+        
+        // Increment the string lexicographically
+        return IncrementString(lastCode);
+    }
+
+    private static string IncrementString(string input)
+    {
+        char[] chars = input.ToCharArray();
+        int i = chars.Length - 1;
+
+        while (i >= 0)
+        {
+            if (chars[i] < 'Z')
+            {
+                chars[i]++; // Increment character
+                return new string(chars);
+            }
+            chars[i] = 'A'; // Reset to 'a' and move left
+            i--;
+        }
+
+        // If all characters were 'z', prepend 'a'
+        return 'A' + new string(chars);
     }
 }
