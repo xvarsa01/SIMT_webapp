@@ -8,6 +8,13 @@ public class LineRepository(SimtDbContext dbContext) : RepositoryBase<LineEntity
 {
     private readonly DbSet<LineEntity> _dbSet = dbContext.Set<LineEntity>();
     
+    public override async Task<List<LineEntity>> GetAllAsync()
+    {
+        return await _dbSet
+            .Include(e => e.Routes)
+            .ToListAsync();
+    }
+    
     public override async Task<LineEntity?> GetByIdAsync(Guid id)
     {
         return await _dbSet
@@ -28,6 +35,7 @@ public class LineRepository(SimtDbContext dbContext) : RepositoryBase<LineEntity
     {
         return await _dbSet
             .Where(line => line.MapId == mapId)
+            .Include(e => e.Routes)
             .ToListAsync();
     }
 }
