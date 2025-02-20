@@ -18,7 +18,7 @@ public class PlatformController : ControllerBase
     }
 
     [HttpGet("all")]
-    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<PlatformDetailModel>>))]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<PlatformListModel>>))]
     public async Task<List<PlatformListModel>> GetAll()
     {
         return await _platformFacade.GetAllAsync();

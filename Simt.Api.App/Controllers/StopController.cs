@@ -38,7 +38,7 @@ public class StopController : ControllerBase
     }
     
     [HttpGet("Lines/{id}")]
-    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<StopDetailModel>))]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<LineListModel>>))]
     [SwaggerResponse(HttpStatusCode.NotFound, null)]
     public async Task<ActionResult<List<LineListModel>?>> GetAllLinesForStopByIdAsync(Guid id)
     { 
