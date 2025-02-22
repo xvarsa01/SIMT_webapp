@@ -17,6 +17,8 @@ public record VehicleDetailModel() : ModelBase
     public string? Line { get; set; }
     public string? Author { get; set; }
     public string? GameVersion { get; set; }
+    public string? Icon { get; set; }
+    public required bool GoldVersion{ get; set; }
     public required bool AlternativeDrive{ get; set; }
     public required bool TwoWay{ get; set; }
     public required bool DieselDrive{ get; set; }
@@ -24,7 +26,6 @@ public record VehicleDetailModel() : ModelBase
     public required bool BatteryDrive{ get; set; }
     public required bool AirConditioning{ get; set; }
     
-    public required bool GoldVersion{ get; set; }
     
     public Status Status { get; set; }
     public Traction Traction { get; set; }
@@ -52,7 +53,7 @@ public record VehicleDetailModel() : ModelBase
         CngDrive = false,
         BatteryDrive = false,
         AirConditioning = false,
-        Status = Status.Active,
+        Status = Status.InPreparation,
         Traction = Traction.Bus,
         LowFloor = LowFloor.HighFloor
     };
