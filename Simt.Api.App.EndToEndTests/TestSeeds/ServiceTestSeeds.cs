@@ -33,10 +33,10 @@ public static class ServiceTestSeeds
         Finished = true,
         PlayerId = PlayerSeeds.PlayerPeter.Id,
         RouteId = RouteSeeds.Route13A.Id,
-        VehicleId = VehicleSeeds.TatraT3.Id,
+        VehicleId = VehicleSeeds.TatraT3DPP.Id,
         Player = PlayerSeeds.PlayerPeter,
         Route = RouteSeeds.Route13A,
-        Vehicle = VehicleSeeds.TatraT3
+        Vehicle = VehicleSeeds.TatraT3DPP
     };
     public static readonly ServiceEntity Service3 = new ()
     {
@@ -49,10 +49,10 @@ public static class ServiceTestSeeds
         Finished = true,
         PlayerId = PlayerSeeds.PlayerPeter.Id,
         RouteId = RouteSeeds.Route13B.Id,
-        VehicleId = VehicleSeeds.TatraT3.Id,
+        VehicleId = VehicleSeeds.TatraT3DPP.Id,
         Player = PlayerSeeds.PlayerPeter,
         Route = RouteSeeds.Route13B,
-        Vehicle = VehicleSeeds.TatraT3
+        Vehicle = VehicleSeeds.TatraT3DPP
     };
     public static readonly ServiceEntity Service4 = new ()
     {
@@ -65,10 +65,10 @@ public static class ServiceTestSeeds
         Finished = true,
         PlayerId = PlayerSeeds.PlayerPeter.Id,
         RouteId = RouteSeeds.Route1B.Id,
-        VehicleId = VehicleSeeds.TatraT3.Id,
+        VehicleId = VehicleSeeds.TatraT3DPP.Id,
         Player = PlayerSeeds.PlayerPeter,
         Route = RouteSeeds.Route1B,
-        Vehicle = VehicleSeeds.TatraT3
+        Vehicle = VehicleSeeds.TatraT3DPP
     };
     public static readonly ServiceEntity Service5 = new ()
     {
@@ -81,10 +81,10 @@ public static class ServiceTestSeeds
         Finished = false,
         PlayerId = PlayerSeeds.PlayerTomas.Id,
         RouteId = RouteSeeds.Route1B.Id,
-        VehicleId = VehicleSeeds.TatraT3.Id,
+        VehicleId = VehicleSeeds.TatraT3DPP.Id,
         Player = PlayerSeeds.PlayerTomas,
         Route = RouteSeeds.Route1B,
-        Vehicle = VehicleSeeds.TatraT3
+        Vehicle = VehicleSeeds.TatraT3DPP
     };
     
     public static void Seed(this ModelBuilder modelBuilder) =>
