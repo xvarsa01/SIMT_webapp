@@ -1,93 +1,110 @@
 @page "/admin/vozidla"
 
 <div id="web">
-    <div id="filters">
-        <h1>Vozidla</h1>
-        <div class="flexbox">
-            <button @onclick="CreateNewVehicle">Vytvorit novu linku</button>
-            <div>
-                <InputSelect @bind-Value="@selectedManufacturer">
-                    <option value="">--- filtr podle výrobce ---</option>
-                    @foreach (var manufacturer in AllManufacturers)
-                    {
-                        <option value="@manufacturer">@manufacturer</option>
-                    }
-                </InputSelect>
-            </div>
-            <div>
-                <InputSelect @bind-Value="@selectedType">
-                    <option value="">--- filtr podle typu ---</option>
-                    @foreach (var type in AllTypes)
-                    {
-                        <option value="@type">@type</option>
-                    }
-                </InputSelect>
-            </div>
-            <div>
-                <InputSelect @bind-Value="@selectedType">
-                    <option value="">--- filtr podle typu ---</option>
-                    @foreach (var type in AllTypes)
-                    {
-                        <option value="@type">@type</option>
-                    }
-                </InputSelect>
-            </div>
-            <div class="fl1">
-                <input id="filtrEvc" type="text" name="filtrEvc" placeholder="Ev.č.">
-            </div>
+    <h1>Vozidla</h1>
+    <div class="filters">
+        <button @onclick="CreateNewVehicle">Vytvorit nove vozidlo</button>
+        <div>
+            <InputSelect ValueChanged="@((string value) => OnSearchVehicleByManufacturer(value))"
+                         ValueExpression="@(() => _selectedManufacturer)"
+                         Value="@_selectedManufacturer">
+                <option value="">--- filtr podle výrobce ---</option>
+                @foreach (var manufacturer in AllManufacturers)
+                {
+                    <option value="@manufacturer">@manufacturer</option>
+                }
+            </InputSelect>
+        </div>
+        <div>
+            <InputSelect ValueChanged="@((string value) => OnSearchVehicleByType(value))"
+                         ValueExpression="@(() => _selectedType)"
+                         Value="@_selectedType">
+                <option value="">--- filtr podle typu ---</option>
+                @foreach (var type in AllTypes)
+                {
+                    <option value="@type">@type</option>
+                }
+            </InputSelect>
+        </div>
+        <div>
+            <InputSelect ValueChanged="@((string value) => OnSearchVehicleByOperator(value))"
+                         ValueExpression="@(() => _selectedOperator)"
+                         Value="@_selectedOperator">
+                <option value="">--- filtr podle podniku ---</option>
+                @foreach (var op in AllOperators)
+                {
+                    <option value="@op">@op</option>
+                }
+            </InputSelect>
+        </div>
+        <div>
+            <input type="text" @oninput="OnSearchVehicleNumberChange" placeholder="Ev.č."/>
         </div>
     </div>
-    <table>
-        <thead>
-        <tr>
-            <th colspan="2">Vozidlo</th>
-            <th>Podnik</th>
-            <th>Ev.č.</th>
-            <th>Scin</th>
-            <th>Status</th>
-            <th>ZV</th>
-            <th>Velikost</th>
-            <th>Verze</th>
-            <th>Autor</th>
-            <th colspan="2" >Akce</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var vehicle in VehicleList)
-        {
+    <div class="list">
+        <table>
+            <thead>
             <tr>
-                <td>
-                    @if (string.IsNullOrEmpty(vehicle.Icon))
-                    {
-                        <img src="https://simt.cz/img/ikony/x.png" width="auto" height="20" alt="Icon">
-                    }
-                    else
-                    {
-                        <img src="@vehicle.Icon" width="auto" height="20" alt="Icon">
-                    }
-                </td>
-                <td>@vehicle.Manufacturer</td>
-                <td>@vehicle.Operator</td>
-                <td>@vehicle.VehicleNumber</td>
-                <td>@vehicle.SCIN</td>
-                <td>@vehicle.Status</td>
-                <td>@if (vehicle.GoldVersion)
-                    {
-                        <img src="https://simt.cz/img/ikony/zv.png" width="auto" height="20" alt="Zlatá verze">
-                    }
-                    else
-                    {
-                        <img src="https://simt.cz/img/ikony/free.png" width="auto" height="20" alt="Free demo">
-                    }</td>
-                <td>@vehicle.SizeB</td>
-                <td>@vehicle.GameVersion</td>
-                <td>@vehicle.Author</td>
-                <td>
-                    <button @onclick="() => EditVehicle(vehicle.Id)">Upravit</button>
-                    <button @onclick="() => DeleteVehicle(vehicle.Id)">Smazat</button>
-                </td>
+                <th colspan="3">Vozidlo</th>
+                <th colspan="2">Podnik</th>
+                <th>Ev.č.</th>
+                <th>Scin</th>
+                <th>Status</th>
+                <th>ZV</th>
+                <th>Velikost</th>
+                <th>Verze</th>
+                <th>Autor</th>
+                <th colspan="2">Akce</th>
             </tr>
-        }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach (var vehicle in VehicleListActual)
+            {
+                <tr>
+                    <td>
+                        @if (string.IsNullOrEmpty(vehicle.Icon))
+                        {
+                            <img src="https://simt.cz/img/ikony/x.png" width="auto" height="20" alt="Icon">
+                        }
+                        else
+                        {
+                            <img src="@vehicle.Icon" width="auto" height="20" alt="Icon">
+                        }
+                    </td>
+                    <td>@vehicle.Manufacturer</td>
+                    <td>@vehicle.Type</td>
+                    <td>@vehicle.Operator</td>
+                    <td>@vehicle.OperatorShort</td>
+                    <td>@vehicle.VehicleNumber</td>
+                    <td>@vehicle.SCIN</td>
+                    <td>@vehicle.Status</td>
+                    <td>
+                        @if (vehicle.GoldVersion)
+                        {
+                            <img src="https://simt.cz/img/ikony/zv.png" width="auto" height="20" alt="Zlatá verze">
+                        }
+                        else
+                        {
+                            <img src="https://simt.cz/img/ikony/free.png" width="auto" height="20" alt="Free demo">
+                        }
+                    </td>
+                    <td>@vehicle.SizeB</td>
+                    <td>@vehicle.GameVersion</td>
+                    <td>@vehicle.Author</td>
+                    <td>
+                        <button @onclick="() => EditVehicle(vehicle.Id)">Upravit</button>
+                        <button @onclick="() => DeleteVehicle(vehicle.Id)">Smazat</button>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table></div>
 </div>
+
+<style>
+    .filters {
+        display: flex;
+        gap: 20px;
+        justify-content: start; /* Align items to the left */
+    }
+</style>
