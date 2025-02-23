@@ -14,19 +14,19 @@ public partial class VehicleEditorCreationPage : ComponentBase
     [Inject]
     public NavigationManager NavigationManager { get; init; } = null!;
 
-    private void FlipGoldVersion() => Vehicle.GoldVersion = !Vehicle.GoldVersion;
+    private void FlipGoldVersion(bool value) => Vehicle.GoldVersion = value;
 
-    private void FlipAlternativeDrive() => Vehicle.AlternativeDrive = !Vehicle.AlternativeDrive;
+    private void FlipAlternativeDrive(bool value) => Vehicle.AlternativeDrive = value;
 
-    private void FlipTwoWay() => Vehicle.TwoWay = !Vehicle.TwoWay;
+    private void FlipTwoWay(bool value) => Vehicle.TwoWay = value;
 
-    private void FlipDieselDrive() => Vehicle.DieselDrive = !Vehicle.DieselDrive;
+    private void FlipDieselDrive(bool value) => Vehicle.DieselDrive = value;
 
-    private void FlipCNGDrive() => Vehicle.CngDrive = !Vehicle.CngDrive;
+    private void FlipCNGDrive(bool value) => Vehicle.CngDrive = value;
 
-    private void FlipBatteryDrive() => Vehicle.BatteryDrive = !Vehicle.BatteryDrive;
+    private void FlipBatteryDrive(bool value) => Vehicle.BatteryDrive = value;
 
-    private void FlipAirConditioning() => Vehicle.AirConditioning = !Vehicle.AirConditioning;
+    private void FlipAirConditioning(bool value) => Vehicle.AirConditioning = value;
 
     private async Task Save()
     {

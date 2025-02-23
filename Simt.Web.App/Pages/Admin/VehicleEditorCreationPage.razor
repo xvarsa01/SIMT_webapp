@@ -3,32 +3,64 @@
 <h3>VehicleEditorCreationPage</h3>
 
 
-<EditForm Model="Vehicle">
+<EditForm Model="Vehicle" OnValidSubmit="Save">
+    <DataAnnotationsValidator/>
+    
     <div class="half">
         <div>
-            <div>
-                Výrobce
-                <br>
-                <InputText @bind-Value="@Vehicle.Manufacturer"/>
-                Zkratka
-                <br>
-                <InputText @bind-Value="@Vehicle.ManufacturerShort"/>
+            <div class="hasShort">
+                <div>
+                    Výrobce
+                    <br>
+                    <InputText @bind-Value="@Vehicle.Manufacturer"/>
+                    <small class="form-text text-danger">
+                        <ValidationMessage For="@(() => Vehicle.Manufacturer)"/>
+                    </small>
+                </div>
+                <div>
+                    Zkratka
+                    <br>
+                    <InputText @bind-Value="@Vehicle.ManufacturerShort"/>
+                    <small class="form-text text-danger">
+                        <ValidationMessage For="@(() => Vehicle.ManufacturerShort)"/>
+                    </small>
+                </div>
             </div>
-            <div>
-                Typ
-                <br>
-                <InputText @bind-Value="@Vehicle.Type"/>
-                Zkratka
-                <br>
-                <InputText @bind-Value="@Vehicle.TypeShort"/>
+            <div class="hasShort">
+                <div>
+                    Typ
+                    <br>
+                    <InputText @bind-Value="@Vehicle.Type"/>
+                    <small class="form-text text-danger">
+                        <ValidationMessage For="@(() => Vehicle.Type)"/>
+                    </small>
+                </div>
+                <div>
+                    Zkratka
+                    <br>
+                    <InputText @bind-Value="@Vehicle.TypeShort"/>
+                    <small class="form-text text-danger">
+                        <ValidationMessage For="@(() => Vehicle.TypeShort)"/>
+                    </small>
+                </div>
             </div>
-            <div>
-                Dopravní podnik
-                <br>
-                <InputText @bind-Value="@Vehicle.Operator"/>
-                Zkratka
-                <br>
-                <InputText @bind-Value="@Vehicle.OperatorShort"/>
+            <div class="hasShort">
+                <div>
+                    Dopravní podnik
+                    <br>
+                    <InputText @bind-Value="@Vehicle.Operator"/>
+                    <small class="form-text text-danger">
+                        <ValidationMessage For="@(() => Vehicle.Operator)"/>
+                    </small>
+                </div>
+                <div>
+                    Zkratka
+                    <br>
+                    <InputText @bind-Value="@Vehicle.OperatorShort"/>
+                    <small class="form-text text-danger">
+                        <ValidationMessage For="@(() => Vehicle.OperatorShort)"/>
+                    </small>
+                </div>
             </div>
             <div>
                 Evidenční číslo
@@ -82,31 +114,31 @@
             </div>
             <div>
                 Zlatá verze
-                <button @onclick="FlipGoldVersion">@(Vehicle.GoldVersion ? "ano" : "nie")</button>
+                <RadzenSwitch @bind-Value="@Vehicle.GoldVersion" Change="@(args => FlipGoldVersion(args))" />
             </div>
             <div>
                 Alternativní pohon
-                <button @onclick="FlipAlternativeDrive">@(Vehicle.AlternativeDrive ? "ano" : "nie")</button>
+                <RadzenSwitch @bind-Value="@Vehicle.AlternativeDrive" Change="@(args => FlipAlternativeDrive(args))" />
             </div>
             <div>
                 Obousměrnost
-                <button @onclick="FlipTwoWay">@(Vehicle.TwoWay ? "ano" : "nie")</button>
+                <RadzenSwitch @bind-Value="@Vehicle.TwoWay" Change="@(args => FlipTwoWay(args))" />
             </div>
             <div>
                 Diesel pohon
-                <button @onclick="FlipDieselDrive">@(Vehicle.DieselDrive ? "ano" : "nie")</button>
+                <RadzenSwitch @bind-Value="@Vehicle.DieselDrive" Change="@(args => FlipDieselDrive(args))" />
             </div>
             <div>
                 CNG pohon
-                <button @onclick="FlipCNGDrive">@(Vehicle.CngDrive ? "ano" : "nie")</button>
+                <RadzenSwitch @bind-Value="@Vehicle.CngDrive" Change="@(args => FlipCNGDrive(args))" />
             </div>
             <div>
                 Bateriový pohon
-                <button @onclick="FlipBatteryDrive">@(Vehicle.BatteryDrive ? "ano" : "nie")</button>
+                <RadzenSwitch @bind-Value="@Vehicle.BatteryDrive" Change="@(args => FlipBatteryDrive(args))" />
             </div>
             <div>
                 Klimatizace salónu
-                <button @onclick="FlipAirConditioning">@(Vehicle.AirConditioning ? "ano" : "nie")</button>
+                <RadzenSwitch @bind-Value="@Vehicle.AirConditioning" Change="@(args => FlipAirConditioning(args))" />
             </div>
             <div>
                 Nízkopodlažnost
@@ -117,7 +149,7 @@
                     }
                 </InputSelect>
             </div>
-            <button type="submit" class="btn btn-success" @onclick="@Save">Uložiť</button>
+            <button type="submit" class="btn btn-success">Uložiť</button>
         </div>
     </div>
 </EditForm>
@@ -126,5 +158,9 @@
     .half {
         display: flex;
         gap: 100px;
+    }
+    .hasShort{
+        display: flex;
+        gap: 20px;
     }
 </style>
