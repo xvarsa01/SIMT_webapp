@@ -9,10 +9,35 @@ public partial class VehicleEditorCreationPage : ComponentBase
     [Inject]
     private VehicleFacade VehicleFacade { get; set; } = null!;
     
+    [Parameter]
+    public string? Id { get; set; }
+    
     public VehicleDetailModel Vehicle { get; set; } = VehicleDetailModel.Empty;
 
     [Inject]
     public NavigationManager NavigationManager { get; init; } = null!;
+    
+    
+    protected override async Task OnInitializedAsync()
+    {
+        if (!string.IsNullOrEmpty(Id) && Guid.TryParse(Id, out Guid parsedId))
+        {
+            try
+            {
+                Vehicle = await VehicleFacade.GetByIdAsync(parsedId);
+            }
+            catch (Exception)
+            {
+                NavigationManager.NavigateTo("/admin/vozidla");
+            }
+        }
+        else if (!string.IsNullOrEmpty(Id))
+        {
+            // If the ID is present but not a valid GUID, redirect
+            NavigationManager.NavigateTo("/admin/vozidla");
+        }
+    }
+    
 
     private void FlipGoldVersion(bool value) => Vehicle.GoldVersion = value;
 
@@ -30,7 +55,14 @@ public partial class VehicleEditorCreationPage : ComponentBase
 
     private async Task Save()
     {
-        await VehicleFacade.CreateAsync(Vehicle);
-        NavigationManager.NavigateTo($"/admin/vozidla");
+        if (Vehicle.Id == Guid.Empty)
+        {
+            await VehicleFacade.CreateAsync(Vehicle);
+        }
+        else
+        {
+            await VehicleFacade.UpdateAsync(Vehicle);
+        }
+        NavigationManager.NavigateTo("/admin/vozidla");
     }
 }

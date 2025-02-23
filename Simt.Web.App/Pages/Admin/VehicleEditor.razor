@@ -98,7 +98,17 @@
                 </tr>
             }
             </tbody>
-        </table></div>
+        </table>
+        @if (_showDeleteModal)
+        {
+            <div>
+                <p>Oravdu chces smazat vozidlo?</p>
+                <button class="btn btn-danger" @onclick="DeleteVehicleApproved">Smazat</button>
+                <button class="btn btn-secondary" @onclick="CancelDelete">Zavřít</button>
+            </div>
+        }
+
+    </div>
 </div>
 
 <style>

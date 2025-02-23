@@ -23,6 +23,8 @@ public partial class VehicleEditor : ComponentBase
     private string _selectedOperator = "";
     private string _selectedVehicleNumber = "";
     
+    private bool _showDeleteModal;
+    Guid _selectedVehicleForDelete = Guid.Empty;
     protected override async Task OnInitializedAsync()
     {
         VehicleListFirstLoad = VehicleListActual = (await VehicleFacade.GetAllAsync())
@@ -131,7 +133,6 @@ public partial class VehicleEditor : ComponentBase
     {
         VehicleListActual = VehicleListFirstLoad;
 
-            Console.WriteLine(_selectedManufacturer + " " + _selectedType + " " + _selectedOperator + " " + _selectedVehicleNumber);
         if (!string.IsNullOrEmpty(_selectedManufacturer))
         {
             VehicleListActual = VehicleListActual.Where(v => v.Manufacturer == _selectedManufacturer).ToList();
@@ -158,11 +159,31 @@ public partial class VehicleEditor : ComponentBase
 
     private void EditVehicle(Guid vehicleId)
     {
-        
+        NavigationManager.NavigateTo($"/admin/vozidla/vytvorit/{vehicleId}");
     }
 
     private void DeleteVehicle(Guid vehicleId)
     {
-        
+        _selectedVehicleForDelete = vehicleId;
+        _showDeleteModal = true;
     }
+    private async Task DeleteVehicleApproved()
+    {
+        await VehicleFacade.DeleteAsync(_selectedVehicleForDelete);
+        
+        var vehicleToRemove = VehicleListActual.FirstOrDefault(v => v.Id == _selectedVehicleForDelete);
+        if (vehicleToRemove != null)
+        {
+            VehicleListActual.Remove(vehicleToRemove);
+            VehicleListFirstLoad.Remove(vehicleToRemove);
+        }
+        
+        _showDeleteModal = false;
+        StateHasChanged();
+    }
+    private void CancelDelete()
+    {
+        _showDeleteModal = false;
+    }
+
 }

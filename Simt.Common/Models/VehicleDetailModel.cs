@@ -42,14 +42,14 @@ public record VehicleDetailModel() : ModelBase
 
     public static VehicleDetailModel Empty => new()
     {
-        Id = Guid.NewGuid(),
-        Manufacturer = String.Empty,
+        Id = Guid.Empty,
+        Manufacturer = string.Empty,
         Type = string.Empty,
         Operator = string.Empty,
         ManufacturerShort = string.Empty,
         TypeShort = string.Empty,
         OperatorShort = string.Empty,
-        VehicleNumber = String.Empty,
+        VehicleNumber = string.Empty,
         SCIN = string.Empty,
         SizeB = null,
         Line = null,
