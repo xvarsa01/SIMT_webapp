@@ -36,11 +36,6 @@ public partial class MapEditor : ComponentBase
         NavigationManager.NavigateTo(newUrl, forceLoad: false);
     }
 
-    private async Task GetLinesForMap(Guid mapId)
-    {
-        LineList = await LineFacade.Line_GetAllByMapAsync(mapId);
-    }
-    
     private void SelectLine(Guid lineId)
     {
         NavigationManager.NavigateTo($"/lineEditor/{lineId}");
@@ -63,9 +58,9 @@ public partial class MapEditor : ComponentBase
         StateHasChanged();
     }
 
-    private void ChangePublic()
+    private void ChangePublic(bool value)
     {
-        if (MapDetailModel != null) MapDetailModel.Public = !MapDetailModel.Public;
+        if (MapDetailModel != null) MapDetailModel.Public = value;
     }
 
     private async Task Save()

@@ -29,11 +29,8 @@ else
                 <td> @map.RoutesCount</td>
                 <td> @map.Version</td>
                 <td>
-                    <button @onclick="() => SelectMap(map.Id)">Vybrat</button>
+                    <button class="btn btn-primary" @onclick="() => SelectMap(map.Id)">Vybrat</button>
                 </td>
-                @* <td> *@
-                @*     <button @onclick="() => GetLinesForMap(map.Id)">Nacitat linky</button> *@
-                @* </td> *@
             </tr>
         }
         </tbody>
@@ -65,7 +62,7 @@ else
                 </div>
                 <div>
                     Verejná:
-                    <button @onclick="ChangePublic">@(MapDetailModel.Public ? "ano" : "nie")</button>
+                    <RadzenSwitch @bind-Value="@MapDetailModel.Public" Change="@(args => ChangePublic(args))" />
                 </div>
                 <button type="submit" class="btn btn-success" @onclick="@Save">
                     Uložiť
@@ -98,7 +95,7 @@ else
                             <td> @line.Traction</td>
                             <td> @line.RoutesCount</td>
                             <td>
-                                <button @onclick="() => SelectLine(line.Id)">Vybrat</button>
+                                <button class="btn btn-primary" @onclick="() => SelectLine(line.Id)">Vybrat</button>
                             </td>
                         </tr>
                     }
@@ -112,6 +109,6 @@ else
                 Mapa neobsahuje ziadne linky
             </div>
         }
-        <button @onclick="() => CreateNewLine(MapDetailModel.Id)">Vytvorit novu linku</button>
+        <button class="btn btn-success" @onclick="() => CreateNewLine(MapDetailModel.Id)">Nová linka</button>
     }
 }

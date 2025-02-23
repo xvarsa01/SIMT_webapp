@@ -3,7 +3,7 @@
 <div id="web">
     <h1>Vozidla</h1>
     <div class="filters">
-        <button @onclick="CreateNewVehicle">Vytvorit nove vozidlo</button>
+        <button class="btn btn-success" @onclick="CreateNewVehicle">Vytvorit nove vozidlo</button>
         <div>
             <InputSelect ValueChanged="@((string value) => OnSearchVehicleByManufacturer(value))"
                          ValueExpression="@(() => _selectedManufacturer)"
@@ -92,8 +92,8 @@
                     <td>@vehicle.GameVersion</td>
                     <td>@vehicle.Author</td>
                     <td>
-                        <button @onclick="() => EditVehicle(vehicle.Id)">Upravit</button>
-                        <button @onclick="() => DeleteVehicle(vehicle.Id)">Smazat</button>
+                        <button class="btn btn-primary" @onclick="() => EditVehicle(vehicle.Id)">Upravit</button>
+                        <button class="btn btn-danger" @onclick="() => DeleteVehicle(vehicle.Id)">Smazat</button>
                     </td>
                 </tr>
             }
