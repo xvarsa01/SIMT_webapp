@@ -1,0 +1,130 @@
+@page "/admin/vozidla/vytvorit"
+@using Simt.Common.enums
+<h3>VehicleEditorCreationPage</h3>
+
+
+<EditForm Model="Vehicle">
+    <div class="half">
+        <div>
+            <div>
+                Výrobce
+                <br>
+                <InputText @bind-Value="@Vehicle.Manufacturer"/>
+                Zkratka
+                <br>
+                <InputText @bind-Value="@Vehicle.ManufacturerShort"/>
+            </div>
+            <div>
+                Typ
+                <br>
+                <InputText @bind-Value="@Vehicle.Type"/>
+                Zkratka
+                <br>
+                <InputText @bind-Value="@Vehicle.TypeShort"/>
+            </div>
+            <div>
+                Dopravní podnik
+                <br>
+                <InputText @bind-Value="@Vehicle.Operator"/>
+                Zkratka
+                <br>
+                <InputText @bind-Value="@Vehicle.OperatorShort"/>
+            </div>
+            <div>
+                Evidenční číslo
+                <br>
+                <InputText @bind-Value="@Vehicle.VehicleNumber"/>
+            </div>
+            <div>
+                SCIN číslo
+                <br>
+                <InputText @bind-Value="@Vehicle.SCIN"/>
+            </div>
+            <div>
+                Velikost B
+                <br>
+                <InputText @bind-Value="@Vehicle.SizeB"/>
+            </div>
+            <div>
+                Určení linka
+                <br>
+                <InputText @bind-Value="@Vehicle.Line"/>
+            </div>
+            <div>
+                Autor
+                <br>
+                <InputText @bind-Value="@Vehicle.Author"/>
+            </div>
+            <div>
+                Verze<br><i>oddělovat čárkou</i>
+                <br>
+                <InputText @bind-Value="@Vehicle.GameVersion"/>
+            </div>
+        </div>
+        <div>
+            <div>
+                Status
+                <InputSelect @bind-Value="@Vehicle.Status">
+                    @foreach (var status in Enum.GetValues(typeof(Status)).Cast<Status>())
+                    {
+                        <option value="@status">@status</option>
+                    }
+                </InputSelect>
+            </div>
+            <div>
+                Trakce
+                <InputSelect @bind-Value="@Vehicle.Traction">
+                    @foreach (var traction in Enum.GetValues(typeof(Traction)).Cast<Traction>())
+                    {
+                        <option value="@traction">@traction</option>
+                    }
+                </InputSelect>
+            </div>
+            <div>
+                Zlatá verze
+                <button @onclick="FlipGoldVersion">@(Vehicle.GoldVersion ? "ano" : "nie")</button>
+            </div>
+            <div>
+                Alternativní pohon
+                <button @onclick="FlipAlternativeDrive">@(Vehicle.AlternativeDrive ? "ano" : "nie")</button>
+            </div>
+            <div>
+                Obousměrnost
+                <button @onclick="FlipTwoWay">@(Vehicle.TwoWay ? "ano" : "nie")</button>
+            </div>
+            <div>
+                Diesel pohon
+                <button @onclick="FlipDieselDrive">@(Vehicle.DieselDrive ? "ano" : "nie")</button>
+            </div>
+            <div>
+                CNG pohon
+                <button @onclick="FlipCNGDrive">@(Vehicle.CngDrive ? "ano" : "nie")</button>
+            </div>
+            <div>
+                Bateriový pohon
+                <button @onclick="FlipBatteryDrive">@(Vehicle.BatteryDrive ? "ano" : "nie")</button>
+            </div>
+            <div>
+                Klimatizace salónu
+                <button @onclick="FlipAirConditioning">@(Vehicle.AirConditioning ? "ano" : "nie")</button>
+            </div>
+            <div>
+                Nízkopodlažnost
+                <InputSelect @bind-Value="@Vehicle.LowFloor">
+                    @foreach (var option in Enum.GetValues(typeof(LowFloor)).Cast<LowFloor>())
+                    {
+                        <option value="@option">@option</option>
+                    }
+                </InputSelect>
+            </div>
+            <button type="submit" class="btn btn-success" @onclick="@Save">Uložiť</button>
+        </div>
+    </div>
+</EditForm>
+
+<style>
+    .half {
+        display: flex;
+        gap: 100px;
+    }
+</style>

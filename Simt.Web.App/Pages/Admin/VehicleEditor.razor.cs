@@ -8,6 +8,9 @@ public partial class VehicleEditor : ComponentBase
 {
     [Inject]
     public VehicleFacade VehicleFacade { get; set; } = null!;
+    
+    [Inject]
+    public NavigationManager NavigationManager { get; init; } = null!;
 
     private List<VehicleListModel> VehicleListActual { get; set; } = new();
     private List<VehicleListModel> VehicleListFirstLoad { get; set; } = new();
@@ -150,7 +153,7 @@ public partial class VehicleEditor : ComponentBase
     
     private void CreateNewVehicle()
     {
-        
+        NavigationManager.NavigateTo($"/admin/vozidla/vytvorit");
     }
 
     private void EditVehicle(Guid vehicleId)
