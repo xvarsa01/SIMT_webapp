@@ -65,7 +65,7 @@ public class PlayerController : ControllerBase
     {
         var id = await _playerFacade.CreateAsync(model);
         var detailModel = await _playerFacade.GetByIdAsync(id);
-        return Created("Player/{id}", detailModel);
+        return Created("player/{id}", detailModel);
     }
 
     [HttpPut]

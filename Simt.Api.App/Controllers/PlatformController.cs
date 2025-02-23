@@ -7,7 +7,7 @@ using Simt.Common.Models;
 namespace Simt.Api.App.Controllers;
 
 [ApiController]
-[Route("Platform")]
+[Route("platform")]
 public class PlatformController : ControllerBase
 {
     private readonly PlatformFacade _platformFacade;
@@ -43,7 +43,7 @@ public class PlatformController : ControllerBase
     {
         var id = await _platformFacade.CreateAsync(model);
         var detailModel = await _platformFacade.GetByIdAsync(id);
-        return Created("Platform/{id}", detailModel);
+        return Created("platform/{id}", detailModel);
     }
 
     [HttpPut]

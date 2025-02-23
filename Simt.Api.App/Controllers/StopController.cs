@@ -7,7 +7,7 @@ using Simt.Common.Models;
 namespace Simt.Api.App.Controllers;
 
 [ApiController]
-[Route("Stop")]
+[Route("stop")]
 public class StopController : ControllerBase
 {
     private readonly StopFacade _stopFacade;
@@ -37,7 +37,7 @@ public class StopController : ControllerBase
         return Ok(model);
     }
     
-    [HttpGet("Lines/{id}")]
+    [HttpGet("lines/{id}")]
     [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<LineListModel>>))]
     [SwaggerResponse(HttpStatusCode.NotFound, null)]
     public async Task<ActionResult<List<LineListModel>?>> GetAllLinesForStopByIdAsync(Guid id)
@@ -56,7 +56,7 @@ public class StopController : ControllerBase
     {
         var id = await _stopFacade.CreateAsync(model);
         var detailModel = await _stopFacade.GetByIdAsync(id);
-        return Created("Stop/{id}", detailModel);
+        return Created("stop/{id}", detailModel);
     }
 
     [HttpPut]

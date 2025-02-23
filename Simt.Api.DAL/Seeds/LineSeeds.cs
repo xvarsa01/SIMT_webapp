@@ -20,7 +20,7 @@ public static class LineSeeds
     {
         Id = Guid.Parse("c1b6e519-0e9d-4c8d-ae4b-f9feda4737fa"),
         LineNumber = "13",
-        Traction = Traction.Trolejbus,
+        Traction = Traction.Trolleybus,
         Status = Status.Active,
         MainRoute = "Hlavni nadrazi - Rolky",
         Map = MapSeeds.TestovaciMapa,

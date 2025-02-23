@@ -4,7 +4,7 @@ public enum Traction
 {
     Bus,
     Tram,
-    Trolejbus,
+    Trolleybus,
     Train,
     Different
 }
