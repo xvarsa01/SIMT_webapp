@@ -130,6 +130,10 @@ public class PlayerModelMapper (ServiceModelMapper serviceModelMapper) : ModelMa
             TrafficLevel = model.TrafficLevel,
             VisibilityLength = model.VisibilityLength,
             DisplayResolution = model.DisplayResolution,
+            // ConditionBusId = default,
+            ConditionBus = null!,
+            // ConditionTramId = default,
+            ConditionTram = null!,
         };
     }
 }

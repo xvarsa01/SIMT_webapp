@@ -11,10 +11,14 @@ namespace Simt.Api.App.Controllers;
 public class PlayerController : ControllerBase
 {
     private readonly PlayerFacade _playerFacade;
+    private readonly ConditionBusFacade _conditionBusFacade;
+    private readonly ConditionTramFacade _contractionTramFacade;
 
-    public PlayerController(PlayerFacade playerFacade)
+    public PlayerController(PlayerFacade playerFacade, ConditionBusFacade conditionBusFacade, ConditionTramFacade contractionTramFacade)
     {
         _playerFacade = playerFacade;
+        _conditionBusFacade = conditionBusFacade;
+        _contractionTramFacade = contractionTramFacade;
     }
 
     [HttpGet("all")]
@@ -92,5 +96,30 @@ public class PlayerController : ControllerBase
         }
         await _playerFacade.DeleteAsync(id);
         return NoContent();
+    }
+    
+    [HttpGet("{id}")]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<ConditionBusModel>))]
+    [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<ConditionBusModel>))]
+    public async Task<ActionResult<ConditionBusModel?>> GetConditionBusById(Guid id)
+    { 
+        var model = await _conditionBusFacade.GetByIdAsync(id);
+        if (model == null)
+        {
+            return NotFound();
+        }
+        return Ok(model);
+    }
+    [HttpGet("{id}")]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<ConditionTramModel>))]
+    [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<ConditionTramModel>))]
+    public async Task<ActionResult<ConditionTramModel?>> GetConditionTramById(Guid id)
+    { 
+        var model = await _contractionTramFacade.GetByIdAsync(id);
+        if (model == null)
+        {
+            return NotFound();
+        }
+        return Ok(model);
     }
 }
