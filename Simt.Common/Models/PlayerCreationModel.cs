@@ -34,6 +34,9 @@ public record PlayerCreationModel() : ModelBase
     public required DisplayResolution DisplayResolution { get; set; }
     public required TrafficLevel TrafficLevel { get; set; }
     public required VisibilityLength VisibilityLength { get; set; }
+    
+    public required Guid ConditionBusId { get; set; }
+    public required Guid ConditionTramId { get; set; }
     public required Guid FavouriteVehicleId {get;set;}
     
     public static PlayerCreationModel EmptyCreation => new()
@@ -67,6 +70,9 @@ public record PlayerCreationModel() : ModelBase
         DisplayResolution = DisplayResolution.Res1920X1080,
         TrafficLevel = TrafficLevel.TrafficLevel3,
         VisibilityLength = VisibilityLength.ViewLength250M,
+        
+        ConditionBusId = Guid.Empty,
+        ConditionTramId = Guid.Empty,
         FavouriteVehicleId = Guid.Empty,
     };
 }

@@ -16,6 +16,6 @@ public record ConditionBusEntity() : IEntity
     public required int AirDevice { get; set; }
     public required int TechnicalInspection { get; set; }
     
-    public required Guid PLayerId { get; set; }
+    // public required Guid PLayerId { get; set; }
     public required PlayerEntity Player { get; init; }
 }

@@ -35,10 +35,10 @@ public record PlayerEntity:IEntity
     public required TrafficLevel TrafficLevel { get; set; }
     public required VisibilityLength VisibilityLength { get; set; }
     
-    // public required Guid ConditionBusId { get; set; }
+    public required Guid ConditionBusId { get; set; }
     public required ConditionBusEntity ConditionBus { get; set; }
 
-    // public required Guid ConditionTramId { get; set; }
+    public required Guid ConditionTramId { get; set; }
     public required ConditionTramEntity ConditionTram { get; set; }
 
     public Guid? FavouriteVehicleId { get; set; }

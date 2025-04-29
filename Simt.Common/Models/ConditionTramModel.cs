@@ -14,7 +14,7 @@ public record ConditionTramModel() : ModelBase
     public required int Dirt { get; set; }
     public required int Cleaning { get; set; }
     
-    public required Guid PLayerId { get; set; }
+    public required string PlayerNick { get; set; }
     
     public static ConditionTramModel Empty => new()
     {
@@ -28,6 +28,6 @@ public record ConditionTramModel() : ModelBase
         Paint = 100,
         Dirt = 100,
         Cleaning = 100,
-        PLayerId = Guid.Empty,
+        PlayerNick = string.Empty,
     };
 }

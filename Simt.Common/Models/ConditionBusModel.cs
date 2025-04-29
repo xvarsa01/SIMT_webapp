@@ -17,7 +17,7 @@ public record ConditionBusModel() : ModelBase
     public required int AirDevice { get; set; }
     public required int TechnicalInspection { get; set; }
     
-    public required Guid PLayerId { get; set; }
+    public required string PlayerNick { get; set; }
     
     public static ConditionBusModel Empty => new()
     {
@@ -34,6 +34,6 @@ public record ConditionBusModel() : ModelBase
         Dirt = 100,
         AirDevice = 30,
         TechnicalInspection = 365,
-        PLayerId = Guid.Empty,
+        PlayerNick = string.Empty,
     };
 }

@@ -36,9 +36,9 @@ public static class PlayerSeeds
         DisplayResolution = DisplayResolution.Res1920X1080,
         TrafficLevel = TrafficLevel.TrafficLevel3,
         VisibilityLength = VisibilityLength.ViewLength500M,
-        // ConditionBusId = ConditionBusSeeds.ConditionBusPlayerAdam.Id,
+        ConditionBusId = ConditionBusSeeds.ConditionBusPlayerAdam.Id,
         ConditionBus = ConditionBusSeeds.ConditionBusPlayerAdam,
-        // ConditionTramId = ConditionTramSeeds.ConditionTramPlayerAdam.Id,
+        ConditionTramId = ConditionTramSeeds.ConditionTramPlayerAdam.Id,
         ConditionTram = ConditionTramSeeds.ConditionTramPlayerAdam,
     };
     
@@ -72,9 +72,9 @@ public static class PlayerSeeds
         DisplayResolution = DisplayResolution.Res1920X1080,
         TrafficLevel = TrafficLevel.TrafficLevel3,
         VisibilityLength = VisibilityLength.ViewLength500M,
-        // ConditionBusId = ConditionBusSeeds.ConditionBusPlayerTomas.Id,
+        ConditionBusId = ConditionBusSeeds.ConditionBusPlayerTomas.Id,
         ConditionBus = ConditionBusSeeds.ConditionBusPlayerTomas,
-        // ConditionTramId = ConditionTramSeeds.ConditionTramPlayerTomas.Id,
+        ConditionTramId = ConditionTramSeeds.ConditionTramPlayerTomas.Id,
         ConditionTram = ConditionTramSeeds.ConditionTramPlayerTomas,
     };
     
@@ -108,9 +108,9 @@ public static class PlayerSeeds
         DisplayResolution = DisplayResolution.Res1920X1080,
         TrafficLevel = TrafficLevel.TrafficLevel3,
         VisibilityLength = VisibilityLength.ViewLength500M,
-        // ConditionBusId = ConditionBusSeeds.ConditionBusPlayerPeter.Id,
+        ConditionBusId = ConditionBusSeeds.ConditionBusPlayerPeter.Id,
         ConditionBus = ConditionBusSeeds.ConditionBusPlayerPeter,
-        // ConditionTramId = ConditionTramSeeds.ConditionTramPlayerPeter.Id,
+        ConditionTramId = ConditionTramSeeds.ConditionTramPlayerPeter.Id,
         ConditionTram = ConditionTramSeeds.ConditionTramPlayerPeter,
     };
 
@@ -124,8 +124,8 @@ public static class PlayerSeeds
     
     public static void Seed(this ModelBuilder modelBuilder) =>
         modelBuilder.Entity<PlayerEntity>().HasData(
-            PlayerAdam with{Services = []},
-            PlayerPeter with{Services = []!},
-            PlayerTomas with{Services = []}
+            PlayerAdam with{Services = [], ConditionBus = null!, ConditionTram = null!},
+            PlayerPeter with{Services = [], ConditionBus = null!, ConditionTram = null!},
+            PlayerTomas with{Services = [], ConditionBus = null!, ConditionTram = null!}
         );
 }

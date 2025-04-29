@@ -18,4 +18,6 @@ public class ConditionBusFacade : FacadeBase<ConditionBusRepository, ConditionBu
         _conditionBusRepository = repository;
         _modelMapper = modelMapper;
     }
+    
+    
 }

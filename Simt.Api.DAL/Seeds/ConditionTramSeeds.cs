@@ -17,7 +17,7 @@ public static class ConditionTramSeeds
         Paint = 100,
         Dirt = 100,
         Cleaning = 100,
-        PLayerId = PlayerSeeds.PlayerAdam.Id,
+        // PLayerId = PlayerSeeds.PlayerAdam.Id,
         Player = PlayerSeeds.PlayerAdam,
     };
     
@@ -33,7 +33,7 @@ public static class ConditionTramSeeds
         Paint = 100,
         Dirt = 100,
         Cleaning = 100,
-        PLayerId = PlayerSeeds.PlayerPeter.Id,
+        // PLayerId = PlayerSeeds.PlayerPeter.Id,
         Player = PlayerSeeds.PlayerPeter,
     };
 
@@ -49,7 +49,7 @@ public static class ConditionTramSeeds
         Paint = 100,
         Dirt = 100,
         Cleaning = 100,
-        PLayerId = PlayerSeeds.PlayerTomas.Id,
+        // PLayerId = PlayerSeeds.PlayerTomas.Id,
         Player = PlayerSeeds.PlayerTomas,
     };
     

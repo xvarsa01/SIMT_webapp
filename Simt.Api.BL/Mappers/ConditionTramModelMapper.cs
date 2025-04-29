@@ -30,7 +30,7 @@ public class ConditionTramModelMapper : ModelMapperBase<ConditionTramEntity, Con
             Paint = entity.Paint,
             Dirt = entity.Dirt,
             Cleaning = entity.Cleaning,
-            PLayerId = entity.PLayerId,
+            PlayerNick = entity.Player.Nick,
         };
     }
 
@@ -48,7 +48,6 @@ public class ConditionTramModelMapper : ModelMapperBase<ConditionTramEntity, Con
             Paint = model.Paint,
             Dirt = model.Dirt,
             Cleaning = model.Cleaning,
-            PLayerId = model.PLayerId,
             Player = null!,
         };
     }

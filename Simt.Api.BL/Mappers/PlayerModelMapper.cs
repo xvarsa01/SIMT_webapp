@@ -60,7 +60,10 @@ public class PlayerModelMapper (ServiceModelMapper serviceModelMapper) : ModelMa
             TrafficLevel = entity.TrafficLevel,
             VisibilityLength = entity.VisibilityLength,
             FavouriteVehicleId = entity.FavouriteVehicleId ?? Guid.Empty,
-            Services = serviceModelMapper.MapToListModel(entity.Services).ToList(),
+            Services = serviceModelMapper.MapToListModel(entity.Services)
+                .ToList(),
+            ConditionBusId = entity.ConditionBusId,
+            ConditionTramId = entity.ConditionTramId,
         };
     }
     
@@ -130,9 +133,9 @@ public class PlayerModelMapper (ServiceModelMapper serviceModelMapper) : ModelMa
             TrafficLevel = model.TrafficLevel,
             VisibilityLength = model.VisibilityLength,
             DisplayResolution = model.DisplayResolution,
-            // ConditionBusId = default,
+            ConditionBusId = model.ConditionBusId,
             ConditionBus = null!,
-            // ConditionTramId = default,
+            ConditionTramId = model.ConditionTramId,
             ConditionTram = null!,
         };
     }

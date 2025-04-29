@@ -33,7 +33,7 @@ public class ConditionBusModelMapper : ModelMapperBase<ConditionBusEntity, Condi
             Dirt = entity.Dirt,
             AirDevice = entity.AirDevice,
             TechnicalInspection = entity.TechnicalInspection,
-            PLayerId = entity.PLayerId,
+            PlayerNick = entity.Player.Nick,
         };
     }
 
@@ -54,7 +54,6 @@ public class ConditionBusModelMapper : ModelMapperBase<ConditionBusEntity, Condi
             Dirt = model.Dirt,
             AirDevice = model.AirDevice,
             TechnicalInspection = model.TechnicalInspection,
-            PLayerId = model.PLayerId,
             Player = null!,
         };
     }

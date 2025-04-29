@@ -12,13 +12,13 @@ public class PlayerController : ControllerBase
 {
     private readonly PlayerFacade _playerFacade;
     private readonly ConditionBusFacade _conditionBusFacade;
-    private readonly ConditionTramFacade _contractionTramFacade;
+    private readonly ConditionTramFacade _conditionTramFacade;
 
-    public PlayerController(PlayerFacade playerFacade, ConditionBusFacade conditionBusFacade, ConditionTramFacade contractionTramFacade)
+    public PlayerController(PlayerFacade playerFacade, ConditionBusFacade conditionBusFacade, ConditionTramFacade conditionTramFacade)
     {
         _playerFacade = playerFacade;
         _conditionBusFacade = conditionBusFacade;
-        _contractionTramFacade = contractionTramFacade;
+        _conditionTramFacade = conditionTramFacade;
     }
 
     [HttpGet("all")]
@@ -98,7 +98,7 @@ public class PlayerController : ControllerBase
         return NoContent();
     }
     
-    [HttpGet("{id}")]
+    [HttpGet("bus-condition/{id}")]
     [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<ConditionBusModel>))]
     [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<ConditionBusModel>))]
     public async Task<ActionResult<ConditionBusModel?>> GetConditionBusById(Guid id)
@@ -110,12 +110,12 @@ public class PlayerController : ControllerBase
         }
         return Ok(model);
     }
-    [HttpGet("{id}")]
+    [HttpGet("tram-condition/{id}")]
     [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<ConditionTramModel>))]
     [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<ConditionTramModel>))]
     public async Task<ActionResult<ConditionTramModel?>> GetConditionTramById(Guid id)
     { 
-        var model = await _contractionTramFacade.GetByIdAsync(id);
+        var model = await _conditionTramFacade.GetByIdAsync(id);
         if (model == null)
         {
             return NotFound();

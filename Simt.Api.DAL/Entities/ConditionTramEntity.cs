@@ -13,7 +13,7 @@ public record ConditionTramEntity() : IEntity
     public required int Dirt { get; set; }
     public required int Cleaning { get; set; }
     
-    public required Guid PLayerId { get; set; }
+    // public required Guid PLayerId { get; set; }
     public required PlayerEntity Player { get; init; }
 
 }
