@@ -19,7 +19,7 @@ public class PlayerFacade : FacadeBase<PlayerRepository, PlayerEntity, PlayerLis
         _modelMapper = modelMapper;
     }
     
-    public virtual async Task<List<PlayerListModel>> GetAllAsync(string searchTerm)
+    public async Task<List<PlayerListModel>> GetAllAsync(string searchTerm)
     {
         List<PlayerEntity> entities = await Repository.GetAllAsync(searchTerm);
         
