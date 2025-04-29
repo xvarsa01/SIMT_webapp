@@ -21,23 +21,23 @@ public class VehicleFacade : FacadeBase<VehicleRepository, VehicleEntity, Vehicl
     
     public async Task<List<VehicleListModel>> GetAllBusesAsync()
     {
-        List<VehicleEntity> entities = await Repository.GetAllBusesAsync();
+        List<VehicleEntity> entities = await _vehicleRepository.GetAllBusesAsync();
         
-        var models =  ModelMapper.MapToListModel(entities);
+        var models =  _modelMapper.MapToListModel(entities);
         return models;
     }
     public async Task<List<VehicleListModel>> GetAllTrolleybusesAsync()
     {
-        List<VehicleEntity> entities = await Repository.GetAllTrolleybusesAsync();
+        List<VehicleEntity> entities = await _vehicleRepository.GetAllTrolleybusesAsync();
         
-        var models =  ModelMapper.MapToListModel(entities);
+        var models =  _modelMapper.MapToListModel(entities);
         return models;
     }
     public async Task<List<VehicleListModel>> GetAllTramsAsync()
     {
-        List<VehicleEntity> entities = await Repository.GetAllTramsAsync();
+        List<VehicleEntity> entities = await _vehicleRepository.GetAllTramsAsync();
         
-        var models =  ModelMapper.MapToListModel(entities);
+        var models =  _modelMapper.MapToListModel(entities);
         return models;
     }
 }

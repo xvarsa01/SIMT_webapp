@@ -72,10 +72,12 @@ public class SimtDbContext (DbContextOptions contextOptions, bool seedDemoData =
 
         modelBuilder.Entity<PlayerEntity>()
             .HasOne(e => e.ConditionBus)
-            .WithOne(e => e.Player);
+            .WithOne(e => e.Player)
+            .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
         modelBuilder.Entity<PlayerEntity>()
             .HasOne(e => e.ConditionTram)
-            .WithOne(e => e.Player);
+            .WithOne(e => e.Player)
+            .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
 
         
         if (seedDemoData)
