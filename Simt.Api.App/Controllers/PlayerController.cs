@@ -98,24 +98,24 @@ public class PlayerController : ControllerBase
         return NoContent();
     }
     
-    [HttpGet("bus-condition/{id}")]
+    [HttpGet("bus-condition/{playerId:guid}")]
     [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<ConditionBusModel>))]
     [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<ConditionBusModel>))]
-    public async Task<ActionResult<ConditionBusModel?>> GetConditionBusById(Guid id)
+    public async Task<ActionResult<ConditionBusModel?>> GetConditionBusById(Guid playerId)
     { 
-        var model = await _conditionBusFacade.GetByIdAsync(id);
+        var model = await _conditionBusFacade.GetByPlayerIdAsync(playerId);
         if (model == null)
         {
             return NotFound();
         }
         return Ok(model);
     }
-    [HttpGet("tram-condition/{id}")]
+    [HttpGet("tram-condition/{playerId:guid}")]
     [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<ConditionTramModel>))]
     [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<ConditionTramModel>))]
-    public async Task<ActionResult<ConditionTramModel?>> GetConditionTramById(Guid id)
+    public async Task<ActionResult<ConditionTramModel?>> GetConditionTramById(Guid playerId)
     { 
-        var model = await _conditionTramFacade.GetByIdAsync(id);
+        var model = await _conditionTramFacade.GetByPlayerIdAsync(playerId);
         if (model == null)
         {
             return NotFound();

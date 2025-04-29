@@ -7,7 +7,7 @@ public static class ConditionTramSeeds
 {
     public static readonly ConditionTramEntity ConditionTramPlayerAdam = new()
     {
-        Id = Guid.Parse("12b86bef-dcda-47d8-a9bf-ac1dea4d1143"),
+        Id = Guid.Parse("c402cc69-77bf-466a-a69c-c262d723a7cc"),
         Bulbs = 22,
         Battery = 100,
         Carbons = 100,
@@ -17,7 +17,6 @@ public static class ConditionTramSeeds
         Paint = 100,
         Dirt = 100,
         Cleaning = 100,
-        // PLayerId = PlayerSeeds.PlayerAdam.Id,
         Player = PlayerSeeds.PlayerAdam,
     };
     
@@ -33,7 +32,6 @@ public static class ConditionTramSeeds
         Paint = 100,
         Dirt = 100,
         Cleaning = 100,
-        // PLayerId = PlayerSeeds.PlayerPeter.Id,
         Player = PlayerSeeds.PlayerPeter,
     };
 
@@ -49,7 +47,6 @@ public static class ConditionTramSeeds
         Paint = 100,
         Dirt = 100,
         Cleaning = 100,
-        // PLayerId = PlayerSeeds.PlayerTomas.Id,
         Player = PlayerSeeds.PlayerTomas,
     };
     

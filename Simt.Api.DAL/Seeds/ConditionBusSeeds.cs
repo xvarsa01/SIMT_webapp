@@ -20,7 +20,6 @@ public static class ConditionBusSeeds
         Dirt = 0,
         AirDevice = 30,
         TechnicalInspection = 365,
-        // PLayerId = PlayerSeeds.PlayerAdam.Id,
         Player = PlayerSeeds.PlayerAdam
     };
     
@@ -39,7 +38,6 @@ public static class ConditionBusSeeds
         Dirt = 0,
         AirDevice = 30,
         TechnicalInspection = 365,
-        // PLayerId = PlayerSeeds.PlayerPeter.Id,
         Player = PlayerSeeds.PlayerPeter
     };
     
@@ -58,7 +56,6 @@ public static class ConditionBusSeeds
         Dirt = 0,
         AirDevice = 30,
         TechnicalInspection = 365,
-        // PLayerId = PlayerSeeds.PlayerTomas.Id,
         Player = PlayerSeeds.PlayerTomas
     };
     
