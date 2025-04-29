@@ -73,8 +73,8 @@ public class SimtDbContext (DbContextOptions contextOptions, bool seedDemoData =
         modelBuilder.Entity<PlayerEntity>()
             .HasOne(e => e.ConditionBus)
             .WithOne(e => e.Player);
-            modelBuilder.Entity<PlayerEntity>()
-                .HasOne(e => e.ConditionTram)
+        modelBuilder.Entity<PlayerEntity>()
+            .HasOne(e => e.ConditionTram)
             .WithOne(e => e.Player);
 
         
