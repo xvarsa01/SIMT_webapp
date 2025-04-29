@@ -36,6 +36,10 @@ public static class PlayerSeeds
         DisplayResolution = DisplayResolution.Res1920X1080,
         TrafficLevel = TrafficLevel.TrafficLevel3,
         VisibilityLength = VisibilityLength.ViewLength500M,
+        ConditionBusId = ConditionBusSeeds.ConditionBusPlayerAdam.Id,
+        ConditionBus = ConditionBusSeeds.ConditionBusPlayerAdam,
+        ConditionTramId = ConditionTramSeeds.ConditionTramPlayerAdam.Id,
+        ConditionTram = ConditionTramSeeds.ConditionTramPlayerAdam,
     };
     
     public static readonly PlayerEntity PlayerTomas = new()
@@ -57,7 +61,7 @@ public static class PlayerSeeds
         GameMoney = 58344,
         Fuel = 65.0,
         Cng = 224.5974,
-        ServiceSpending = 32580 ,
+        ServiceSpending = 32580,
         KmOverall = 7766,
         KmYear = 1707,
         KmBus = 611,
@@ -68,6 +72,10 @@ public static class PlayerSeeds
         DisplayResolution = DisplayResolution.Res1920X1080,
         TrafficLevel = TrafficLevel.TrafficLevel3,
         VisibilityLength = VisibilityLength.ViewLength500M,
+        ConditionBusId = ConditionBusSeeds.ConditionBusPlayerTomas.Id,
+        ConditionBus = ConditionBusSeeds.ConditionBusPlayerTomas,
+        ConditionTramId = ConditionTramSeeds.ConditionTramPlayerTomas.Id,
+        ConditionTram = ConditionTramSeeds.ConditionTramPlayerTomas,
     };
     
     public static readonly PlayerEntity PlayerPeter = new()
@@ -100,6 +108,10 @@ public static class PlayerSeeds
         DisplayResolution = DisplayResolution.Res1920X1080,
         TrafficLevel = TrafficLevel.TrafficLevel3,
         VisibilityLength = VisibilityLength.ViewLength500M,
+        ConditionBusId = ConditionBusSeeds.ConditionBusPlayerPeter.Id,
+        ConditionBus = ConditionBusSeeds.ConditionBusPlayerPeter,
+        ConditionTramId = ConditionTramSeeds.ConditionTramPlayerPeter.Id,
+        ConditionTram = ConditionTramSeeds.ConditionTramPlayerPeter,
     };
 
     static PlayerSeeds()
@@ -112,8 +124,8 @@ public static class PlayerSeeds
     
     public static void Seed(this ModelBuilder modelBuilder) =>
         modelBuilder.Entity<PlayerEntity>().HasData(
-            PlayerAdam with{Services = []},
-            PlayerPeter with{Services = []},
-            PlayerTomas with{Services = []}
+            PlayerAdam with{Services = [], ConditionBus = null!, ConditionTram = null!},
+            PlayerPeter with{Services = [], ConditionBus = null!, ConditionTram = null!},
+            PlayerTomas with{Services = [], ConditionBus = null!, ConditionTram = null!}
         );
 }

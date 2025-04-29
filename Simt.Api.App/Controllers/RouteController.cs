@@ -7,7 +7,7 @@ using Simt.Common.Models;
 namespace Simt.Api.App.Controllers;
 
 [ApiController]
-[Route("Route")]
+[Route("route")]
 public class RouteController : ControllerBase
 {
     private readonly RouteFacade _routeFacade;
@@ -43,7 +43,7 @@ public class RouteController : ControllerBase
     {
         var id = await _routeFacade.CreateAsync(model);
         var detailModel = await _routeFacade.GetByIdAsync(id);
-        return Created("Route/{id}", detailModel);
+        return Created("route/{id}", detailModel);
     }
 
     [HttpPut]

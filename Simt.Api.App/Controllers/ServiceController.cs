@@ -57,7 +57,7 @@ public class ServiceController : ControllerBase
     {
         var id = await _serviceFacade.CreateAsync(model);
         var detailModel = await _serviceFacade.GetByIdAsync(id);
-        return Created("Service/{id}", detailModel);
+        return Created("service/{id}", detailModel);
     }
 
     [HttpPut]

@@ -17,7 +17,7 @@ public class VehicleRepository(SimtDbContext dbContext) : RepositoryBase<Vehicle
     public async Task<List<VehicleEntity>> GetAllTrolleybusesAsync()
     {
         return await _dbSet
-            .Where(vehicle => vehicle.Traction == Traction.Trolejbus)
+            .Where(vehicle => vehicle.Traction == Traction.Trolleybus)
             .ToListAsync();
     }
     public async Task<List<VehicleEntity>> GetAllTramsAsync()

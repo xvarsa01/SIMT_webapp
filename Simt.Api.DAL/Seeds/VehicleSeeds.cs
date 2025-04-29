@@ -139,7 +139,7 @@ public static class VehicleSeeds
         BatteryDrive = false,
         AirConditioning = false,
         Status = Status.Active,
-        Traction = Traction.Trolejbus,
+        Traction = Traction.Trolleybus,
         LowFloor = LowFloor.LowFloor
     };
     

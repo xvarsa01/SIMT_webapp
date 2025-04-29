@@ -14,6 +14,8 @@ public class SimtDbContext (DbContextOptions contextOptions, bool seedDemoData =
     public DbSet<LineEntity> Lines => Set<LineEntity>();
     public DbSet<ServiceEntity> Services => Set<ServiceEntity>();
     public DbSet<VehicleEntity> Vehicles => Set<VehicleEntity>();
+    public DbSet<ConditionBusEntity> ConditionBus => Set<ConditionBusEntity>();
+    public DbSet<ConditionTramEntity> ConditionTram => Set<ConditionTramEntity>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -68,12 +70,23 @@ public class SimtDbContext (DbContextOptions contextOptions, bool seedDemoData =
             .WithOne(e => e.FinalPlatform)
             .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
 
+        modelBuilder.Entity<PlayerEntity>()
+            .HasOne(e => e.ConditionBus)
+            .WithOne(e => e.Player)
+            .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
+        modelBuilder.Entity<PlayerEntity>()
+            .HasOne(e => e.ConditionTram)
+            .WithOne(e => e.Player)
+            .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
+
         
         if (seedDemoData)
         {
             StopSeeds.Seed(modelBuilder);
             PlatformSeeds.Seed(modelBuilder);
-            PlayerSeeds.Seed(modelBuilder); 
+            PlayerSeeds.Seed(modelBuilder);
+            ConditionBusSeeds.Seed(modelBuilder); 
+            ConditionTramSeeds.Seed(modelBuilder); 
             LineSeeds.Seed(modelBuilder);
             MapSeeds.Seed(modelBuilder);
             RouteSeeds.Seed(modelBuilder);

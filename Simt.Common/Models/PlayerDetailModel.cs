@@ -38,6 +38,9 @@ public record PlayerDetailModel() : PlayerCreationModel
         DisplayResolution = DisplayResolution.Res1920X1080,
         TrafficLevel = TrafficLevel.TrafficLevel3,
         VisibilityLength = VisibilityLength.ViewLength250M,
+        
+        ConditionBusId = Guid.Empty,
+        ConditionTramId = Guid.Empty,
         FavouriteVehicleId = Guid.Empty,
     };
 }

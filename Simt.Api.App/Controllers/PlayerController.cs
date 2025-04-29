@@ -11,10 +11,14 @@ namespace Simt.Api.App.Controllers;
 public class PlayerController : ControllerBase
 {
     private readonly PlayerFacade _playerFacade;
+    private readonly ConditionBusFacade _conditionBusFacade;
+    private readonly ConditionTramFacade _conditionTramFacade;
 
-    public PlayerController(PlayerFacade playerFacade)
+    public PlayerController(PlayerFacade playerFacade, ConditionBusFacade conditionBusFacade, ConditionTramFacade conditionTramFacade)
     {
         _playerFacade = playerFacade;
+        _conditionBusFacade = conditionBusFacade;
+        _conditionTramFacade = conditionTramFacade;
     }
 
     [HttpGet("all")]
@@ -65,7 +69,7 @@ public class PlayerController : ControllerBase
     {
         var id = await _playerFacade.CreateAsync(model);
         var detailModel = await _playerFacade.GetByIdAsync(id);
-        return Created("Player/{id}", detailModel);
+        return Created("player/{id}", detailModel);
     }
 
     [HttpPut]
@@ -92,5 +96,30 @@ public class PlayerController : ControllerBase
         }
         await _playerFacade.DeleteAsync(id);
         return NoContent();
+    }
+    
+    [HttpGet("bus-condition/{playerId:guid}")]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<ConditionBusModel>))]
+    [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<ConditionBusModel>))]
+    public async Task<ActionResult<ConditionBusModel?>> GetConditionBusById(Guid playerId)
+    { 
+        var model = await _conditionBusFacade.GetByPlayerIdAsync(playerId);
+        if (model == null)
+        {
+            return NotFound();
+        }
+        return Ok(model);
+    }
+    [HttpGet("tram-condition/{playerId:guid}")]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<ConditionTramModel>))]
+    [SwaggerResponse(HttpStatusCode.NotFound, typeof(ActionResult<ConditionTramModel>))]
+    public async Task<ActionResult<ConditionTramModel?>> GetConditionTramById(Guid playerId)
+    { 
+        var model = await _conditionTramFacade.GetByPlayerIdAsync(playerId);
+        if (model == null)
+        {
+            return NotFound();
+        }
+        return Ok(model);
     }
 }

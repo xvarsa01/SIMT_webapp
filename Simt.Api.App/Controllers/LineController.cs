@@ -7,7 +7,7 @@ using Simt.Common.Models;
 namespace Simt.Api.App.Controllers;
 
 [ApiController]
-[Route("Line")]
+[Route("line")]
 public class LineController : ControllerBase
 {
     private readonly LineFacade _lineFacade;
@@ -43,7 +43,7 @@ public class LineController : ControllerBase
     {
         var id = await _lineFacade.CreateAsync(model);
         var detailModel = await _lineFacade.GetByIdAsync(id);
-        return Created("Line/{id}", detailModel);
+        return Created("line/{id}", detailModel);
     }
 
     [HttpPut]

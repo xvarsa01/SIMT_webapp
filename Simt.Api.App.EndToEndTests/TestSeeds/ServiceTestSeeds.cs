@@ -15,10 +15,10 @@ public static class ServiceTestSeeds
         GameMoneyGained = 0,
         DateTime = default,
         Finished = true,
-        PlayerId = PlayerSeeds.PlayerAdam.Id,
+        PlayerId = PlayerTestSeeds.PlayerAdam.Id,
         RouteId = RouteSeeds.Route1A.Id,
         VehicleId = VehicleTestSeeds.TatraT3.Id,
-        Player = PlayerSeeds.PlayerAdam,
+        Player = PlayerTestSeeds.PlayerAdam,
         Route = RouteSeeds.Route1A,
         Vehicle = VehicleTestSeeds.TatraT3
     };
@@ -31,10 +31,10 @@ public static class ServiceTestSeeds
         GameMoneyGained = 0,
         DateTime = default,
         Finished = true,
-        PlayerId = PlayerSeeds.PlayerPeter.Id,
+        PlayerId = PlayerTestSeeds.PlayerPeter.Id,
         RouteId = RouteSeeds.Route13A.Id,
         VehicleId = VehicleSeeds.TatraT3DPP.Id,
-        Player = PlayerSeeds.PlayerPeter,
+        Player = PlayerTestSeeds.PlayerPeter,
         Route = RouteSeeds.Route13A,
         Vehicle = VehicleSeeds.TatraT3DPP
     };
@@ -47,10 +47,10 @@ public static class ServiceTestSeeds
         GameMoneyGained = 0,
         DateTime = default,
         Finished = true,
-        PlayerId = PlayerSeeds.PlayerPeter.Id,
+        PlayerId = PlayerTestSeeds.PlayerPeter.Id,
         RouteId = RouteSeeds.Route13B.Id,
         VehicleId = VehicleSeeds.TatraT3DPP.Id,
-        Player = PlayerSeeds.PlayerPeter,
+        Player = PlayerTestSeeds.PlayerPeter,
         Route = RouteSeeds.Route13B,
         Vehicle = VehicleSeeds.TatraT3DPP
     };
@@ -63,10 +63,10 @@ public static class ServiceTestSeeds
         GameMoneyGained = 0,
         DateTime = default,
         Finished = true,
-        PlayerId = PlayerSeeds.PlayerPeter.Id,
+        PlayerId = PlayerTestSeeds.PlayerPeter.Id,
         RouteId = RouteSeeds.Route1B.Id,
         VehicleId = VehicleSeeds.TatraT3DPP.Id,
-        Player = PlayerSeeds.PlayerPeter,
+        Player = PlayerTestSeeds.PlayerPeter,
         Route = RouteSeeds.Route1B,
         Vehicle = VehicleSeeds.TatraT3DPP
     };
@@ -79,10 +79,10 @@ public static class ServiceTestSeeds
         GameMoneyGained = 0,
         DateTime = DateTime.Now,
         Finished = false,
-        PlayerId = PlayerSeeds.PlayerTomas.Id,
+        PlayerId = PlayerTestSeeds.PlayerTomas.Id,
         RouteId = RouteSeeds.Route1B.Id,
         VehicleId = VehicleSeeds.TatraT3DPP.Id,
-        Player = PlayerSeeds.PlayerTomas,
+        Player = PlayerTestSeeds.PlayerTomas,
         Route = RouteSeeds.Route1B,
         Vehicle = VehicleSeeds.TatraT3DPP
     };
