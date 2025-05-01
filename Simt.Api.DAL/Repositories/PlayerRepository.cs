@@ -6,7 +6,10 @@ namespace Simt.Api.DAL.Repositories;
 public class PlayerRepository(SimtDbContext dbContext, ConditionBusRepository conditionBusRepository, ConditionTramRepository conditionTramRepository) : RepositoryBase<PlayerEntity>(dbContext)
 {
     private readonly DbSet<PlayerEntity> _dbSet = dbContext.Set<PlayerEntity>();
-    
+    public override Task<List<PlayerEntity>> GetAllAsync()
+    {
+        throw new NotImplementedException("This method is unsupported. Use the overload with paging.");
+    }
     public async Task<List<PlayerEntity>> GetAllAsync(string searchTerm)
     {
         return await _dbSet

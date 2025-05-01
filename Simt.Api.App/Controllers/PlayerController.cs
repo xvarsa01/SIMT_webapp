@@ -23,9 +23,9 @@ public class PlayerController : ControllerBase
 
     [HttpGet("all")]
     [SwaggerResponse(HttpStatusCode.OK, typeof(ActionResult<List<PlayerListModel>>))]
-    public Task<List<PlayerListModel>> GetAll()
+    public Task<List<PlayerListModel>> GetAll(int pageNumber, int pageSize)
     {
-        return _playerFacade.GetAllAsync();
+        return _playerFacade.GetAllAsync(pageNumber, pageSize);
     }
     
     [HttpGet("search")]
