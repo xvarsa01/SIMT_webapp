@@ -2,7 +2,7 @@ namespace Simt.Api.DAL.entities;
 
 public record ConditionBusEntity() : IEntity
 {
-    public Guid Id { get; set; }
+    public required Guid Id { get; set; }
     public required int Bulbs { get; set; }
     public required int BrakeLining { get; set; }
     public required int Filters { get; set; }
@@ -16,6 +16,22 @@ public record ConditionBusEntity() : IEntity
     public required int AirDevice { get; set; }
     public required int TechnicalInspection { get; set; }
     
-    // public required Guid PLayerId { get; set; }
     public required PlayerEntity Player { get; init; }
+    public static ConditionBusEntity Empty => new()
+    {
+        Id = Guid.NewGuid(),
+        Bulbs = 22,
+        BrakeLining = 100,
+        Filters = 100,
+        Silencers = 100,
+        PaintRepairs = 100,
+        Tires = 100,
+        Cleaning = 100,
+        Battery = 100,
+        Corrosion = 100,
+        Dirt = 100,
+        AirDevice = 30,
+        TechnicalInspection = 365,
+        Player = null!,
+    };
 }
