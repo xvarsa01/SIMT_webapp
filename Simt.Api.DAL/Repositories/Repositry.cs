@@ -14,7 +14,7 @@ public class RepositoryBase<TEntity>(SimtDbContext dbContext) : IRepository<TEnt
         return await _dbSet.ToListAsync();
     }
 
-    public virtual async Task<IList<TEntity>> GetAll(int pageNumber, int pageSize)
+    public virtual async Task<List<TEntity>> GetAllAsync(int pageNumber, int pageSize)
     {
         return await _dbSet
             .Skip(pageSize * (pageNumber - 1))
@@ -32,7 +32,7 @@ public class RepositoryBase<TEntity>(SimtDbContext dbContext) : IRepository<TEnt
         await dbContext.SaveChangesAsync();
     }
 
-    public async Task<Guid> InsertAsync(TEntity entity)
+    public virtual async Task<Guid> InsertAsync(TEntity entity)
     {
         var createdEntity = (await _dbSet.AddAsync(entity)).Entity;
         await dbContext.SaveChangesAsync();
