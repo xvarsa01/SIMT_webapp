@@ -12,7 +12,10 @@ public class PlayerFacade : FacadeBase<PlayerRepository, PlayerEntity, PlayerLis
     
     public PlayerFacade(
         PlayerRepository repository,
-        IModelMapper<PlayerEntity, PlayerListModel, PlayerDetailModel, PlayerCreationModel> modelMapper)
+        IModelMapper<PlayerEntity, PlayerListModel, PlayerDetailModel, PlayerCreationModel> modelMapper,
+        IModelMapper<ConditionBusEntity, ConditionBusModel, ConditionBusModel, ConditionBusModel> conBusModelMapper,
+        IModelMapper<ConditionTramEntity, ConditionTramModel, ConditionTramModel, ConditionTramModel> conTramModelMapper
+        )
         : base(repository, modelMapper)
     {
         _playerRepository = repository;
@@ -34,5 +37,20 @@ public class PlayerFacade : FacadeBase<PlayerRepository, PlayerEntity, PlayerLis
         return entity is null
             ? null
             : _modelMapper.MapToDetailModel(entity);
+    }
+    
+    public override async Task<Guid> CreateAsync(PlayerCreationModel model)
+    {
+        GuardCollectionsAreNotSet(model);
+        PlayerEntity entity = ModelMapper.MapToEntity(model);
+
+        ConditionBusEntity conditionBusEntity = ConditionBusEntity.Empty;
+        ConditionTramEntity conditionTramEntity = ConditionTramEntity.Empty;
+        
+        entity.ConditionBusId = conditionBusEntity.Id;
+        entity.ConditionTramId = conditionTramEntity.Id;
+
+        Guid createdEntityId = await _playerRepository.InsertAsync(entity, conditionTramEntity, conditionBusEntity);
+        return createdEntityId;
     }
 }
