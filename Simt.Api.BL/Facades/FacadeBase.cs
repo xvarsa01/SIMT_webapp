@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using Simt.Api.BL.Facades.Interface;
 using Simt.Api.BL.Mappers.InterfaceBase;
 using Simt.Api.DAL.entities;
@@ -69,7 +70,14 @@ public class FacadeBase<TRepository, TEntity, TListModel, TDetailModel, TCreatio
     
     public virtual async Task DeleteAsync(Guid id)
     {
-        await Repository.DeleteAsync(id);
+        try
+        {
+            await Repository.DeleteAsync(id);
+        }
+        catch (DbUpdateException e)
+        {
+            throw new InvalidOperationException("Entity deletion failed.", e);
+        }
     }
     
     public static void GuardCollectionsAreNotSet(TCreationModel model)
