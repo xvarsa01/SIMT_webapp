@@ -35,4 +35,19 @@ public class ConditionTramFacade : FacadeBase<ConditionTramRepository, Condition
             ? null
             : _modelMapper.MapToDetailModel(entity);
     }
+    
+    public override Task<List<ConditionTramModel>> GetAllAsync()
+    {
+        throw new NotImplementedException("This method is unsupported. Use the overload with paging.");
+    }
+    
+    public override Task<Guid> CreateAsync(ConditionTramModel model)
+    {
+        throw new NotImplementedException("This method is unsupported. Condition is created along Player in PlayerFacade");
+    }
+    
+    public override Task DeleteAsync(Guid id)
+    {
+        throw new NotImplementedException("This method is unsupported. Condition is deleted along Player in PlayerFacade");
+    }
 }
